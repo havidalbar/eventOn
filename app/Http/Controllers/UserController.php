@@ -2,12 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\UserRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Session;
+use App\User;
 
 
-class UsersController extends Controller
+class UserController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,7 +18,7 @@ class UsersController extends Controller
      */
     public function index()
     {
-        return view('user.index');
+        return view('home');
     }
 
     /**
@@ -35,13 +37,14 @@ class UsersController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(UserRequest $request)
     {
         $data = new User();
         $data->username = $request->username;
         $data->email = $request->email;
         $data->password = Hash::make($request->password);
         $data->save();
+        Session::put('username', $data->username);
         return redirect()->route('user.index')->with('alert-success', 'Berhasil mendaftar user');
     }
 
@@ -76,7 +79,7 @@ class UsersController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $username)
+    public function update(UserRequest $request, $username)
     {
         $user = User::find($username);
         $user->username = $request->username;
@@ -88,7 +91,7 @@ class UsersController extends Controller
             Session::put('username', $request->username);
             Session::put('email', $request->email);
         }
-        return redirect()->route('pengguna.index')->with('alert-success', 'Berhasil mengedit user');
+        return redirect()->route('user.index')->with('alert-success', 'Berhasil mengedit user');
     }
 
     /**
@@ -111,7 +114,8 @@ class UsersController extends Controller
     {
         $username = $request->username;
         $password = $request->password;
-        $user = User::find($username);
+        $user = User::where('username',$username)->first();
+        // dd($user);
         if ($user && Hash::check($password, $user->password)) {
             Session::put('username', $user->username);
             Session::put('email', $user->email);
@@ -124,11 +128,11 @@ class UsersController extends Controller
     public function logout()
     {
         Session::flush();
-        return redirect()->route('user.login')->with('alert', 'Anda telah keluar');
+        return redirect()->route('index')->with('alert', 'Anda telah keluar');
     }
 
     public function getDashboard()
     {
-        return view('dashboard');
+        return view('home');
     }
 }
