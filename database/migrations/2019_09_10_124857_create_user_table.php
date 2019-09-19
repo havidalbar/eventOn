@@ -18,7 +18,6 @@ class CreateUserTable extends Migration
             $table->string('username', 30)->unique();
             $table->string('email')->unique();
             $table->char('password', 60);
-            $table->integer('EO')->nullable();
             $table->integer('credit')->nullable();
             $table->timestamps();
         });

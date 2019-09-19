@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateBookingTable extends Migration
+class CreatePesanTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,14 +13,14 @@ class CreateBookingTable extends Migration
      */
     public function up()
     {
-        Schema::create('booking', function (Blueprint $table) {
+        Schema::create('pesan', function (Blueprint $table) {
             $table->increments('id');
             $table->string('nama',191);
             $table->string('nohp',20);
             $table->string('alamat',191);
             $table->string('email',191)->unique();
-            $table->string('kode_booking',6)->nullable();
-            $table->string('norek',20)->nullable();
+            $table->string('kode_pesanan',6)->nullable();
+            $table->string('nomor_rekening',20)->nullable();
             $table->string('bank_pengirim',20)->nullable();
             $table->string('bank_tujuan',20)->nullable();
             $table->bigInteger('jumlah');

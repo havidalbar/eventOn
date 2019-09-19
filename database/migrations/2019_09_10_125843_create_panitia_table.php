@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateEoTable extends Migration
+class CreatePanitiaTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,9 @@ class CreateEoTable extends Migration
      */
     public function up()
     {
-        Schema::create('eo', function (Blueprint $table) {
+        Schema::create('panitia', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('nama_eo',191);
+            $table->string('nama_panitia',191);
             $table->string('foto',50)->nullable();
             $table->unsignedInteger('id_user');
             $table->foreign('id_user')->references('id')->on('user')->nullable();
