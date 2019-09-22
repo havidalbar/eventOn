@@ -20,40 +20,59 @@ class PenggunaController extends Controller
     {
         $akun = User::where('username', Session::get('username'))->update([
             'email' => $request->email,
-            'username' => $request->username, 'password' => $request->password
+            'username' => $request->username,
+            'password' => $request->password
         ]);
         Session::put('username', $request->username);
         Session::put('email', $request->email);
         return redirect()->route('index')->with('alert', 'Anda telah mengupdate akun');
     }
 
-    public function lihatAkun(){
-        $akun = User::where('username',Session::get('username'))->first();
+    public function lihatAkun()
+    {
+        $akun = User::where('username', Session::get('username'))->first();
         return redirect()->route('akun.informasi')->with(compact('akun'));
     }
 
-    public function lihatDetailAcara($id){
-        $acara = Acara::where('id',$id)->first();
-        $panitia = Panitia::find($acara->id_panitia);
-        return redirect()->route('lihat-detail-acara')->with(compact('acara','panitia'));
-    }
-
-    public function lihatKodeUnik(){
-        Pesan::where('id_user',Session::get('id'))->first();
-        return redirect()->route('akun.acara.kode-unik')->with(compact('pesan'));
-    }
-
-    public function cariAcara(Request $request){
-        $acaras = Project::where('namaProject', 'like', '%' . $request->input('keyword') . '%');
-        $acaras = $acaras->get();
-        $panitias = array();
-        for ($i = 0; $i < count($acaras); $i++) {
-            $panitias[$i] = Panitia::where('id', $acaras[$i]->id_panitia)->first();
+    public function lihatDetailAcara($id)
+    {
+        $acara = Acara::where('id', $id)->first();
+        if ($acara) {
+            $panitia = Panitia::find($acara->id_panitia);
+            return redirect()->route('lihat-detail-acara')->with(compact('acara', 'panitia'));
+        } else {
+            abort(404);
         }
-        return redirect()->route('cari')->with(compact('acaras'));
     }
 
-    public function daftarPanitia(Request $request){
+    public function lihatKodeUnik()
+    {
+        $pesan = Pesan::where('id_user', Session::get('id'))->first();
+        if ($pesan) {
+            return redirect()->route('akun.acara.kode-unik')->with(compact('pesan'));
+        } else {
+            abort(403);
+        }
+    }
+
+    public function cariAcara(Request $request)
+    {
+        $acaras = Acara::where('nama_acara', 'like', '%' . $request->input('keyword') . '%');
+        $acaras = $acaras->get();
+        if ($acaras) {
+
+            $panitias = array();
+            for ($i = 0; $i < count($acaras); $i++) {
+                $panitias[$i] = Panitia::where('id', $acaras[$i]->id_panitia)->first();
+            }
+            return redirect()->route('cari')->with(compact('acaras'));
+        } else {
+            abort(404);
+        }
+    }
+
+    public function daftarPanitia(Request $request)
+    {
         if ($request['files'] != null) {
             $filename = explode('.', $request->foto->getClientOriginalName());
             $fileExt = end($filename);
@@ -69,11 +88,11 @@ class PenggunaController extends Controller
             $data->nohp = $request->nohp;
             $data->id_user = Session::get('id');
             $data->save();
-            Session::put('nama_panitia', $data->nama_profesi);
+            Session::put('nama_panitia', $data->nama->panitia);
             Session::put('id_panitia', $data->id);
             Session::put('foto_panitia', $data->foto);
             return redirect()->route('/')->with('alert-success', 'Berhasil mendaftar panitia');
-        }else{
+        } else {
             return redirect()->back()->with('alert', 'Anda wajib memberikan foto Portofolio kepada pihak EventOn!')->withInput();
         }
     }
@@ -88,38 +107,52 @@ class PenggunaController extends Controller
         return $id;
     }
 
-    public function lihatHalamanBeranda(){
+    public function lihatHalamanBeranda()
+    {
         return view('home');
     }
 
-    public function lihatHalamanCari(){
+    public function lihatHalamanCari()
+    {
         return view('cari');
     }
 
-    public function lihatSemuaAcara(){
+    public function lihatSemuaAcara()
+    {
         $acaras = Acara::all();
         $panitia = array();
         for ($i = 0; $i < count($acaras); $i++) {
             $panitia[$i] = Panitia::find($acaras[$i]->id_panitia);
         }
         $key = 'semua';
-        return redirect()->route('cari-semua-acara')->with(compact('acaras','panitia'));
+        return redirect()->route('cari-semua-acara')->with(compact('acaras', 'panitia'));
     }
 
-    public function cariAcaraKategori(Request $request){
+    public function cariAcaraKategori(Request $request)
+    { }
 
-    }
-
-    public function lihatHalamanDaftarPanitia(){
+    public function lihatHalamanDaftarPanitia()
+    {
         return view('daftar-panitia');
     }
 
-    public function KomentarAcara(Request $request){
-
+    public function KomentarAcara(Request $request, $id_acara)
+    {
+        $acara = Acara::find($id_acara);
+        $komentar = new Komentar();
+        $komentar->id_acara = $acara->id;
+        $komentar->isi = $request->isi;
+        return redirect()->back()->with('alert', 'berhasil komentar');
     }
 
-    public function HapusAcara($id){
-
+    public function HapusKomentarAcara($id)
+    {
+        $komentar = Komentar::find($id);
+        if ($komentar) {
+            $komentar->delete();
+            return redirect()->back()->with('alert', 'berhasil menghapus acara');
+        } else {
+            abort(404);
+        }
     }
-
 }
