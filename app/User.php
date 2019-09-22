@@ -34,4 +34,8 @@ class User extends Authenticatable
      *
      * @var array
      */
+    public function Panitia()
+    {
+        return $this->hasOne('App\Panitia', 'id', 'id_user');
+    }
 }

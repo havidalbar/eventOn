@@ -6,6 +6,11 @@ use Illuminate\Http\Request;
 use App\Http\Requests\UserRequest;
 use Illuminate\Support\Facades\Session;
 use App\User;
+use App\Panitia;
+use App\Acara;
+use App\Pesan;
+use App\Komentar;
+
 
 
 class PenggunaController extends Controller
