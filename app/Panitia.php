@@ -8,9 +8,9 @@ class Panitia extends Model
 {
     protected $table = 'panitia';
     protected $primaryKey = 'id';
-    public function user()
+    public function member()
     {
-        return $this->belongsTo('App\User', 'id_user', 'id');
+        return $this->belongsTo('App\Member', 'id_member', 'id');
     }
     public function acara()
     {

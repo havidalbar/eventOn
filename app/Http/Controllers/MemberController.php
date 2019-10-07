@@ -117,11 +117,6 @@ class PenggunaController extends Controller
         return view('home');
     }
 
-    public function lihatHalamanCari()
-    {
-        return view('cari');
-    }
-
     public function lihatSemuaAcara()
     {
         $acaras = Acara::all();

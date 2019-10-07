@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Panitia;
-use App\User;
+use App\Member;
 use App\Pesan;
 
 use Illuminate\Http\Request;
@@ -16,7 +16,7 @@ class AdminController extends Controller
         $pesanans = Pesan::where('status', 0)->get();
         $users = array();
         for ($i = 0; $i < count($panitias); $i++) {
-            $users[$i] = User::find($panitias[$i]->id_user);
+            $users[$i] = Member::find($panitias[$i]->id_user);
         }
 
         return view('admin.konfirmasi-pendaftaran', compact('panitias', 'pesanans', 'users'));
@@ -50,7 +50,7 @@ class AdminController extends Controller
         $pesanans = Pesan::where('status', 0)->get();
         $users = array();
         for ($i = 0; $i < count($panitias); $i++) {
-            $users[$i] = User::find($panitias[$i]->id_user);
+            $users[$i] = Member::find($panitias[$i]->id_user);
         }
         return view('admin.konfirmasi-pembayaran', compact('panitias', 'pesanans', 'users'));
     }

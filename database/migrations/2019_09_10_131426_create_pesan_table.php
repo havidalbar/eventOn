@@ -27,8 +27,8 @@ class CreatePesanTable extends Migration
             $table->integer('kode_unik');
             $table->string('gambar_konfirmasi')->nullable();
             $table->integer('status')->default('0');
-            $table->unsignedInteger('id_user');
-            $table->foreign('id_user')->references('id')->on('user')->nullable();
+            $table->unsignedInteger('id_member');
+            $table->foreign('id_member')->references('id')->on('member')->nullable();
             $table->timestamps();
         });
     }

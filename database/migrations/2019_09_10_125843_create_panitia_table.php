@@ -17,8 +17,8 @@ class CreatePanitiaTable extends Migration
             $table->increments('id');
             $table->string('nama_panitia',191);
             $table->string('foto',50)->nullable();
-            $table->unsignedInteger('id_user');
-            $table->foreign('id_user')->references('id')->on('user')->nullable();
+            $table->unsignedInteger('id_member');
+            $table->foreign('id_member')->references('id')->on('member')->nullable();
             $table->string('alamat',191);
             $table->string('nohp',20);
             $table->string('url_image',50);

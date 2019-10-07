@@ -6,10 +6,9 @@ use App\Http\Requests\UserRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Session;
-use App\User;
+use App\Member;
 
-
-class UserController extends Controller
+class TamuController extends Controller
 {
     public function lihatHalamanLogin()
     {
@@ -20,7 +19,7 @@ class UserController extends Controller
     {
         $username = $request->username;
         $password = $request->password;
-        $user = User::where('username', $username)->first();
+        $user = Member::where('username', $username)->first();
         if ($user && Hash::check($password, $user->password)) {
             Session::put('username', $user->username);
             Session::put('email', $user->email);
@@ -30,14 +29,14 @@ class UserController extends Controller
         }
     }
 
-    public function lihatHalamanRegister()
+    public function lihatHalamanRegistrasi()
     {
         return view('register');
     }
 
     public function register(UserRequest $request)
     {
-        $data = new User();
+        $data = new Member();
         $data->username = $request->username;
         $data->email = $request->email;
         $data->password = Hash::make($request->password);

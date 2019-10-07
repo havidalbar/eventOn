@@ -10,21 +10,20 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-
-Route::get('/', function () {
-    return view('login');
+Route::get('/', function(){
+    return view('welcome');
 })->name('index');
-Route::get('/register', function () {
-    return view('register');
-});
 
-Route::post('login','UserController@login')->name('login');
-Route::post('register','UserController@store')->name('register');
+Route::get('/login', 'TamuController@lihatHalamanLogin');
+Route::get('/register', 'TamuController@lihatHalamanRegistrasi');
+
+Route::post('login','TamuController@login')->name('login');
+Route::post('registrasi','TamuController@registrasi')->name('register');
 
 Route::group(['middleware' => ['user.loggedin'],'as'=>'user.'], function () {
-    Route::get('logout','UserController@logout')->name('logout');
-    Route::get('dashboard','UserController@getDashboard')->name('dashboard');
-    Route::resource('user', 'UserController')->parameters([
+    Route::get('logout','MemberController@logout')->name('logout');
+    Route::get('dashboard','MemberController@getDashboard')->name('dashboard');
+    Route::resource('user', 'MemberController')->parameters([
         'user' => 'username',
     ])->except(['store']);
 });

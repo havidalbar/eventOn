@@ -6,11 +6,11 @@ use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
-class User extends Authenticatable
+class Member extends Authenticatable
 {
     use Notifiable;
 
-    protected $table ='user';
+    protected $table ='member';
     /**
      * The attributes that are mass assignable.
      *
@@ -36,6 +36,6 @@ class User extends Authenticatable
      */
     public function Panitia()
     {
-        return $this->hasOne('App\Panitia', 'id', 'id_user');
+        return $this->hasOne('App\Panitia', 'id', 'id_member');
     }
 }
