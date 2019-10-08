@@ -12,5 +12,9 @@
 */
 
 Route::get('/', function () {
-    return view('home');
+    return view('pesanProyek');
 });
+Route::get('/login', function () {
+    return view('masuk');
+});
+

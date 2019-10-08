@@ -29,7 +29,7 @@
                 <div class="three wide column">
                     <h4 class="ui header" style="color:white">Tentang Kami</h4>
                     <div class="ui link list">
-                        <a href="#" class="item" style="color:#9c9c9d">Apa itu Aderim?</a>
+                        <a href="#" class="item" style="color:#9c9c9d">Apa itu EventOn?</a>
                         <a href="#" class="item" style="color:#9c9c9d">Syarat dan Ketentuan</a>
                         <a href="#" class="item" style="color:#9c9c9d">Kebijakan Privasi</a>
                         <a href="#" class="item" style="color:#9c9c9d">Hubungi Kami</a>
@@ -38,15 +38,15 @@
                 <div class="three wide column">
                     <h4 class="ui header" style="color:white">Mulai Membuat</h4>
                     <div class="ui link list">
-                        <a class="item" href="#" style="color:#9c9c9d">Rumah</a>
-                        <a class="item" href="#" style="color:#9c9c9d">Hotel</a>
-                        <a class="item" href="#" style="color:#9c9c9d">Apartemen</a>
+                        <a class="item" href="#" style="color:#9c9c9d">Event</a>
+                        <a class="item" href="#" style="color:#9c9c9d">Ticketing</a>
+                        <a class="item" href="#" style="color:#9c9c9d">Organizer</a>
                     </div>
                 </div>
                 <div class="seven wide column">
-                    <h4 class="ui header" style="color:white">Aderim</h4>
-                    <p style="color:white">Aderim merupakan singkatan dari Arsitek Desain Rumah
-                        Impian. Aderim merupakan pilihan yang tepat bagi masyarakat untuk membangun, mendesain, maupun merenovasi rumah, hotel, dan apartemen.
+                    <h4 class="ui header" style="color:white">EventOn</h4>
+                    <p style="color:white">EventOn merupakan solusi yang tepat bagi anda yang ingin membuat suatu event
+                            impian anda.
                     </p>
                 </div>
             </div>
@@ -54,7 +54,7 @@
             <div style="display:flex;flex-direction:row;color:white">
                 <i class="copyright icon"></i>
                 <div>
-                    2019, PT Aderim
+                    2019, EventOn
                 </div>
             </div>
         </div>

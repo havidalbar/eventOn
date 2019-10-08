@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Masuk | Aderim</title>
+    <title>Masuk | EventOn</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
     <!-- Site Properties -->
     <link rel="icon" href="assets/image/favicon.ico" type="image/gif">
@@ -131,7 +131,7 @@
                                     Masuk
                                 </button>
                             </a>
-                            <div style="font-size:15px">Belum punya akun Aderim?<a href="/register" style="color:teal">
+                            <div style="font-size:15px">Belum punya akun EventOn?<a href="/register" style="color:teal">
                                     Daftar</a></div>
                         </div>
 

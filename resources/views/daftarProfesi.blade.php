@@ -1,7 +1,7 @@
-@extends (\Session::has('username') ? 'layouts.navLogin' : 'layouts.nav')
+@extends ('layouts.nav')
 @section('title', 'Beranda | Aderim')
 
-@section('js')
+{{-- @section('js')
 <script type="text/javascript">
 Dropzone.options.myDropzone = {
     addRemoveLinks: true,
@@ -72,7 +72,7 @@ $(document)
             });
     });
 </script>
-@endsection
+@endsection --}}
 
 @section('content')
 <div class="ui container" style="color:#4d4d4d;margin-top:50px">
@@ -108,7 +108,7 @@ $(document)
                     onchange="previewImage('image-preview1','unggah_gambar1')" style="display: none">
             </div>
             <div class="field">
-                <label style="font-size:18px">Nama Profesi</label>
+                <label style="font-size:18px">Nama Event Organizer</label>
                 <input type="text" name="nama_profesi" placeholder="Masukkan Nama Profesi">
             </div>
             <div class="field">

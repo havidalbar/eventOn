@@ -13,7 +13,7 @@
         integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous">
     </script>
     <script src="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.js"></script>
-    <script>
+    {{-- <script>
     $(document)
         .ready(function() {});
     //Tampilkan gambar yang dipilih
@@ -124,7 +124,7 @@
                 }
             });
         });
-    </script>
+    </script> --}}
 </head>
 
 <body>    
@@ -132,11 +132,11 @@
         @if(\Session::has('errors'))
         <div style="position:absolute;right:15px;top:15px;max-width:400px">
             <div class="ui negative message alert" style="display:none">                    
-            @foreach($errors->all() as $key => $value)
+            {{-- @foreach($errors->all() as $key => $value)
                 <div>
                     {{$value}}
                 </div>
-            @endforeach
+            @endforeach --}}
             </div>
         </div>
         @endif
@@ -148,13 +148,13 @@
                 <div class="ui centered stackable grid">
                     <div class="six wide middle aligned column" style="padding-right:50px">
                         <div>
-                            <img src="{{asset('home.png')}}" class="ui rounded centered large image">
+                            <img src="{{asset('eventOn1.png')}}" class="ui rounded centered large image">
                         </div>
                         <div style="font-size:25px;margin-top:5px">
-                            Mari Bergabung Bersama Aderim
+                            Mari Bergabung Bersama Event On
                         </div>
                         <div style="font-size:19px;margin-top:5px">
-                            Dan wujudkan desain rumah impian anda
+                            Dan wujudkan event impian anda
                         </div>
                         <div class="ui error message">
                             <ul class="list">
@@ -223,7 +223,7 @@
                             <button class="ui fluid large button teal" style="margin-top:15px;margin-bottom:20px">
                                 Daftar
                             </button>
-                            <div style="font-size:15px">Sudah punya akun Aderim?<a href="/login" style="color:teal">
+                            <div style="font-size:15px">Sudah punya akun EventOn?<a href="/login" style="color:teal">
                                     Masuk</a>
                             </div>
                         </div>

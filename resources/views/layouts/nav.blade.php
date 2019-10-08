@@ -187,9 +187,9 @@
                 <i class="pencil icon"></i></a>
             </div>
             <a class="item" href="/">Beranda</a>
-            <a class="item" href="/kategori/rumah">Rumah</a>
-            <a class="item" href="/kategori/hotel">Hotel</a>
-            <a class="item" href="/kategori/apartemen">Apartemen</a>
+            <a class="item" href="/kategori/rumah">Event</a>
+            <a class="item" href="/kategori/hotel">Ticketing</a>
+            <a class="item" href="/kategori/apartemen">Organizer</a>
             <div class="right item">
                 <a class="ui teal button" style="margin-right:15px" href="/login">
                     Masuk
@@ -209,9 +209,9 @@
             </a>
         </div>
         <a class="item" href="/">Beranda</a>
-        <a class="item" href="/kategori/rumah">Rumah</a>
-        <a class="item" href="/kategori/hotel">Hotel</a>
-        <a class="item" href="/kategori/apartemen">Apartemen</a>
+        <a class="item" href="/kategori/rumah">Event</a>
+        <a class="item" href="/kategori/hotel">Ticketing</a>
+        <a class="item" href="/kategori/apartemen">Organizer</a>
         <div class="right item">
             <a class="ui inverted button" style="margin-right:15px" href="/login">
                 Masuk
@@ -231,13 +231,13 @@
                         <i class="sidebar icon"></i>
                     </a>
                     <div class="item" style="margin-right:10px">
-                        <a href="/" style="color:white">Aderim
+                        <a href="/" style="color:white">EventOn
                         <i class="pencil icon"></i></a>
                     </div>
                     <a class="item" href="/">Beranda</a>
-                    <a class="item" href="/kategori/rumah">Rumah</a>
-                    <a class="item" href="/kategori/hotel">Hotel</a>
-                    <a class="item" href="/kategori/apartemen">Apartemen</a>
+                    <a class="item" href="/kategori/rumah">Event</a>
+                    <a class="item" href="/kategori/hotel">Ticketing</a>
+                    <a class="item" href="/kategori/apartemen">Organizer</a>
                     <div class="right item">
                         <div class="item">
                             <form class="ui icon input" method="get" action="/get-search">

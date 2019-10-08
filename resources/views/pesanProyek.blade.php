@@ -1,7 +1,7 @@
-@extends (\Session::has('username') ? 'layouts.navLogin' : 'layouts.nav')
-@section('title', 'Pesan Proyek | Aderim')
+@extends ('layouts.nav')
+@section('title', 'Pesan Tiket | EventOn')
 
-@section('js')
+{{-- @section('js')
 <script type="text/javascript">
 Dropzone.options.myDropzone = {
     addRemoveLinks: true,
@@ -51,51 +51,51 @@ $(document)
             });
     });
 </script>
-@endsection
+@endsection --}}
 
 @section('content')
 <div class="ui container" style="color:#4d4d4d;margin-top:50px">
     <div style="max-width:700px;margin: 0 auto;border:1px solid #e1e2e3;border-radius:6px;padding:40px 45px 40px 45px">
-        <div style="font-size:28px"><b>Pesan Proyek</b></div>
+        <div style="font-size:28px"><b>Pesan Tiket</b></div>
         <div style="font-size:20px;margin-top:15px;line-height:1.5">
-            Anda akan melakukan pemesanan proyek dari profesi :
+            Anda akan melakukan pemesanan Tiket dari Event :
         </div>
         <div class="ui stackable grid" style="margin-top:5px">
             <div class="three wide column">
-                <img class="ui circular image" src="{{asset($profesi->foto)}}"
+                <img class="ui circular image" src="tur.jpg"
                     style="width:80px;height:80px;object-fit:cover">
             </div>
             <div class="thirteen wide column">
-                <div style="font-size:22px"><b>{{ucfirst($profesi->nama_profesi)}}</b></div>
+                <div style="font-size:22px"><b>Tur Sewindu</b></div>
                 <div style="margin-top:5px;display:flex;flex-direction:row;align-items: center">
                     <div><i class="map marker alternate teal icon"></i></div>
-                    <div style="font-size:18px">{{ucfirst($desProject->daerah)}}</div>
+                    <div style="font-size:18px">Konser</div>
                 </div>
             </div>
         </div>
         <div class="ui divider"></div>
         <div class="ui container fluid" style="margin-top:20px">
-            <div style="font-size:18px"><b>Gambar Desain</b></div>
+            <div style="font-size:18px"><b>Gambar Event</b></div>
             <form action="{{ url('/uploadFotoOrder') }}" enctype="multipart/form-data" class="dropzone" id="my-dropzone"
                 style="margin-top:5px">
                 {{csrf_field()}}
             </form>
             <button id="submit-all" type="submit" class="submitDropzone" style="display:none">Unggah</button>
             <!-- Cek data -->
-            @if(\Session::has('alert'))
+            {{-- @if(\Session::has('alert')) --}}
             <div class="ui negative message">
                 <p>{{Session::get('alert')}}</p>
             </div>
-            @endif
+            {{-- @endif --}}
         </div>
         <form class="ui form" style="margin-top:15px" id="tambah-order" method='post'
             action="{{url('/tambah-orderproses')}}" enctype="multipart/form-data">
-            <input type="hidden" name="id_project" value="{{$desProject->id}}" />
-            <input type="hidden" name="id_user" value="{{Session::get('id')}}" />
-            <input type="hidden" name="id_profesi" value="{{$desProject->id_profesi}}" />
+            <input type="hidden" name="id_project" value="Tur Sewindu" />
+            <input type="hidden" name="id_user" value="GlowFest" />
+            <input type="hidden" name="id_profesi" value="FH UB" />
             <div class="field">
                 <label style="font-size:18px">Deskripsi Proyek</label>
-                <textarea name="pesan" maxlength="500" rows="6" placeholder="Tuliskan deskripsi pesanan proyek anda..."></textarea>
+                <textarea name="pesan" maxlength="500" rows="6" placeholder="Tuliskan deskripsi pesanan tiket anda..."></textarea>
             </div>
             <div class="field">
                 <label style="font-size:18px">Alamat Pengerjaan Proyek</label>
@@ -105,7 +105,7 @@ $(document)
                 <label style="font-size:18px">Total Biaya Proyek</label>
                 <div class="ui labeled fluid input" style="font-size:18px">
                     <label class="ui label">Rp</label>
-                    <input type="text" name="estimasi" value="{{number_format(($desProject->estimasi),0,",",".")}}"
+                    <input type="text" name="estimasi" value="80.000"
                         readonly style="background-color:#e8e8e8;border:none">
                 </div>
             </div>
@@ -115,13 +115,13 @@ $(document)
                         <i class="info circle large teal icon"></i>
                     </div>
                     <div class="fifteen wide column" style="font-size:14px;line-height:1.5">
-                        Pembayaran total biaya proyek dilakukan secara bertahap sebanyak 4 kali. Pembayaran dilakukan untuk progres pengerjaan proyek selama 6 bulan kedepan.
+                        Pembayaran total biaya tiket dilakukan secara lunas.
                     </div>
                 </div>
             </div>
             {{csrf_field()}}
             <button class="ui big teal button fluid" onclick="" type="submit" name="submit" style="margin-top:30px">
-                Periksa Pesanan Proyek
+                Periksa Pesanan Tiket
             </button>
             <div class="ui error message">
                 <ul class="list">
