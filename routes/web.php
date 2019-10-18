@@ -27,3 +27,7 @@ Route::group(['middleware' => ['user.loggedin'],'as'=>'user.'], function () {
         'user' => 'username',
     ])->except(['store']);
 });
+Route::get('/login', function () {
+    return view('masuk');
+});
+
