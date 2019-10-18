@@ -16,94 +16,94 @@
     <script src="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.js"></script>
 
     <style type="text/css">
-    .hidden.menu {
-        display: none;
-    }
-
-    .masthead.segment {
-        min-height: 700px;
-        padding: 1em 0em;
-    }
-
-    .masthead .logo.item img {
-        margin-right: 1em;
-    }
-
-    .masthead .ui.menu .ui.button {
-        margin-left: 0.5em;
-    }
-
-    .masthead h1.ui.header {
-        margin-top: 3em;
-        margin-bottom: 0em;
-        font-size: 4em;
-        font-weight: normal;
-    }
-
-    .masthead h2 {
-        font-size: 1.7em;
-        font-weight: normal;
-    }
-
-    .ui.vertical.stripe {
-        padding: 8em 0em;
-    }
-
-    .ui.vertical.stripe h3 {
-        font-size: 2em;
-    }
-
-    .ui.vertical.stripe .button+h3,
-    .ui.vertical.stripe p+h3 {
-        margin-top: 3em;
-    }
-
-    .ui.vertical.stripe .floated.image {
-        clear: both;
-    }
-
-    .ui.vertical.stripe p {
-        font-size: 1.33em;
-    }
-
-    .ui.vertical.stripe .horizontal.divider {
-        margin: 3em 0em;
-    }
-
-    .quote.stripe.segment {
-        padding: 0em;
-    }
-
-    .quote.stripe.segment .grid .column {
-        padding-top: 5em;
-        padding-bottom: 5em;
-    }
-
-    .footer.segment {
-        padding: 5em 0em;
-    }
-
-    .secondary.menu .toc.item {
-        display: none;
-    }
-
-    @media only screen and (max-width: 768px) {
-        .ui.fixed.menu {
-            display: none !important;
-        }
-
-        .secondary.inverted.menu .item,
-        .secondary.inverted.menu .menu {
+        .hidden.menu {
             display: none;
         }
 
-        .secondary.inverted.menu .toc.item {
-            display: block;
+        .masthead.segment {
+            min-height: 700px;
+            padding: 1em 0em;
         }
-    }
+
+        .masthead .logo.item img {
+            margin-right: 1em;
+        }
+
+        .masthead .ui.menu .ui.button {
+            margin-left: 0.5em;
+        }
+
+        .masthead h1.ui.header {
+            margin-top: 3em;
+            margin-bottom: 0em;
+            font-size: 4em;
+            font-weight: normal;
+        }
+
+        .masthead h2 {
+            font-size: 1.7em;
+            font-weight: normal;
+        }
+
+        .ui.vertical.stripe {
+            padding: 8em 0em;
+        }
+
+        .ui.vertical.stripe h3 {
+            font-size: 2em;
+        }
+
+        .ui.vertical.stripe .button+h3,
+        .ui.vertical.stripe p+h3 {
+            margin-top: 3em;
+        }
+
+        .ui.vertical.stripe .floated.image {
+            clear: both;
+        }
+
+        .ui.vertical.stripe p {
+            font-size: 1.33em;
+        }
+
+        .ui.vertical.stripe .horizontal.divider {
+            margin: 3em 0em;
+        }
+
+        .quote.stripe.segment {
+            padding: 0em;
+        }
+
+        .quote.stripe.segment .grid .column {
+            padding-top: 5em;
+            padding-bottom: 5em;
+        }
+
+        .footer.segment {
+            padding: 5em 0em;
+        }
+
+        .secondary.menu .toc.item {
+            display: none;
+        }
+
+        @media only screen and (max-width: 768px) {
+            .ui.fixed.menu {
+                display: none !important;
+            }
+
+            .secondary.inverted.menu .item,
+            .secondary.inverted.menu .menu {
+                display: none;
+            }
+
+            .secondary.inverted.menu .toc.item {
+                display: block;
+            }
+        }
     </style>
     <script>
-    $(document)
+        $(document)
         .ready(function() {
             // fix menu when passed
             $('.inverted.vertical')
@@ -127,7 +127,7 @@
                 $('.ui.negative.message.alert').transition({
                 animation  : 'fade in',
                 duration   : '0.8s',
-                onComplete : function() {                    
+                onComplete : function() {
                     $(this).transition({
                         interval   : '2000',
                         animation  : 'fade out',
@@ -138,7 +138,7 @@
         });
     </script>
     <script>
-    //Salin Nilai
+        //Salin Nilai
     function copyToClipboard(element) {
         var $temp = $("<input>");
         $("body").append($temp);
@@ -184,17 +184,17 @@
         <div class="ui container">
             <div class="item" style="margin-right:10px">
                 <a href="/" style="color:black">Aderim
-                <i class="pencil icon"></i></a>
+                    <i class="pencil icon"></i></a>
             </div>
             <a class="item" href="/">Beranda</a>
             <a class="item" href="/kategori/rumah">Event</a>
             <a class="item" href="/kategori/hotel">Ticketing</a>
             <a class="item" href="/kategori/apartemen">Organizer</a>
             <div class="right item">
-                <a class="ui teal button" style="margin-right:15px" href="/login">
+                <a class="ui teal button" style="margin-right:15px" href="{{ route('tamu.lihat-login') }}">
                     Masuk
                 </a>
-                <a class="ui teal button" href="/register">
+                <a class="ui teal button" href="{{ route('tamu.lihat-registrasi') }}">
                     Daftar
                 </a>
             </div>
@@ -232,7 +232,7 @@
                     </a>
                     <div class="item" style="margin-right:10px">
                         <a href="/" style="color:white">EventOn
-                        <i class="pencil icon"></i></a>
+                            <i class="pencil icon"></i></a>
                     </div>
                     <a class="item" href="/">Beranda</a>
                     <a class="item" href="/kategori/rumah">Event</a>
@@ -245,10 +245,10 @@
                                 <i class="search link icon"></i>
                             </form>
                         </div>
-                        <a class="ui inverted button" style="margin-right:15px" href="/login">
+                        <a class="ui inverted button" style="margin-right:15px" href="{{ route('tamu.lihat-login') }}">
                             Masuk
                         </a>
-                        <a class="ui inverted button" href="/register">
+                        <a class="ui inverted button" href="{{ route('tamu.lihat-registrasi') }}">
                             Daftar
                         </a>
                     </div>

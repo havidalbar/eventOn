@@ -5,15 +5,15 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Requests\UserRequest;
 use Illuminate\Support\Facades\Session;
-use App\User;
+use App\Member;
 use App\Panitia;
 use App\Acara;
 use App\Pesan;
 use App\Komentar;
+use App\Http\Requests\PanitiaRequest;
 
 
-
-class PenggunaController extends Controller
+class MemberController extends Controller
 {
     public function logout()
     {
@@ -23,7 +23,7 @@ class PenggunaController extends Controller
 
     public function updateAkun(UserRequest $request)
     {
-        $akun = User::where('username', Session::get('username'))->update([
+        $akun = Member::where('username', Session::get('username'))->update([
             'email' => $request->email,
             'username' => $request->username,
             'password' => $request->password
@@ -35,13 +35,13 @@ class PenggunaController extends Controller
 
     public function lihatAkun()
     {
-        $akun = User::where('username', Session::get('username'))->first();
-        return redirect()->route('akun.informasi')->with(compact('akun'));
+        $akun = Member::where('username', Session::get('username'))->first();
+        return view('informasiAkun.informasiAkunProfil',['akun'=>$akun]);
     }
 
     public function lihatDetailAcara($id)
     {
-        $acara = Acara::where('id', $id)->first();
+        $acara = Member::where('id', $id)->first();
         if ($acara) {
             $panitia = Panitia::find($acara->id_panitia);
             return redirect()->route('lihat-detail-acara')->with(compact('acara', 'panitia'));
@@ -52,7 +52,7 @@ class PenggunaController extends Controller
 
     public function lihatKodeUnik()
     {
-        $pesan = Pesan::where('id_user', Session::get('id'))->first();
+        $pesan = Pesan::where('id_member', Session::get('id'))->first();
         if ($pesan) {
             return redirect()->route('akun.acara.kode-unik')->with(compact('pesan'));
         } else {
@@ -76,7 +76,7 @@ class PenggunaController extends Controller
         }
     }
 
-    public function daftarPanitia(Request $request)
+    public function daftarPanitia(PanitiaRequest $request)
     {
         if ($request['files'] != null) {
             $filename = explode('.', $request->foto->getClientOriginalName());
@@ -91,7 +91,7 @@ class PenggunaController extends Controller
             $data->nama = $request->nama_panitia;
             $data->alamat = $request->alamat;
             $data->nohp = $request->nohp;
-            $data->id_user = Session::get('id');
+            $data->id_member = Session::get('id');
             $data->save();
             Session::put('nama_panitia', $data->nama->panitia);
             Session::put('id_panitia', $data->id);

@@ -3,10 +3,9 @@
 namespace App\Http\Middleware;
 
 use Closure;
-use Illuminate\Support\Facades\Session;
 
 
-class IsEOOwner
+class IsPanitia
 {
     /**
      * Handle an incoming request.
@@ -17,7 +16,7 @@ class IsEOOwner
      */
     public function handle($request, Closure $next)
     {
-        if (Session::get('id')==Session::get('id_user')) {
+        if (session('id')==session('id_user')) {
             return $next($request);
         } else {
             return redirect()->back()->with('alert', 'Anda tidak memiliki hah untuk akun event organizer ini');

@@ -23,10 +23,10 @@ class TamuController extends Controller
         if ($user && Hash::check($password, $user->password)) {
             Session::put('username', $user->username);
             Session::put('email', $user->email);
-            return redirect()->route('user.dashboard');
         } else {
             return redirect()->back()->with('alert-error', 'Informasi login salah');
         }
+        return redirect()->route('index')->with('alert-success','Berhasil masuk ke sistem');
     }
 
     public function lihatHalamanRegistrasi()
@@ -34,7 +34,7 @@ class TamuController extends Controller
         return view('register');
     }
 
-    public function register(UserRequest $request)
+    public function registrasi(UserRequest $request)
     {
         $data = new Member();
         $data->username = $request->username;
@@ -42,6 +42,6 @@ class TamuController extends Controller
         $data->password = Hash::make($request->password);
         $data->save();
         Session::put('username', $data->username);
-        return redirect()->route('user.index')->with('alert-success', 'Berhasil mendaftar user');
+        return redirect()->route('index')->with('alert-success', 'Berhasil mendaftar user');
     }
 }

@@ -9,29 +9,29 @@
     <div class="ui stackable grid">
         <div class="ten wide column">
             <div class="ui stackable grid" style="height:100%">
-                <?php
-                $fotos = explode(" ", $orderProgres->url_gambar);
-                ?>
+                {{-- <?php
+                // $fotos = explode(" ", $orderProgres->url_gambar);
+                ?> --}}
                 <div class="twelve wide column">
                     <div class="ui one stackable cards">
                         <div class="card">
                             <div class="image">
-                                <img class="ui big image" src="{{asset($fotos[0])}}">
+                                <img class="ui big image" src="">
                             </div>
                         </div>
                     </div>
                 </div>
                 <div class="four wide column">
-                    @for($j=0; $j < count($fotos); $j++)
+                    {{-- @for($j=0; $j < count($fotos); $j++) --}}
                     <div class="ui one stackable cards">
                         <div class="card">
                             <div class="image">
-                                <img src="{{asset($fotos[$j])}}"
+                                <img src=""
                                     style="height:145px;object-fit:cover">
                             </div>
                         </div>
                     </div>
-                    @endfor
+                    {{-- @endfor --}}
                 </div>
             </div>
         </div>
@@ -48,29 +48,29 @@
             <div class="ui divider"></div>
             <div class="ui stackable grid">
                 <div class="four wide column">
-                    <img class="ui circular image" src="{{asset($profesi->foto)}}"
+                    <img class="ui circular image" src=""
                         style="width:80px;height:80px;object-fit:cover">
                 </div>
                 <div class="twelve wide middle aligned column">
-                <div style="font-size:22px"><b>{{ucfirst($profesi->nama_profesi)}}</b></div>
-                    <div style="font-size:17px;margin-top:5px">{{ucfirst($profesi->job_title)}}</div>
-                <div style="font-size:17px;margin-top:5px">{{$user->email}}</div>
+                <div style="font-size:22px"><b>aaaaaaa</b></div>
+                    <div style="font-size:17px;margin-top:5px">bbbbb</div>
+                <div style="font-size:17px;margin-top:5px">ccccc</div>
                 </div>
             </div>
             <div class="ui divider"></div>
             <div class="ui stackable grid">
                 <div class="twelve wide middle aligned column">
                     <div style="font-size:22px">
-                        <b>{{ucfirst($items->namaProject)}}</b>
+                        <b>dddd</b>
                     </div>
                     <div style="margin-top:10px;display:flex;flex-direction:row;align-items: center">
                         <div><i class="map marker alternate teal icon"></i></div>
-                        <div style="font-size:16px">{{ucfirst($dataOrder->address)}}</div>
+                        <div style="font-size:16px">eeee</div>
                     </div>
                 </div>
                 <div class="four wide right aligned middle aligned column">
                     <span style="border:2px solid #d4d4d5;border-radius:4px;padding:5px 15px 5px 15px;font-size:17px">
-                        {{ucfirst($items->category)}}
+                        ffff
                     </span>
                 </div>
             </div>
@@ -78,14 +78,14 @@
             <div style="font-size:20px"><b>Progres Proyek</b></div>
             <div style="font-size:17px;margin-top:10px">
                 <span>Bulan </span>
-                <span>{{$orderProgres->status}}</span>
+                <span>gggg</span>
             </div>
             <div style="font-size:20px;margin-top:15px"><b>Deskripsi Progres</b></div>
             <div style="font-size:17px;margin-top:10px;line-height:1.5">
-                    {{$orderProgres->pesan}}
+                   hhh
             </div>
             <div class="ui divider"></div>
-            @if(($dataOrder->statusLagi===6 && $dataOrder->id_transaksi2==null) || ($dataOrder->statusLagi==12 &&
+            {{-- @if(($dataOrder->statusLagi===6 && $dataOrder->id_transaksi2==null) || ($dataOrder->statusLagi==12 &&
                     $dataOrder->id_transaksi3==null)|| ($dataOrder->statusLagi===18 && $dataOrder->id_transaksi4==null)||
                     ($dataOrder->status=="Pembayaran tidak terkonfirmasi" && $dataOrder->id_transaksi2==null)||
                     ($dataOrder->status=="Pembayaran tidak terkonfirmasi" && $dataOrder->id_transaksi3==null)||
@@ -94,7 +94,7 @@
                 {{csrf_field()}}
                 <button type="submit" class="ui large button teal right floated">Bayar Progres Selanjutnya</button>
             </form>
-            @endif
+            @endif --}}
         </div>
     </div>
 
@@ -111,13 +111,13 @@
     </div>
     <div class="ui divider" style="margin-top:30px"></div>
     <h3>Lihat Progres Pengerjaan Proyek Bulan Ke</h3>
-    <?php
+    {{-- <?php
     $bulan = $dataOrder->statusLagi;
-    ?>
+    ?> --}}
     <div class="ui pagination menu">
-    @for($j=1; $j<= $bulan; $j++)
+    {{-- @for($j=1; $j<= $bulan; $j++)
     <a class="item" onclick="window.location.href='/informasi-akun/{{$dataOrder->id}}/progres/{{$j}}'">{{$j}}</a>
-    @endfor
+    @endfor --}}
     </div>
 </div>
 

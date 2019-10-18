@@ -1,9 +1,9 @@
-@extends ('layouts.nav')
+@extends (\Session::has('username') ? 'layouts.navLogin' : 'layouts.nav')
 @section('title', 'Beranda | EventOn')
 
 @section('content')
 <div class="ui container fluid" style="background-color:#273d40">
-    {{-- @if(\Session::has('alert'))
+    @if(\Session::has('alert'))
     <div style="position:absolute;right:15px;top:15px;max-width:400px">
         <div class="ui negative message alert" style="display:none">
             {{Session::get('alert')}}
@@ -15,7 +15,7 @@
             {{Session::get('alert-success')}}
         </div>
     </div>
-    @endif --}}
+    @endif
     <div class="ui container center aligned">
         <div class="ui three row stackable grid">
             <div class="column">

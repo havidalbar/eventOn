@@ -3,8 +3,9 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Support\Facades\Session;
 
-class UserRequest extends FormRequest
+class AcaraRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -13,7 +14,7 @@ class UserRequest extends FormRequest
      */
     public function authorize()
     {
-        return true;
+        return (Session::get('nama_panitia') && Session::get('status_panitia'));
     }
 
     /**
@@ -24,9 +25,7 @@ class UserRequest extends FormRequest
     public function rules()
     {
         return [
-            'username' => 'sometimes|required|min:3|max:30|unique:member,username',
-            'password' => 'sometimes|required|min:4|max:20',
-            'email' => 'sometimes|required|email|unique:member,email',
+            //
         ];
     }
 }

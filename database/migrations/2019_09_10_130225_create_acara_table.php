@@ -38,6 +38,6 @@ class CreateAcaraTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('event');
+        Schema::dropIfExists('acara');
     }
 }

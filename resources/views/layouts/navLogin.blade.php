@@ -21,76 +21,94 @@
     @yield('js')
 
     <style type="text/css">
-    .hidden.menu {
-        display: none;
-    }
-    .masthead.segment {
-        min-height: 700px;
-        padding: 1em 0em;
-    }
-    .masthead .logo.item img {
-        margin-right: 1em;
-    }
-    .masthead .ui.menu .ui.button {
-        margin-left: 0.5em;
-    }
-    .masthead h1.ui.header {
-        margin-top: 3em;
-        margin-bottom: 0em;
-        font-size: 4em;
-        font-weight: normal;
-    }
-    .masthead h2 {
-        font-size: 1.7em;
-        font-weight: normal;
-    }
-    .ui.vertical.stripe {
-        padding: 8em 0em;
-    }
-    .ui.vertical.stripe h3 {
-        font-size: 2em;
-    }
-    .ui.vertical.stripe .button+h3,
-    .ui.vertical.stripe p+h3 {
-        margin-top: 3em;
-    }
-    .ui.vertical.stripe .floated.image {
-        clear: both;
-    }
-    .ui.vertical.stripe p {
-        font-size: 1.33em;
-    }
-    .ui.vertical.stripe .horizontal.divider {
-        margin: 3em 0em;
-    }
-    .quote.stripe.segment {
-        padding: 0em;
-    }
-    .quote.stripe.segment .grid .column {
-        padding-top: 5em;
-        padding-bottom: 5em;
-    }
-    .footer.segment {
-        padding: 5em 0em;
-    }
-    .secondary.menu .toc.item {
-        display: none;
-    }
-    @media only screen and (max-width: 1024px) {
-        .ui.fixed.menu {
-            display: none !important;
-        }
-        .secondary.inverted.menu .item,
-        .secondary.inverted.menu .menu {
+        .hidden.menu {
             display: none;
         }
-        .secondary.inverted.menu .toc.item {
-            display: block;
+
+        .masthead.segment {
+            min-height: 700px;
+            padding: 1em 0em;
         }
-    }
+
+        .masthead .logo.item img {
+            margin-right: 1em;
+        }
+
+        .masthead .ui.menu .ui.button {
+            margin-left: 0.5em;
+        }
+
+        .masthead h1.ui.header {
+            margin-top: 3em;
+            margin-bottom: 0em;
+            font-size: 4em;
+            font-weight: normal;
+        }
+
+        .masthead h2 {
+            font-size: 1.7em;
+            font-weight: normal;
+        }
+
+        .ui.vertical.stripe {
+            padding: 8em 0em;
+        }
+
+        .ui.vertical.stripe h3 {
+            font-size: 2em;
+        }
+
+        .ui.vertical.stripe .button+h3,
+        .ui.vertical.stripe p+h3 {
+            margin-top: 3em;
+        }
+
+        .ui.vertical.stripe .floated.image {
+            clear: both;
+        }
+
+        .ui.vertical.stripe p {
+            font-size: 1.33em;
+        }
+
+        .ui.vertical.stripe .horizontal.divider {
+            margin: 3em 0em;
+        }
+
+        .quote.stripe.segment {
+            padding: 0em;
+        }
+
+        .quote.stripe.segment .grid .column {
+            padding-top: 5em;
+            padding-bottom: 5em;
+        }
+
+        .footer.segment {
+            padding: 5em 0em;
+        }
+
+        .secondary.menu .toc.item {
+            display: none;
+        }
+
+        @media only screen and (max-width: 1024px) {
+            .ui.fixed.menu {
+                display: none !important;
+            }
+
+            .secondary.inverted.menu .item,
+            .secondary.inverted.menu .menu {
+                display: none;
+            }
+
+            .secondary.inverted.menu .toc.item {
+                display: block;
+            }
+        }
     </style>
     <script>
-    $(document)
+        $(document)
         .ready(function() {
             // fix menu when passed
             $('.inverted.vertical')
@@ -123,7 +141,7 @@
             $('.ui.negative.message.alert').transition({
                 animation  : 'fade in',
                 duration   : '0.8s',
-                onComplete : function() {                    
+                onComplete : function() {
                     $(this).transition({
                         interval   : '2000',
                         animation  : 'fade out',
@@ -134,7 +152,7 @@
             $('.ui.positive.message.alert').transition({
                 animation  : 'fade in',
                 duration   : '0.8s',
-                onComplete : function() {                    
+                onComplete : function() {
                     $(this).transition({
                         interval   : '2000',
                         animation  : 'fade out',
@@ -154,7 +172,7 @@
         });
     </script>
     <script>
-    //Salin Nilai
+        //Salin Nilai
     function copyToClipboard(element) {
         var $temp = $("<input>");
         $("body").append($temp);
@@ -190,7 +208,7 @@
     });
     </script>
     <script>
-    $(document)
+        $(document)
         .ready(function() {});
     //Tampilkan gambar yang dipilih
     function previewImage(preview, unggah) {
@@ -207,102 +225,93 @@
 <body class="pushable">
     <!-- Following Menu -->
     <div class="ui large top borderless menu fixed transition hidden">
-        <div class="ui container">
-            <div class="item" style="margin-right:10px">
-                <a href="/" style="color:black">Aderim
-                    <i class="pencil icon"></i></a>
-            </div>
-            <a class="item" href="/">Beranda</a>
-            <a class="item" href="/kategori/rumah">Rumah</a>
-            <a class="item" href="/kategori/hotel">Hotel</a>
-            <a class="item" href="/kategori/apartemen">Apartemen</a>
-            <div class="item">
-                <form class="ui icon input" method="get" action="/get-search" style="width:350px">
-                    <input type="text" placeholder="Cari sesuatu..." name="cari">
-                    <i class="search link icon"></i>
-                </form>
-            </div>
-            <div class="right item">
-                <div class="ui teal top right pointing dropdown button">
-                    <i class="briefcase icon"></i>
-                    <span>Profesi</span>
-                    <div class="menu">
-                        @if(Session::has('nama_profesi'))
-                        <div class="header" style="font-size:14px">
-                            Informasi Profesi
-                        </div>
-                        <a class="item" href="/halaman-profesi/{{Session::get('id_profesi')}}/informasi"
-                            style="margin-left:20px;margin-right:20px">
-                            Profil Profesi
-                        </a>
-                        <div class="header" style="font-size:14px">
-                            Proyek Profesi
-                        </div>
-                        <a class="item" href="/halaman-profesi/tambah-project" style="margin-left:20px;margin-right:20px">
-                            Tambah Proyek
-                        </a>
-                        <a class="item" href="/halaman-profesi/{{Session::get('id_profesi')}}/project" style="margin-left:20px;margin-right:20px">
-                            Kumpulan Proyek
-                        </a>
-                        <a class="item" href="/halaman-profesi/pesanan" style="margin-left:20px;margin-right:20px">
-                            Pesanan Proyek
-                        </a>
-                        <a class="item" href="/halaman-profesi/progres" style="margin-left:20px;margin-right:20px">
-                            Progres Pesanan Proyek
-                        </a>
-                        @else
-                        <a class="item" href="/daftar-profesi" style="margin-left:20px;margin-right:20px">
-                            Daftar Profesi
-                        </a>
-                        @endif
+    <div class="ui container">
+        <div class="item" style="margin-right:10px">
+            <a href="#" style="color:black">Aderim
+                <i class="pencil icon"></i></a>
+        </div>
+        <a class="item" href="#">Beranda</a>
+        <a class="item" href="#">Event</a>
+        <a class="item" href="#">Ticketing</a>
+        <a class="item" href="#">Organizer</a>
+        <div class="item">
+            <form class="ui icon input" method="get" action="#" style="width:350px">
+                <input type="text" placeholder="Cari sesuatu..." name="cari">
+                <i class="search link icon"></i>
+            </form>
+        </div>
+        <div class="right item">
+            <div class="ui teal top right pointing dropdown button">
+                <i class="briefcase icon"></i>
+                <span>Panitia</span>
+                <div class="menu">
+                    @if(Session::has('nama_panitia'))
+                    <div class="header" style="font-size:14px">
+                        Informasi Panitia
                     </div>
+                <a class="item" href="#" style="margin-left:20px;margin-right:20px">
+                        Profil Panitia
+                    </a>
+                    <div class="header" style="font-size:14px">
+                        Proyek Panitia
+                    </div>
+                    <a class="item" href="#" style="margin-left:20px;margin-right:20px">
+                        Tambah Proyek
+                    </a>
+                    <a class="item" href="#" style="margin-left:20px;margin-right:20px">
+                        Kumpulan Proyek
+                    </a>
+                    <a class="item" href="#" style="margin-left:20px;margin-right:20px">
+                        Pesanan Proyek
+                    </a>
+                    <a class="item" href="#" style="margin-left:20px;margin-right:20px">
+                        Progres Pesanan Proyek
+                    </a>
+                    @else
+                    <a class="item" href="#" style="margin-left:20px;margin-right:20px">
+                        Daftar Panitia
+                    </a>
+                    @endif
                 </div>
-                <div class="ui teal top right pointing dropdown button" style="margin-left:15px">
-                    <i class="user circle icon"></i>
-                    <span>Akun</span>
-                    <div class="menu">
-                        <a href="/informasi-akun/profil">
-                            <div style="width:250px;padding:20px">
-                                <img class="ui circular centered image" src="{{asset(Session::get('foto'))}}"
-                                    style="border:5px solid teal;padding:3px;width:100px;height:100px;object-fit:cover">
-                                <div style="font-size:18px;text-align:center;margin-top:15px;color:black">
-                                    {{Session::get('name')}}
-                                </div>
-                                <div style="font-weight:100;margin-top:10px;text-align:center;color:#4d4d4d">
-                                    {{Session::get('email')}}
-                                </div>
+            </div>
+            <div class="ui teal top right pointing dropdown button" style="margin-left:15px">
+                <i class="user circle icon"></i>
+                <span>Akun</span>
+                <div class="menu">
+                    <a href="#">
+                        <div style="width:250px;padding:20px">
+                            <div style="font-size:18px;text-align:center;margin-top:15px;color:black">
+                                {{Session::get('username')}}
                             </div>
-                        </a>
-                        <div class="divider"></div>
-                        @if(Session::get('username') == "admin")
-                        <a class="item" href="/halaman-admin">
-                            <div style="font-size:14px">
-                                <b>HALAMAN ADMIN</b>
-                            </div>
-                        </a>
-                        @endif
-                        <div class="header" style="font-size:14px">
-                            Informasi Akun
                         </div>
-                        <a class="item" href="/informasi-akun/profil" style="margin-left:20px;margin-right:20px">
-                            Profil
-                        </a>
-                        <a class="item" href="/informasi-akun/progres" style="margin-left:20px;margin-right:20px">
-                            Progres Orderan
-                        </a>
-                        <a class="item" href="/informasi-akun/riwayat" style="margin-left:20px;margin-right:20px">
-                            Riwayat Orderan
-                        </a>
-                        <a href="/logoutproses">
-                            <button class="ui fluid teal button" style="margin-top:10px">
-                                <i class="sign-out icon"></i>
-                                Keluar
-                            </button>
-                        </a>
+                    </a>
+                    <div class="divider"></div>
+                    @if(Session::get('username') == "admin")
+                    <a class="item" href="#">
+                        <div style="font-size:14px">
+                            <b>HALAMAN ADMIN</b>
+                        </div>
+                    </a>
+                    @endif
+                    <div class="header" style="font-size:14px">
+                        Informasi Akun
                     </div>
+                    <a class="item" href="{{route('tamu.user.lihat-akun')}}" style="margin-left:20px;margin-right:20px">
+                        Profil
+                    </a>
+                    <a class="item" href="#" style="margin-left:20px;margin-right:20px">
+                        Riwayat Pesanan
+                    </a>
+                    <a href="{{route('tamu.logout')}}">
+                        <button class="ui fluid teal button" style="margin-top:10px">
+                            <i class="sign-out icon"></i>
+                            Keluar
+                        </button>
+                    </a>
                 </div>
             </div>
         </div>
+    </div>
     </div>
 
     <!-- Sidebar Menu -->
@@ -312,42 +321,41 @@
                 <img src="assets/image/HELPPET-LIGHT.png">
             </a>
         </div>
-        <a class="item" href="/">Beranda</a>
-        <a class="item" href="/kategori/rumah">Rumah</a>
-        <a class="item" href="/kategori/hotel">Hotel</a>
-        <a class="item" href="/kategori/apartemen">Apartemen</a>
+        <a class="item" href="#">Beranda</a>
+        <a class="item" href="#">Event</a>
+        <a class="item" href="#">Ticketing</a>
+        <a class="item" href="#">Organizer</a>
         <div class="right item">
             <div class="ui inverted top right pointing dropdown button">
                 <i class="briefcase icon"></i>
-                <span>Profesi</span>
+                <span>Panitia</span>
                 <div class="menu">
                     <div class="divider"></div>
-                    @if(Session::has('nama_profesi'))
+                    @if(Session::has('nama_panitia'))
                     <div class="header" style="font-size:14px">
-                        Informasi Profesi
+                        Informasi Panitia
                     </div>
-                    <a class="item" href="/halaman-profesi/{{Session::get('id_profesi')}}/informasi"
-                        style="margin-left:20px;margin-right:20px">
-                        Profil Profesi
+                    <a class="item" href="#" style="margin-left:20px;margin-right:20px">
+                        Profil Panitia
                     </a>
                     <div class="header" style="font-size:14px">
-                        Proyek Profesi
+                        Proyek Panitia
                     </div>
-                    <a class="item" href="/halaman-profesi/tambah-project" style="margin-left:20px;margin-right:20px">
+                    <a class="item" href="#" style="margin-left:20px;margin-right:20px">
                         Tambah Proyek
                     </a>
-                    <a class="item" href="/halaman-profesi/{{Session::get('id_profesi')}}/project" style="margin-left:20px;margin-right:20px">
+                    <a class="item" href="#" style="margin-left:20px;margin-right:20px">
                         Kumpulan Proyek
                     </a>
-                    <a class="item" href="/halaman-profesi/pesanan" style="margin-left:20px;margin-right:20px">
+                    <a class="item" href="#" style="margin-left:20px;margin-right:20px">
                         Pesanan Proyek
                     </a>
-                    <a class="item" href="/halaman-profesi/progres" style="margin-left:20px;margin-right:20px">
+                    <a class="item" href="#" style="margin-left:20px;margin-right:20px">
                         Progres Pesanan Proyek
                     </a>
                     @else
-                    <a class="item" href="/daftar-profesi" style="margin-left:20px;margin-right:20px">
-                        Daftar Profesi
+                    <a class="item" href="#" style="margin-left:20px;margin-right:20px">
+                        Daftar Panitia
                     </a>
                     @endif
                 </div>
@@ -356,21 +364,16 @@
                 <i class="user circle icon"></i>
                 <span>Akun</span>
                 <div class="menu">
-                    <a href="/informasi-akun/profil">
+                    <a href="#">
                         <div style="width:250px;padding:20px">
-                            <img class="ui circular centered image" src="{{asset(Session::get('foto'))}}"
-                                style="border:5px solid teal;padding:3px;width:100px;height:100px;object-fit:cover">
                             <div style="font-size:18px;text-align:center;margin-top:15px;color:black">
-                                {{Session::get('name')}}
-                            </div>
-                            <div style="font-weight:100;margin-top:10px;text-align:center;color:#4d4d4d">
-                                {{Session::get('email')}}
+                                {{Session::get('username')}}
                             </div>
                         </div>
                     </a>
                     <div class="divider"></div>
                     @if(Session::get('username') == "admin")
-                    <a class="item" href="/halaman-admin">
+                    <a class="item" href="#">
                         <div style="font-size:14px">
                             <b>HALAMAN ADMIN</b>
                         </div>
@@ -379,16 +382,13 @@
                     <div class="header" style="font-size:14px">
                         Informasi Akun
                     </div>
-                    <a class="item" href="/informasi-akun/profil" style="margin-left:20px;margin-right:20px">
+                    <a class="item" href="{{route('tamu.user.lihat-akun')}}" style="margin-left:20px;margin-right:20px">
                         Profil
                     </a>
-                    <a class="item" href="/informasi-akun/progres" style="margin-left:20px;margin-right:20px">
-                        Progres Orderan
+                    <a class="item" href="#" style="margin-left:20px;margin-right:20px">
+                        Riwayat Pesanan
                     </a>
-                    <a class="item" href="/informasi-akun/riwayat" style="margin-left:20px;margin-right:20px">
-                        Riwayat Orderan
-                    </a>
-                    <a href="/logoutproses">
+                    <a href="{{route('tamu.logout')}}">
                         <button class="ui fluid teal button" style="margin-top:10px">
                             <i class="sign-out icon"></i>
                             Keluar
@@ -408,15 +408,15 @@
                         <i class="sidebar icon"></i>
                     </a>
                     <div class="item" style="margin-right:10px">
-                        <a href="/" style="color:white">Aderim
+                        <a href="#" style="color:white">Aderim
                             <i class="pencil icon"></i></a>
                     </div>
-                    <a class="item" href="/">Beranda</a>
-                    <a class="item" href="/kategori/rumah">Rumah</a>
-                    <a class="item" href="/kategori/hotel">Hotel</a>
-                    <a class="item" href="/kategori/apartemen">Apartemen</a>
+                    <a class="item" href="#">Beranda</a>
+                    <a class="item" href="#">Event</a>
+                    <a class="item" href="#">Ticketing</a>
+                    <a class="item" href="#">Organizer</a>
                     <div class="item">
-                        <form class="ui icon input" method="get" action="/get-search" style="width:350px">
+                        <form class="ui icon input" method="get" action="" style="width:350px">
                             <input type="text" placeholder="Cari sesuatu..." name="cari">
                             <i class="search link icon"></i>
                         </form>
@@ -424,34 +424,33 @@
                     <div class="right item">
                         <div class="ui inverted top right pointing dropdown link button">
                             <i class="briefcase icon"></i>
-                            <span>Profesi</span>
+                            <span>Panitia</span>
                             <div class="menu">
-                                @if(Session::has('nama_profesi'))
+                                @if(Session::has('nama_panitia'))
                                 <div class="header" style="font-size:14px">
-                                    Informasi Profesi
+                                    Informasi Panitia
                                 </div>
-                                <a class="item" href="/halaman-profesi/{{Session::get('id_profesi')}}/informasi"
-                                    style="margin-left:20px;margin-right:20px">
-                                    Profil Profesi
+                                <a class="item" href="#" style="margin-left:20px;margin-right:20px">
+                                    Profil Panitia
                                 </a>
                                 <div class="header" style="font-size:14px">
-                                    Proyek Profesi
+                                    Proyek Panitia
                                 </div>
-                                <a class="item" href="/halaman-profesi/tambah-project" style="margin-left:20px;margin-right:20px">
+                                <a class="item" href="#" style="margin-left:20px;margin-right:20px">
                                     Tambah Proyek
                                 </a>
-                                <a class="item" href="/halaman-profesi/{{Session::get('id_profesi')}}/project" style="margin-left:20px;margin-right:20px">
+                                <a class="item" href="#" style="margin-left:20px;margin-right:20px">
                                     Kumpulan Proyek
                                 </a>
-                                <a class="item" href="/halaman-profesi/pesanan" style="margin-left:20px;margin-right:20px">
+                                <a class="item" href="#" style="margin-left:20px;margin-right:20px">
                                     Pesanan Proyek
                                 </a>
-                                <a class="item" href="/halaman-profesi/progres" style="margin-left:20px;margin-right:20px">
+                                <a class="item" href="#" style="margin-left:20px;margin-right:20px">
                                     Progres Pesanan Proyek
                                 </a>
                                 @else
-                                <a class="item" href="/daftar-profesi" style="margin-left:20px;margin-right:20px">
-                                    Daftar Profesi
+                                <a class="item" href="#" style="margin-left:20px;margin-right:20px">
+                                    Daftar Panitia
                                 </a>
                                 @endif
                             </div>
@@ -460,21 +459,16 @@
                             <i class="user circle icon"></i>
                             <span>Akun</span>
                             <div class="menu">
-                                <a href="/informasi-akun/profil">
+                                <a href="#">
                                     <div style="width:250px;padding:20px">
-                                        <img class="ui circular centered image" src="{{asset(Session::get('foto'))}}"
-                                            style="border:5px solid teal;padding:3px;width:100px;height:100px;object-fit:cover">
                                         <div style="font-size:18px;text-align:center;margin-top:15px;color:black">
-                                            {{Session::get('name')}}
-                                        </div>
-                                        <div style="font-weight:100;margin-top:10px;color:#4d4d4d;text-align:center">
-                                            {{Session::get('email')}}
+                                            {{Session::get('username')}}
                                         </div>
                                     </div>
                                 </a>
                                 <div class="divider"></div>
                                 @if(Session::get('username') == "admin")
-                                <a class="item" href="/halaman-admin">
+                                <a class="item" href="#">
                                     <div style="font-size:14px">
                                         <b>HALAMAN ADMIN</b>
                                     </div>
@@ -483,19 +477,13 @@
                                 <div class="header" style="font-size:14px">
                                     Informasi Akun
                                 </div>
-                                <a class="item" href="/informasi-akun/profil"
-                                    style="margin-left:20px;margin-right:20px">
+                                <a class="item" href="{{route('tamu.user.lihat-akun')}}" style="margin-left:20px;margin-right:20px">
                                     Profil
                                 </a>
-                                <a class="item" href="/informasi-akun/progres"
-                                    style="margin-left:20px;margin-right:20px">
-                                    Progres Orderan
+                                <a class="item" href="#" style="margin-left:20px;margin-right:20px">
+                                    Riwayat Pesanan
                                 </a>
-                                <a class="item" href="/informasi-akun/riwayat"
-                                    style="margin-left:20px;margin-right:20px">
-                                    Riwayat Orderan
-                                </a>
-                                <a href="/logoutproses">
+                                <a href="{{route('tamu.logout')}}">
                                     <button class="ui fluid teal button" style="margin-top:10px">
                                         <i class="sign-out icon"></i>
                                         Keluar
@@ -506,7 +494,7 @@
                     </div>
                 </div>
             </div>
-        </div>        
+        </div>
         @yield('content')
     </div>
 
