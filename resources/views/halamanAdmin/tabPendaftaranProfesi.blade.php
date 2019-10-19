@@ -21,15 +21,15 @@
                 </tr>
             </thead>
             <tbody>
-                @for($i = 0; $i < count($profesis); $i++) <?php $fotos= explode(" ", $profesis[$i]->url_image);?>
+                {{-- @for($i = 0; $i < count($profesis); $i++) <?php $fotos= explode(" ", $profesis[$i]->url_image);?> --}}
                 <tr>
-                    <td>{{$profesis[$i]->id}}</td>
+                    {{-- <td>{{$profesis[$i]->id}}</td>
                     <td>
                         <div>{{$profesis[$i]->nama_profesi}}</div>
                         <div>{{$profesis[$i]->nohp}}</div>
                     </td>
                     <td>{{$profesis[$i]->alamat}}</td>
-                    <td>{{$users[$i]->name}}</td>
+                    <td>{{$users[$i]->name}}</td> --}}
                     <td>
                         <button class="ui button basic teal"
                             onclick="$('.ui.large.modal.portofolio.<?php echo $i ?>').modal('show')">
@@ -39,11 +39,11 @@
                     <td>
                         <div class="ui internally celled grid">
                             <div class="row">
-                                <form class="eight wide column" action="/terima-profesi?id={{$profesis[$i]->id}}" method="post">
+                                <form class="eight wide column" action="/terima-profesi?id=123" method="post">
                                     {{csrf_field()}}
                                     <button class="ui button basic green">Terima</button>
                                 </form>
-                                <form class="eight wide column" action="/tolak-profesi?id={{$profesis[$i]->id}}" method="post">
+                                <form class="eight wide column" action="/tolak-profesi?id=123" method="post">
                                     {{csrf_field()}}
                                     <button class="ui button basic red">Tolak</button>
                                 </form>
@@ -59,14 +59,14 @@
                     </div>
                     <div class="content">
                         <div class="ui two stackable cards">
-                        @for($j=0; $j < count($fotos); $j++)
+                        {{-- @for($j=0; $j < count($fotos); $j++) --}}
                             <div class="card">
                                 <img src="/{{$fotos[$j]}}" style="height:250px;object-fit:cover">
-                                <a class="ui teal bottom attached button" href="/{{$fotos[$j]}}" download="portofolio<?php echo $j+1 ?>">
+                                <a class="ui teal bottom attached button" href="/bankbca.png" download="portofolio<?php echo 'a' ?>">
                                     Download
                                 </a>
                             </div>
-                        @endfor
+                        {{-- @endfor --}}
                         </div>
                     </div>
                     <div class="actions">
@@ -75,7 +75,7 @@
                         </button>
                     </div>
                 </div>
-                @endfor
+                {{-- @endfor --}}
     </tbody>
 
 
