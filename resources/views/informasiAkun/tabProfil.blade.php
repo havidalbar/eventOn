@@ -7,36 +7,36 @@
     <div>
         <label style="font-size:22px"><b>Nama Pengguna</b></label>
         <div style="font-size:18px;margin-top:10px">
-            {{Session::get('username')}}
+            ibnuragsriz24
         </div>
     </div>
     <div style="margin-top:30px">
         <label style="font-size:22px"><b>Nama Lengkap</b></label>
         <div style="font-size:18px;margin-top:10px">
-            {{Session::get('name')}}
+            Ibnu Rasyid Wijayanto
         </div>
     </div>
     <div style="margin-top:30px">
         <label style="font-size:22px"><b>Alamat Email</b></label>
         <div style="font-size:18px;margin-top:10px">
-            {{Session::get('email')}}
+            jack.fast83@gmail.com
         </div>
     </div>
     <div style="margin-top:30px">
         <label style="font-size:22px"><b>Nomor Telepon</b></label>
         <div style="font-size:18px;margin-top:10px">
-            {{$infos->nohp}}
+            082234079216
         </div>
     </div>
     <div style="margin-top:30px">
         <label style="font-size:22px"><b>Alamat Tempat Tinggal</b></label>
         <div style="font-size:18px;margin-top:10px">
-            {{$infos->address}}
+            Bendungan Sampean Baru
         </div>
     </div>
     <div style="margin-top:30px">
         <div style="font-size:16px;margin-top:10px">
-            Bergabung dengan Aderim sejak <b>{{strftime("%d %b %Y",strtotime($infos->created_at))}}</b>
+            Bergabung dengan EventOn sejak <b>2017</b>
         </div>
     </div>
 </div>

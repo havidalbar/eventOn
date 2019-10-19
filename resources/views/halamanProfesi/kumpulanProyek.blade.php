@@ -1,8 +1,8 @@
-@extends (\Session::has('username') ? 'layouts.navLogin' : 'layouts.nav')
+@extends ('layouts.nav')
 @section('title', 'Informasi Profesi | Aderim')
 
 @section('content')
-@if(\Session::has('alert'))        
+{{-- @if(\Session::has('alert'))        
     <div style="position:absolute;right:15px;top:15px;max-width:400px">
         <div class="ui negative message alert" style="display:none">                        
             {{Session::get('alert')}}         
@@ -14,7 +14,7 @@
             {{Session::get('alert-success')}}         
         </div>  
     </div>  
-@endif
+@endif --}}
 <div class="ui container" style="margin-top:86px;margin-bottom:86px">
     <div class="ui stackable grid">
         <div class="four wide column">
@@ -46,16 +46,16 @@
         </div>
         <div class="twelve wide column" style="padding-left:30px">
             <div class="ui tab" data-tab="profil-profesi">
-                @include('halamanProfesi.tabProfilProfesi')
+                {{-- @include('halamanProfesi.tabProfilProfesi') --}}
             </div>
             <div class="ui active tab" data-tab="kumpulan-proyek">
-                @include('halamanProfesi.tabKumpulanProyek')
+                {{-- @include('halamanProfesi.tabKumpulanProyek') --}}
             </div>
             <div class="ui tab" data-tab="pesanan-proyek">
-                @include('halamanProfesi.tabPesananProyek')
+                {{-- @include('halamanProfesi.tabPesananProyek') --}}
             </div>
             <div class="ui tab" data-tab="progres-pesanan">
-                @include('halamanProfesi.tabProgresPesanan')
+                {{-- @include('halamanProfesi.tabProgresPesanan') --}}
             </div>
         </div>
     </div>

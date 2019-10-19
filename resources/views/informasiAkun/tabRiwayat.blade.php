@@ -6,28 +6,22 @@
     <div class="ui borderless inverted huge stackable menu" style="background-color:#4b8991;border-radius:0px">
         <a class="active item" data-tab="dalam-pengerjaan" style="font-size:17px;color:white">
             <b>Dalam Pengerjaan</b>
-        </a>
-        <a class="item" data-tab="selesai" style="font-size:17px;color:white">
-            <b>Selesai</b>
-        </a>
-        <a class="item" data-tab="dibatalkan" style="font-size:17px;color:white">
-            <b>Dibatalkan</b>
-        </a>
+        </a>    
+        
     </div>
     <div class="ui active tab" data-tab="dalam-pengerjaan" style="padding:20px 20px 30px 20px">
-    @if(count($histories)<=0)
+    {{-- @if(count($histories)<=0) --}}
     <div class="ui container center aligned">
         <i class="shopping cart icon teal huge"></i>
-        <div style="font-size:24px;margin-top:15px"><b>Oops, anda belum melakukan pemesanan :(</b></div>
-        <div style="font-size:20px;margin-top:15px">Yuk lakukan pemesanan sekarang...</div>
+        
     </div>
-    @elseif(count($histories)>0)
+    {{-- @elseif(count($histories)>0) --}}
         <div class="ui stackable three doubling link special cards">
-            @for($i = 0; $i < count($histories); $i++)
+            {{-- @for($i = 0; $i < count($histories); $i++) --}}
             <?php
-            $fotos = explode(" ", $histories[$i]->url_gambar);
+            // $fotos = explode(" ", $histories[$i]->url_gambar);
             ?>
-            @if(($histories[$i]->status=="Order sedang diproses" || $histories[$i]->status=="Pembayaran tidak terkonfirmasi" || $histories[$i]->status=="Menunggu pembayaran") && $histories[$i]->statusLagi>=0)
+            {{-- @if(($histories[$i]->status=="Order sedang diproses" || $histories[$i]->status=="Pembayaran tidak terkonfirmasi" || $histories[$i]->status=="Menunggu pembayaran") && $histories[$i]->statusLagi>=0) --}}
             <div class="card">
                 <div class="blurring dimmable image">
                     <div class="ui dimmer">
@@ -36,158 +30,65 @@
                             <div style="font-size:22px;margin-top:10px;margin-bottom:20px">
                                 Dalam Pengerjaan
                             </div>
-                            <button class="ui inverted medium button" onclick="window.location.href='/informasi-akun/{{ $histories[$i]->id}}/progres'">Lihat</button>
+                            <button class="ui inverted medium button" onclick="window.location.href='/informasi-akun/1123/progres'">Lihat</button>
                         </div>
                     </div>
-                    <img class="ui fluid image" src="{{asset($fotos[count($fotos)-1])}}" style="object-fit:cover;height:250px">
+                    <img class="ui fluid image" src="/logo2.png" style="object-fit:cover;height:250px">
                     <div class="ui top right attached teal large label" style="max-width:55%">
-                        {{$histories[$i]->status}}
+                        Menunggu Pembayaran
                     </div>
                 </div>
                 <div class="content">
-                    <div class="header">{{ ucfirst($items[$i]->namaProject)}}</div>
+                    <div class="header">Konser Tulus</div>
                     <div class="meta" style="margin-top:5px">
                         <span style="border:2px solid #d4d4d5;border-radius:4px;padding:2px 4px 2px 4px">
-                            {{ ucfirst($items[$i]->category)}}
+                            Konser Musik
                         </span>
                     </div>
                     <div class="description">
-                        {{ $items[$i]->deskripsi}}
+                        Konser Tur Tulus
                     </div>
                 </div>
                 <div class="extra content">
                     <div>
                         <i class="user circle teal icon"></i>
-                        {{ucfirst($profesis[$i]->nama_profesi)}}
+                        Event Organizer
                     </div>
                     <div style="margin-top:5px;display:flex;flex-direction:row;align-items: center">
                         <div><i class="map marker alternate teal icon"></i></div>
-                        <div>{{ucfirst($items[$i]->daerah)}}</div>
+                        <div>Malang</div>
                     </div>
                 </div>
             </div>
-            @endif
-            @endfor
+            {{-- @endif
+            @endfor --}}
         </div>
-        @endif
+        {{-- @endif --}}
     </div>
     <div class="ui tab" data-tab="selesai" style="padding:20px 20px 30px 20px">
-    @if(count($histories)<=0)
+    {{-- @if(count($histories)<=0)
     <div class="ui container center aligned">
         <i class="shopping cart icon teal huge"></i>
         <div style="font-size:24px;margin-top:15px"><b>Oops, anda belum melakukan pemesanan :(</b></div>
         <div style="font-size:20px;margin-top:15px">Yuk lakukan pemesanan sekarang...</div>
-    </div>
-    @elseif(count($histories)>0)
-        <div class="ui stackable three doubling link special cards">
-            @for($i = 0; $i < count($histories); $i++)
-            <?php
-            $fotos = explode(" ", $histories[$i]->url_gambar);
-            ?>
-            @if($histories[$i]->status=="Selesai")
-            <div class="card">
-                <div class="blurring dimmable image">
-                    <div class="ui dimmer">
-                        <div class="content">
-                            <i class="green check circle outline huge icon"></i>
-                            <div style="font-size:22px;margin-top:10px;margin-bottom:20px">
-                                Selesai
-                            </div>
-                            <button class="ui inverted medium button" onclick="window.location.href='/informasi-akun/{{ $histories[$i]->id}}/progres'">Lihat</button>
-                        </div>
-                    </div>
-                    <img src="{{asset($fotos[count($fotos)-1])}}" style="object-fit:cover;height:250px">
-                </div>
-                <div class="content">
-                    <div class="header">{{ ucfirst($items[$i]->namaProject)}}</div>
-                    <div class="meta" style="margin-top:5px">
-                        <span style="border:2px solid #d4d4d5;border-radius:4px;padding:2px 4px 2px 4px">
-                            {{ ucfirst($items[$i]->category)}}
-                        </span>
-                    </div>
-                    <div class="description">
-                        {{ $items[$i]->deskripsi}}
-                    </div>
-                </div>
-                <div class="extra content">
-                    <div>
-                        <i class="user circle teal icon"></i>
-                        {{ucfirst($profesis[$i]->nama_profesi)}}
-                    </div>
-                    <div style="margin-top:5px;display:flex;flex-direction:row;align-items: center">
-                        <div><i class="map marker alternate teal icon"></i></div>
-                        <div>{{ucfirst($items[$i]->daerah)}}</div>
-                    </div>
-                </div>
-            </div>
-            @elseif($i==0 && $histories[$i]->status!="Selesai")
+    </div> --}}
+    
+            {{-- @elseif($i==0 && $histories[$i]->status!="Selesai") --}}
             <!-- <div class="ui container center aligned">
                     <i class="shopping cart icon teal huge"></i>
                     <div style="font-size:24px;margin-top:15px"><b>Oops, order anda belum ada yang selesai :(</b></div>
                     <div style="font-size:20px;margin-top:15px">Sabar yaa...</div>
                 </div> -->
-            @endif
-            @endfor
+            {{-- @endif
+            @endfor --}}
         </div>
-        @endif
+        {{-- @endif --}}
     </div>
-    <div class="ui tab" data-tab="dibatalkan" style="padding:20px 20px 30px 20px">
-            @if(count($histories)<=0)
-            <div class="ui container center aligned">
-                <i class="shopping cart icon teal huge"></i>
-                <div style="font-size:24px;margin-top:15px"><b>Oops, anda belum melakukan pemesanan :(</b></div>
-                <div style="font-size:20px;margin-top:15px">Yuk lakukan pemesanan sekarang...</div>
-            </div>
-            @elseif(count($histories)>0)
-        <div class="ui stackable three doubling link special cards">
-                @for($i = 0; $i < count($histories); $i++)
-                <?php
-                $fotos = explode(" ", $histories[$i]->url_gambar);
-                ?>
-                @if($histories[$i]->status=="Dibatalkan" || $histories[$i]->status=="Order ditolak")
-            <div class="card">
-                <div class="blurring dimmable image">
-                    <div class="ui dimmer">
-                        <div class="content">
-                            <i class="red times circle outline huge icon"></i>
-                            <div style="font-size:22px;margin-top:10px;margin-bottom:20px">
-                                Dibatalkan
-                            </div>
-                        </div>
-                    </div>
-                    <img src="{{asset($fotos[count($fotos)-1])}}" style="object-fit:cover;height:250px">
-                </div>
-                <div class="content">
-                    <div class="header">{{ ucfirst($items[$i]->namaProject)}}</div>
-                    <div class="meta" style="margin-top:5px">
-                        <span style="border:2px solid #d4d4d5;border-radius:4px;padding:2px 4px 2px 4px">
-                                {{ ucfirst($items[$i]->category)}}
-                        </span>
-                    </div>
-                    <div class="description">
-                            {{ $items[$i]->deskripsi}}
-                    </div>
-                </div>
-                <div class="extra content">
-                    <div>
-                        <i class="user circle teal icon"></i>
-                        {{ucfirst($profesis[$i]->nama_profesi)}}
-                    </div>
-                    <div style="margin-top:5px;display:flex;flex-direction:row;align-items: center">
-                        <div><i class="map marker alternate teal icon"></i></div>
-                        <div>{{ucfirst($items[$i]->daerah)}}</div>
-                    </div>
-                </div>
-            </div>
-            @endif
-            @endfor
-        </div>
-        @endif
-    </div>
+    
 </div>
 
 <!-- Modal belum ada progres -->
-<div class="ui small modal belum progres">
+{{-- <div class="ui small modal belum progres">
     <div class="header">
         Belum Ada Progres
     </div>
@@ -203,4 +104,4 @@
             Oke
         </button>
     </div>
-</div>
+</div> --}}

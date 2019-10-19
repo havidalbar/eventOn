@@ -1,14 +1,14 @@
-@extends (\Session::has('username') ? 'layouts.navLogin' : 'layouts.nav')
+@extends ('layouts.nav')
 @section('title', 'Informasi Akun | Aderim')
 
 @section('content')
-@if(\Session::has('alert'))        
+{{-- @if(\Session::has('alert'))        
     <div style="position:absolute;right:15px;top:15px;max-width:400px">
         <div class="ui negative message alert" style="display:none">                        
             {{Session::get('alert')}}         
         </div>  
     </div>                  
-@endif
+@endif --}}
 <div class="ui container" style="margin-top:86px;margin-bottom:86px">
     <div class="ui stackable grid">
         <div class="four wide column">
@@ -37,13 +37,13 @@
         </div>
         <div class="twelve wide column" style="padding-left:30px">
             <div class="ui tab" data-tab="profil">
-                @include('informasiAkun.tabProfil')
+                {{-- @include('informasiAkun.tabProfil') --}}
             </div>
             <div class="ui active tab" data-tab="progres-orderan">
-                @include('informasiAkun.tabProgres')
+                {{-- @include('informasiAkun.tabProgres') --}}
             </div>
             <div class="ui tab" data-tab="riwayat-orderan">
-                @include('informasiAkun.tabRiwayat')
+                {{-- @include('informasiAkun.tabRiwayat') --}}
             </div>
         </div>
     </div>

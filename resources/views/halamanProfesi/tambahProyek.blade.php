@@ -1,7 +1,7 @@
-@extends (\Session::has('username') ? 'layouts.navLogin' : 'layouts.nav')
+@extends ('layouts.nav')
 @section('title', 'Tambah Proyek | Aderim')
 
-@section('js')
+{{-- @section('js')
 <script type="text/javascript">
 Dropzone.options.myDropzone = {
     addRemoveLinks: true,
@@ -78,8 +78,8 @@ $(document)
                 }
             });
     });
-</script>
-@endsection
+</script> --}}
+{{-- @endsection --}}
 
 @section('content')
 <div class="ui container" style="color:#4d4d4d;margin-top:50px">

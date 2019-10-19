@@ -12,7 +12,7 @@
 */
 
 Route::get('/', function () {
-    return view('pesanProyek');
+    return view('halamanProfesi/lihatProgresProyek');
 });
 Route::get('/login', function () {
     return view('masuk');

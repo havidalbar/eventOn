@@ -1,4 +1,4 @@
-@extends (\Session::has('username') ? 'layouts.navLogin' : 'layouts.nav')
+@extends ('layouts.nav')
 @section('title', 'Informasi Profesi | Aderim')
 
 @section('content')
@@ -46,16 +46,16 @@
         </div>
         <div class="twelve wide column" style="padding-left:30px">
             <div class="ui active tab" data-tab="profil-profesi">
-                @include('halamanProfesi.tabProfilProfesi')
+                {{-- @include('halamanProfesi.tabProfilProfesi') --}}
             </div>
             <div class="ui tab" data-tab="kumpulan-proyek">
-                @include('halamanProfesi.tabKumpulanProyek')
+                {{-- @include('halamanProfesi.tabKumpulanProyek') --}}
             </div>
             <div class="ui tab" data-tab="pesanan-proyek">
-                @include('halamanProfesi.tabPesananProyek')
+                {{-- @include('halamanProfesi.tabPesananProyek') --}}
             </div>
             <div class="ui tab" data-tab="progres-pesanan">
-                @include('halamanProfesi.tabProgresPesanan')
+                {{-- @include('halamanProfesi.tabProgresPesanan') --}}
             </div>
         </div>
     </div>

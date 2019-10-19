@@ -1,7 +1,7 @@
 @extends (\Session::has('username') ? 'layouts.navLogin' : 'layouts.nav')
 @section('title', 'Ubah Detail Proyek | Aderim')
 
-@section('js')
+{{-- @section('js')
 <script type="text/javascript">
 Dropzone.options.myDropzone = {
     addRemoveLinks: true,
@@ -79,7 +79,7 @@ $(document)
             });
     });
 </script>
-@endsection
+@endsection --}}
 
 @section('content')
 <div class="ui container" style="color:#4d4d4d;margin-top:50px">
@@ -104,26 +104,23 @@ $(document)
                                             onclick="$('.ui.fullscreen.modal.lihat').modal('show');">Lihat</button>
                                     </span>
                                 </div>
-                            </div>
-                            <?php
-                            $fotos= explode(" ", $dataProject->namagambar);
-                            ?>
-                            <img class="ui rounded image" src="{{asset($fotos[0])}}"
+                            </div>                           
+                            <img class="ui rounded image" src="/tur.jpg"
                                 style="height:150px;object-fit:cover">
                         </div>
                     </div>
                 </div>
             </div>
             <div class="eleven wide left aligned column">
-                <div style="font-size:22px"><b>{{ucfirst($dataProject->namaProject)}}</b></div>
+                <div style="font-size:22px"><b>Tur Tulus</b></div>
                 <div style="margin-top:10px;font-size:15px">
                     <span style="border:2px solid #d4d4d5;border-radius:4px;padding:3px 8px 3px 8px">
-                        {{ucfirst($dataProject->category)}}
+                        Konser Musik
                     </span>
                 </div>
                 <div style="margin-top:10px;display:flex;flex-direction:row;align-items: center">
                     <div><i class="map marker alternate grey icon"></i></div>
-                    <div style="font-size:19px">{{ucfirst($dataProject->daerah)}}</div>
+                    <div style="font-size:19px">Malang</div>
                 </div>
             </div>
         </div>
@@ -143,7 +140,7 @@ $(document)
             @endif
         </div>
         <form class="ui form" style="margin-top:15px" id="ubah-project" method='post'
-            action="{{url('/update-projectproses/'.$dataProject->id)}}" enctype="multipart/form-data">
+            action="{{url('/update-projectproses/')}}" enctype="multipart/form-data">
             <div class="field">
                 <label style="font-size:18px">Nama Proyek</label>
                 <input type="text" name="namaProject" placeholder="Hotel Mewah">
@@ -204,7 +201,7 @@ $(document)
                         <div class="ui one stackable cards">
                             <div class="card">
                                 <div class="image">
-                                    <img class="ui big image" src="{{asset($fotos[0])}}">
+                                    <img class="ui big image" src="/tur.jpg">
                                 </div>
                             </div>
                         </div>
@@ -212,13 +209,13 @@ $(document)
                     <div class="four wide middle aligned column">
 
                         <div class="ui one stackable cards">
-                            @for($i=0;$i<count($fotos);$i++) <div class="card">
+                            {{-- @for($i=0;$i<count($fotos);$i++) <div class="card"> --}}
                                 <div class="image">
-                                    <img class="ui big image" src="{{asset($fotos[$i])}}"
+                                    <img class="ui big image" src="/tur.jpg"
                                         style="height:145px;object-fit:cover">
                                 </div>
                         </div>
-                        @endfor
+                        {{-- @endfor --}}
                     </div>
 
                 </div>
@@ -237,28 +234,28 @@ $(document)
             <div class="ui divider"></div>
             <div class="ui stackable grid">
                 <div class="three wide column">
-                    <img class="ui circular image" src="{{asset('arsitek.jpg')}}"
+                    <img class="ui circular image" src="/tur.jpg"
                         style="width:80px;height:80px;object-fit:cover">
                 </div>
                 <div class="thirteen wide column">
-                    <div style="font-size:22px"><b>{{ucfirst($dataProfesi->nama_profesi)}}</b></div>
-                    <div style="font-size:17px">{{ucfirst($dataProfesi->job_title)}}</div>
+                    <div style="font-size:22px"><b>Event Organizer</b></div>
+                    <div style="font-size:17px">Ketua Pelaksana</div>
                 </div>
             </div>
             <div class="ui divider"></div>
             <div class="ui stackable grid">
                 <div class="twelve wide column">
                     <div style="font-size:22px">
-                        <b>{{ucfirst($dataProject->namaProject)}}</b>
+                        <b>Konser Tur Tulus</b>
                     </div>
                     <div style="margin-top:5px;display:flex;flex-direction:row;align-items: center">
                         <div><i class="map marker alternate teal icon"></i></div>
-                        <div style="font-size:17px">{{ucfirst($dataProject->daerah)}}</div>
+                        <div style="font-size:17px">Malang</div>
                     </div>
                 </div>
                 <div class="four wide right aligned middle aligned column">
                     <span style="border:2px solid #d4d4d5;border-radius:4px;padding:5px 15px 5px 15px;font-size:17px">
-                        {{ucfirst($dataProject->category)}}
+                        Konser
                     </span>
                 </div>
             </div>
@@ -266,22 +263,17 @@ $(document)
             <div>
                 <div style="font-size:16px"><b>Deskripsi</b></div>
                 <div style="font-size:15px">
-                    {{$dataProject->deskripsi}}
+                    Konser Tur Tulus ke Malang
                 </div>
             </div>
-            <div style="margin-top:10px">
-                <div style="font-size:16px"><b>Spesifikasi</b></div>
-                <div style="font-size:15px">
-                    {{$dataProject->spesifikasi}}
-                </div>
-            </div>
+            
             <div class="ui divider"></div>
             <div class="ui container fluid" style="text-align:right">
-                <div style="font-size:22px"><b>Biaya Proyek</b></div>
+                <div style="font-size:22px"><b>Biaya Tiket</b></div>
                 <div style="color:teal;font-size:20px">
                     <b>
                         <span>Rp </span>
-                        <span>{{number_format(($dataProject->estimasi),0,",",".")}}</span>
+                        <span>60.000,-</span>
                     </b>
                 </div>
             </div>

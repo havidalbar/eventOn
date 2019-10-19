@@ -4,22 +4,20 @@
 </div>
 <div
     style="margin-top:20px;background-color:#f8f8f8;border:5px solid #4b8991;border-radius:5px;padding:30px 20px 30px 20px;color:#4d4d4d">
-    @if(count($histories)<=0)
+    {{-- @if(count($histories)<=0)
     <div class="ui container center aligned">
         <i class="shopping cart icon teal huge"></i>
         <div style="font-size:24px;margin-top:15px"><b>Oops, anda belum melakukan pemesanan :(</b></div>
         <div style="font-size:20px;margin-top:15px">Yuk lakukan pemesanan sekarang...</div>
-    </div>
-    @elseif(count($histories)>0)
+    </div> --}}
+    {{-- @elseif(count($histories)>0) --}}
         <div style="font-size:20px">
             <b>Silahkan pilih salah satu orderan yang ingin anda lihat progres pengerjaannya</b>
         </div>
         <div class="ui stackable three doubling link special cards" style="margin-top:10px">
-            @for($i = 0; $i < count($histories); $i++)
-            <?php
-            $fotos = explode(" ", $histories[$i]->url_gambar);
-            ?>
-            @if(($histories[$i]->status=="Order sedang diproses" || $histories[$i]->status=="Pembayaran tidak terkonfirmasi" || $histories[$i]->status=="Menunggu pembayaran") && $histories[$i]->statusLagi>=0)
+            {{-- @for($i = 0; $i < count($histories); $i++) --}}
+            
+            {{-- @if(($histories[$i]->status=="Order sedang diproses" || $histories[$i]->status=="Pembayaran tidak terkonfirmasi" || $histories[$i]->status=="Menunggu pembayaran") && $histories[$i]->statusLagi>=0) --}}
             <div class="card">
                 <div class="blurring dimmable image">
                     <div class="ui dimmer">                        
@@ -28,44 +26,44 @@
                             <div style="font-size:22px;margin-top:10px;margin-bottom:20px">
                                 Dalam Pengerjaan
                             </div>
-                            <button class="ui inverted medium button" onclick="window.location.href='/informasi-akun/{{ $histories[$i]->id}}/progres'">Lihat</button>
+                            <button class="ui inverted medium button" onclick="window.location.href='/informasi-akun/201/progres'">Lihat</button>
                         </div>
                     </div>
-                    <img class="ui fluid image" src="{{asset($fotos[count($fotos)-1])}}" style="object-fit:cover;height:250px">
+                    <img class="ui fluid image" src="/tur.jpg" style="object-fit:cover;height:250px">
                     <div class="ui top right attached teal large label" style="max-width:55%">
-                        {{$histories[$i]->status}}
+                        Persiapan Event
                     </div>
                 </div>
                 <div class="content">
-                    <div class="header">{{ucfirst($items[$i]->namaProject)}}</div>
+                    <div class="header">Tur Tulus</div>
                     <div class="meta" style="margin-top:5px">
                         <span style="border:2px solid #d4d4d5;border-radius:4px;padding:2px 4px 2px 4px">
-                            {{ucfirst($items[$i]->category)}}
+                            Konser
                         </span>
                     </div>
                     <div class="description">
-                        {{$items[$i]->deskripsi}}
+                        Konser yang dilakukan Tulus
                     </div>
                 </div>
                 <div class="extra content">
                     <div>
                         <i class="user circle teal icon"></i>
-                        {{ucfirst($profesis[$i]->nama_profesi)}}
+                        Konser
                     </div>
                     <div style="margin-top:5px;display:flex;flex-direction:row;align-items: center">
                         <div><i class="map marker alternate teal icon"></i></div>
-                        <div>{{ucfirst($items[$i]->daerah)}}</div>
+                        <div>Unibraw</div>
                     </div>
                 </div>
             </div>
-            @endif
-            @endfor
+            {{-- @endif
+            @endfor --}}
         </div>
-    @endif
+    {{-- @endif --}}
 </div>
 
 <!-- Modal belum ada progres -->
-<div class="ui small modal belum progres">
+{{-- <div class="ui small modal belum progres">
     <div class="header">
         Belum Ada Progres
     </div>
@@ -81,4 +79,4 @@
             Oke
         </button>
     </div>
-</div>
+</div> --}}

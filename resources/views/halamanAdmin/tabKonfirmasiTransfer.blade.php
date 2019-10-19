@@ -19,28 +19,28 @@
                     <th>Konfirmasi</th>
                 </tr>
             </thead>
-            @for($i = 0; $i < count($transaksis); $i++)
+            {{-- @for($i = 0; $i < count($transaksis); $i++) --}}
             <tbody>
-                <tr>
+                {{-- <tr>
                     <td>{{$transaksis[$i]->id}}</td>
                     <td>{{$transaksis[$i]->created_at}}</td>
                     <td>{{$transaksis[$i]->nama}}</td>
                     <td>{{$transaksis[$i]->norek}}</td>
-                    <td>
+                    <td> --}}
                         <span>Rp </span>
-                        <span>{{number_format(($transaksis[$i]->jumlah*0.25+$transaksis[$i]->kode_unik),0,",",".")}}</span>
+                        <span>{{120.000}}</span>
                         <div style="margin-top:5px">
-                            <button class="ui button basic teal" onclick="$('.ui.large.modal.bukti.<?php echo $i ?>').modal('show')">Lihat</button>
+                            <button class="ui button basic teal" onclick="$('.ui.large.modal.bukti.<?php echo 'a' ?>').modal('show')">Lihat</button>
                         </div>
                     </td>
                     <td>
                         <div class="ui internally celled grid">
                             <div class="row">
-                                <form class="eight wide column" action="/terima-transfer?id={{$transaksis[$i]->id}}" method="post">
+                                <form class="eight wide column" action="/terima-transfer?id= " method="post">
                                     {{csrf_field()}}
                                     <button class="ui button basic green">Terima</button>
                                 </form>
-                                <form class="eight wide column" action="/tolak-transfer?id={{$transaksis[$i]->id}}" method="post">
+                                <form class="eight wide column" action="/tolak-transfer?id= " method="post">
                                     {{csrf_field()}}
                                     <button class="ui button basic red">Tolak</button>
                                 </form>
@@ -50,23 +50,23 @@
                 </tr>
             </tbody>
             <!-- Dimmer Pengajuan Transaksi -->
-            <div class="ui large modal bukti <?php echo $i ?>">
+            <div class="ui large modal bukti <?php echo 'a' ?>">
                 <div class="header">
                     Bukti Pembayaran
                 </div>
                 <div class="content">
-                    <img class="ui large centered image" src={{asset($transaksis[$i]->gambar_konfirmasi)}}>                    
+                    <img class="ui large centered image" src=''>                    
                 </div>
                 <div class="actions">
                     <button class="ui negative button">
                         Tutup
                     </button>
-                    <a class="ui teal right button" href="{{asset($transaksis[$i]->gambar_konfirmasi)}}" download="buktipembayaran<?php echo $transaksis[$i]->nama ?>">                                     
+                    <a class="ui teal right button" href="" download="buktipembayaran<?php echo 'a' ?>">                                     
                         Download
                     </a>                    
                 </div>
             </div>
-            @endfor
+            {{-- @endfor --}}
         </table>
     </div>
 </div>
