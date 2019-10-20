@@ -14,7 +14,7 @@
     </script>
     <script src="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.js"></script>
     <script>
-    $(document)
+        $(document)
         .ready(function() {
             $('.ui.form')
                 .form({
@@ -24,7 +24,12 @@
                             rules: [{
                                 type: 'empty',
                                 prompt: 'Username tidak boleh kosong'
-                            }]
+                            },
+                            {
+                                    type: 'length[3]',
+                                    prompt: 'username yang anda masukan minimal harus 3 karakter'
+                            }
+                            ]
                         },
                         email: {
                             identifier: 'email',
@@ -90,17 +95,18 @@
         @if(\Session::has('errors'))
         <div style="position:absolute;right:15px;top:15px;max-width:400px">
             <div class="ui negative message alert" style="display:none">
-            {{-- @foreach($errors->all() as $key => $value)
+                @foreach($errors->all() as $key => $value)
                 <div>
                     {{$value}}
                 </div>
-            @endforeach --}}
+                @endforeach
             </div>
         </div>
         @endif
         <div class="ui container center aligned">
             <a href="/">
-                <img class="ui centered image" src="{{asset('logo/logo_biru.png')}}" style="margin-bottom:20px;max-height:90px">
+                <img class="ui centered image" src="{{asset('logo/logo_biru.png')}}"
+                    style="margin-bottom:20px;max-height:90px">
             </a>
             <form class="ui form" action="{{ route('tamu.register') }}" method="post" enctype="multipart/form-data">
                 <div class="ui centered stackable grid">
@@ -152,7 +158,8 @@
                             <button class="ui fluid large button teal" style="margin-top:15px;margin-bottom:20px">
                                 Daftar
                             </button>
-                            <div style="font-size:15px">Sudah punya akun EventOn?<a href="{{ route('tamu.lihat-login') }}" style="color:teal">
+                            <div style="font-size:15px">Sudah punya akun EventOn?<a
+                                    href="{{ route('tamu.lihat-login') }}" style="color:teal">
                                     Masuk</a>
                             </div>
                         </div>

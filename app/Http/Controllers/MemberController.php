@@ -81,22 +81,23 @@ class MemberController extends Controller
         if ($request['files'] != null) {
             $filename = explode('.', $request->foto->getClientOriginalName());
             $fileExt = end($filename);
-            $id = $this->generateId();
+            $id = $this->generateIdGambar();
             $filename = $id . '.' . $fileExt;
             $path = $request->foto->storeAs('image/profile', $filename, 'public_uploads');
 
             $data = new Panitia();
             $data->foto = $path;
             $data->url_image = implode(" ", $request['files']);
-            $data->nama = $request->nama_panitia;
+            $data->nama_panitia = $request->nama_panitia;
             $data->alamat = $request->alamat;
             $data->nohp = $request->nohp;
-            $data->id_member = Session::get('id');
+            $data->id_member = Session::get('id_member');
+            $data->status = 0;
             $data->save();
-            Session::put('nama_panitia', $data->nama->panitia);
+            Session::put('nama_panitia', $data->nama_panitia);
             Session::put('id_panitia', $data->id);
             Session::put('foto_panitia', $data->foto);
-            return redirect()->route('/')->with('alert-success', 'Berhasil mendaftar panitia');
+            return redirect()->route('index')->with('alert-success', 'Berhasil mendaftar panitia');
         } else {
             return redirect()->back()->with('alert', 'Anda wajib memberikan foto Portofolio kepada pihak EventOn!')->withInput();
         }
@@ -133,7 +134,7 @@ class MemberController extends Controller
 
     public function lihatHalamanDaftarPanitia()
     {
-        return view('daftar-panitia');
+        return view('daftarPanitia');
     }
 
     public function KomentarAcara(Request $request, $id_acara)

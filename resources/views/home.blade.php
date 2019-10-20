@@ -48,8 +48,8 @@
                     </div>
                 </div>
                 <div class="row" style="margin-top:10px">
-                  {{-- @if(!Session::has('username')) --}}
-                    <a href="/register">
+                  @if(!Session::has('username'))
+                    <a href="{{ route('tamu.lihat-registrasi') }}">
                         <div class="ui huge animated fade button teal" tabindex="0"
                             style="border-radius:5px;margin-bottom:20px;color:white">
                             <div class="visible content">Ingin Jadi Event Organizer?</div>
@@ -58,7 +58,7 @@
                             </div>
                         </div>
                     </a>
-                    {{-- @else --}}
+                    @else
                     <a href="#cari">
                         <div class="ui huge animated fade button teal" tabindex="0"
                             style="border-radius:5px;margin-bottom:20px;color:white">
@@ -68,7 +68,7 @@
                             </div>
                         </div>
                     </a>
-                    {{-- @endif --}}
+                    @endif
                 </div>
             </div>
         </div>

@@ -21,10 +21,11 @@ class TamuController extends Controller
         $password = $request->password;
         $user = Member::where('username', $username)->first();
         if ($user && Hash::check($password, $user->password)) {
+            Session::put('id_member', $user->id);
             Session::put('username', $user->username);
             Session::put('email', $user->email);
         } else {
-            return redirect()->back()->with('alert-error', 'Informasi login salah');
+            return redirect()->back()->with('alert', 'Informasi login salah');
         }
         return redirect()->route('index')->with('alert-success','Berhasil masuk ke sistem');
     }

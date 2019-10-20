@@ -268,7 +268,7 @@
                         Progres Pesanan Proyek
                     </a>
                     @else
-                    <a class="item" href="#" style="margin-left:20px;margin-right:20px">
+                <a class="item" href="{{route('tamu.user.lihat-halaman-daftar-panitia')}}" style="margin-left:20px;margin-right:20px">
                         Daftar Panitia
                     </a>
                     @endif
@@ -354,7 +354,7 @@
                         Progres Pesanan Proyek
                     </a>
                     @else
-                    <a class="item" href="#" style="margin-left:20px;margin-right:20px">
+                    <a class="item" href="{{route('tamu.user.lihat-halaman-daftar-panitia')}}" style="margin-left:20px;margin-right:20px">
                         Daftar Panitia
                     </a>
                     @endif
@@ -449,7 +449,7 @@
                                     Progres Pesanan Proyek
                                 </a>
                                 @else
-                                <a class="item" href="#" style="margin-left:20px;margin-right:20px">
+                                <a class="item" href="{{route('tamu.user.lihat-halaman-daftar-panitia')}}" style="margin-left:20px;margin-right:20px">
                                     Daftar Panitia
                                 </a>
                                 @endif

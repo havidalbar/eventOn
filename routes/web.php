@@ -29,6 +29,8 @@ Route::group(['prefix' => 'tamu', 'as' => 'tamu.'], function () {
         Route::post('daftarPanitia', 'MemberController@daftarPanitia')->name('daftar-panitia');
         Route::get('lihatSemuaAcara', 'MemberController@lihatSemuaAcara')->name('lihat-semua-acara');
         Route::get('lihatHalamanDaftarPanitia', 'MemberController@lihatHalamanDaftarPanitia')->name('lihat-halaman-daftar-panitia');
+        Route::post('uploadFoto', 'UploadController@Upload')->name('upload-foto');
+
 
         Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => ['IsAdmin']], function () {
             Route::get('lihatKonfirmasiPendaftaran', 'AdminController@lihatHalamanKonfirmasiPendaftaran')->name('lihat-halaman-konfirmasi-pendaftaran');

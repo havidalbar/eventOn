@@ -26,10 +26,10 @@ class PanitiaRequest extends FormRequest
     {
         return [
             'nama_panitia' => 'sometimes|required|min:3|max:30|unique:panitia,nama_panitia',
-            'foto' => 'sometimes|required|min:4|max:20',
+            'foto' => 'sometimes|required',
             'alamat' => 'sometimes|required|min:6|max:90',
             'nohp' => 'sometimes|required|min:6|max:90',
-            'url_image' => 'sometimes|required|min:6|max:191',
+            'url_image' => 'sometimes|required',
         ];
     }
 }
