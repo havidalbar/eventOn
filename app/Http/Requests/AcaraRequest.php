@@ -14,7 +14,7 @@ class AcaraRequest extends FormRequest
      */
     public function authorize()
     {
-        return (Session::get('nama_panitia') && Session::get('status_panitia'));
+        return (Session::get('nama_panitia'));
     }
 
     /**
@@ -25,7 +25,15 @@ class AcaraRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'nama_acara' => 'sometimes|required|min:3|max:191',
+            'deskripsi' => 'sometimes|required|min:6|max:191',
+            'kota' => 'sometimes|required|min:3|max:100',
+            'lokasi' => 'sometimes|required|min:6|max:191',
+            'kategori' => 'sometimes|required|min:3|max:50',
+            'cp' => 'sometimes|required|min:6|max:20',
+            'maksimal' => 'sometimes|required|min:1|max:11',
+            'status' => 'sometimes|required|min:1|max:11',
+
         ];
     }
 }

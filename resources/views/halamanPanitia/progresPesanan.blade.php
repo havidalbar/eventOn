@@ -2,18 +2,18 @@
 @section('title', 'Informasi Profesi | Aderim')
 
 @section('content')
-@if(\Session::has('alert'))        
+@if(\Session::has('alert'))
     <div style="position:absolute;right:15px;top:15px;max-width:400px">
-        <div class="ui negative message alert" style="display:none">                        
-            {{Session::get('alert')}}         
-        </div>  
-    </div>                  
+        <div class="ui negative message alert" style="display:none">
+            {{Session::get('alert')}}
+        </div>
+    </div>
     @elseif(\Session::has('alert-success'))
     <div style="position:absolute;right:15px;top:15px;max-width:400px">
-        <div class="ui positive message alert" style="display:none">                        
-            {{Session::get('alert-success')}}         
-        </div>  
-    </div>  
+        <div class="ui positive message alert" style="display:none">
+            {{Session::get('alert-success')}}
+        </div>
+    </div>
 @endif
 <div class="ui container" style="margin-top:86px;margin-bottom:86px">
     <div class="ui stackable grid">
@@ -46,16 +46,16 @@
         </div>
         <div class="twelve wide column" style="padding-left:30px">
             <div class="ui tab" data-tab="profil-profesi">
-                @include('halamanProfesi.tabProfilProfesi')
+                @include('halamanPanitia.tabProfilPanitia')
             </div>
             <div class="ui tab" data-tab="kumpulan-proyek">
-                @include('halamanProfesi.tabKumpulanProyek')
+                @include('halamanPanitia.tabKumpulanAcara')
             </div>
             <div class="ui tab" data-tab="pesanan-proyek">
-                @include('halamanProfesi.tabPesananProyek')
+                @include('halamanPanitia.tabPesananProyek')
             </div>
             <div class="ui active tab" data-tab="progres-pesanan">
-                @include('halamanProfesi.tabProgresPesanan')
+                @include('halamanPanitia.tabProgresPesanan')
             </div>
         </div>
     </div>

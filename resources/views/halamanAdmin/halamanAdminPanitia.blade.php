@@ -1,5 +1,5 @@
 @extends (\Session::has('username') ? 'layouts.navLogin' : 'layouts.nav')
-@section('title', 'Halaman Admin | Konfirmasi Pembayaran')
+@section('title', 'Halaman Admin | Pendaftaran Panitia')
 
 @section('content')
 @if(\Session::has('alert'))
@@ -17,17 +17,17 @@
 @endif
 <div class="ui container" style="margin-top:50px">
     <div class="ui borderless huge stackable secondary pointing menu">
-        <a class="active item" data-tab="konfirmasi-pembayaran" style="font-size:17px">
+        <a class="item" data-tab="konfirmasi-pembayaran" style="font-size:17px">
             <b>Konfirmasi Pembayaran</b>
         </a>
-        <a class="item" data-tab="pendaftaran-panitia" style="font-size:17px">
+        <a class="active item" data-tab="pendaftaran-panitia" style="font-size:17px">
             <b>Pendaftaran Panitia</b>
         </a>
     </div>
-    <div class="active  ui tab" data-tab="konfirmasi-pembayaran" style="padding:20px 20px 30px 20px">
+    {{-- <div class="ui tab" data-tab="konfirmasi-pembayaran" style="padding:20px 20px 30px 20px">
         @include('halamanAdmin.tabKonfirmasiTransfer')
-    </div>
-    <div class="ui tab" data-tab="pendaftaran-panitia" style="padding:20px 20px 30px 20px">
+    </div> --}}
+    <div class="active ui tab" data-tab="pendaftaran-panitia" style="padding:20px 20px 30px 20px">
         @include('halamanAdmin.tabPendaftaranPanitia')
     </div>
 </div>

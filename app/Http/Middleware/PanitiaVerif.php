@@ -3,8 +3,9 @@
 namespace App\Http\Middleware;
 
 use Closure;
+use App\Panitia;
 
-class IsAdmin
+class PanitiaVerif
 {
     /**
      * Handle an incoming request.
@@ -15,10 +16,11 @@ class IsAdmin
      */
     public function handle($request, Closure $next)
     {
-        if (session('username')=="admin") {
+        $panitia = Panitia::where('nama_panitia',session('nama_panitia'))->first();
+        if ($panitia->status==1) {
             return $next($request);
         } else {
-            return redirect()->back()->with('alert', 'Anda bukan admin');
+            return redirect()->back()->with('alert', 'Anda belum diverifikasi oleh admin');
         }
     }
 }

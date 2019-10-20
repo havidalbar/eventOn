@@ -36,7 +36,7 @@ class MemberController extends Controller
     public function lihatAkun()
     {
         $akun = Member::where('username', Session::get('username'))->first();
-        return view('informasiAkun.informasiAkunProfil',['akun'=>$akun]);
+        return view('informasiAkun.informasiAkunProfil', compact('akun'));
     }
 
     public function lihatDetailAcara($id)
@@ -96,6 +96,7 @@ class MemberController extends Controller
             $data->save();
             Session::put('nama_panitia', $data->nama_panitia);
             Session::put('id_panitia', $data->id);
+            Session::put('id_user', $data->id_member);
             Session::put('foto_panitia', $data->foto);
             return redirect()->route('index')->with('alert-success', 'Berhasil mendaftar panitia');
         } else {

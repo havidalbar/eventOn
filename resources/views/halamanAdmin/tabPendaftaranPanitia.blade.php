@@ -7,9 +7,9 @@
         <table class="ui striped stackable sortable celled teal table center aligned">
             <thead>
                 <tr>
-                    <th>ID Profesi</th>
+                    <th>ID Panitia</th>
                     <th>
-                        <div>Nama Pemilik</div>
+                        <div>Nama Panitia</div>
                         <div>Nomor Telepon</div>
                     </th>
                     <th>Alamat Kantor</th>
@@ -21,15 +21,15 @@
                 </tr>
             </thead>
             <tbody>
-                @for($i = 0; $i < count($profesis); $i++) <?php $fotos= explode(" ", $profesis[$i]->url_image);?>
+                @for($i = 0; $i < count($panitias); $i++) <?php $fotos= explode(" ", $panitias[$i]->url_image);?>
                 <tr>
-                    <td>{{$profesis[$i]->id}}</td>
+                    <td>{{$panitias[$i]->id}}</td>
                     <td>
-                        <div>{{$profesis[$i]->nama_profesi}}</div>
-                        <div>{{$profesis[$i]->nohp}}</div>
+                        <div>{{$panitias[$i]->nama_panitia}}</div>
+                        <div>{{$panitias[$i]->nohp}}</div>
                     </td>
-                    <td>{{$profesis[$i]->alamat}}</td>
-                    <td>{{$users[$i]->name}}</td>
+                    <td>{{$panitias[$i]->alamat}}</td>
+                    <td>{{$users[$i]->username}}</td>
                     <td>
                         <button class="ui button basic teal"
                             onclick="$('.ui.large.modal.portofolio.<?php echo $i ?>').modal('show')">
@@ -39,11 +39,11 @@
                     <td>
                         <div class="ui internally celled grid">
                             <div class="row">
-                                <form class="eight wide column" action="/terima-profesi?id={{$profesis[$i]->id}}" method="post">
+                                <form class="eight wide column" action="{{route('tamu.user.admin.terima-panitia', ['id' => $panitias[$i]->id])}}" method="post">
                                     {{csrf_field()}}
                                     <button class="ui button basic green">Terima</button>
                                 </form>
-                                <form class="eight wide column" action="/tolak-profesi?id={{$profesis[$i]->id}}" method="post">
+                                <form class="eight wide column" action="{{route('tamu.user.admin.tolak-panitia',['id' => $panitias[$i]->id])}}" method="post">
                                     {{csrf_field()}}
                                     <button class="ui button basic red">Tolak</button>
                                 </form>

@@ -29,7 +29,6 @@ class PanitiaRequest extends FormRequest
             'foto' => 'sometimes|required',
             'alamat' => 'sometimes|required|min:6|max:90',
             'nohp' => 'sometimes|required|min:6|max:90',
-            'url_image' => 'sometimes|required',
         ];
     }
 }

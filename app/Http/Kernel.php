@@ -64,6 +64,7 @@ class Kernel extends HttpKernel
         'user.loggedin' =>  \App\Http\Middleware\IsLoggedIn::class,
         'admin' =>  \App\Http\Middleware\IsAdmin::class,
         'panitia' =>  \App\Http\Middleware\IsPanitia::class,
+        'panitia.verif' =>  \App\Http\Middleware\PanitiaVerif::class,
         'event.peserta' =>  \App\Http\Middleware\IsEventPeserta::class,
     ];
 

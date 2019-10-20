@@ -249,7 +249,7 @@
                     <div class="header" style="font-size:14px">
                         Informasi Panitia
                     </div>
-                <a class="item" href="#" style="margin-left:20px;margin-right:20px">
+                <a class="item" href="{{route('tamu.user.panitia.lihat-halaman-profile-panitia')}}" style="margin-left:20px;margin-right:20px">
                         Profil Panitia
                     </a>
                     <div class="header" style="font-size:14px">
@@ -287,7 +287,7 @@
                     </a>
                     <div class="divider"></div>
                     @if(Session::get('username') == "admin")
-                    <a class="item" href="#">
+                    <a class="item" href="{{route('tamu.user.admin.lihat-halaman-konfirmasi-pendaftaran')}}">
                         <div style="font-size:14px">
                             <b>HALAMAN ADMIN</b>
                         </div>
@@ -335,7 +335,7 @@
                     <div class="header" style="font-size:14px">
                         Informasi Panitia
                     </div>
-                    <a class="item" href="#" style="margin-left:20px;margin-right:20px">
+                    <a class="item" href="{{route('tamu.user.panitia.lihat-halaman-profile-panitia')}}" style="margin-left:20px;margin-right:20px">
                         Profil Panitia
                     </a>
                     <div class="header" style="font-size:14px">
@@ -373,7 +373,7 @@
                     </a>
                     <div class="divider"></div>
                     @if(Session::get('username') == "admin")
-                    <a class="item" href="#">
+                    <a class="item" href="{{route('tamu.user.admin.lihat-halaman-konfirmasi-pendaftaran')}}">
                         <div style="font-size:14px">
                             <b>HALAMAN ADMIN</b>
                         </div>
@@ -430,7 +430,7 @@
                                 <div class="header" style="font-size:14px">
                                     Informasi Panitia
                                 </div>
-                                <a class="item" href="#" style="margin-left:20px;margin-right:20px">
+                                <a class="item" href="{{route('tamu.user.panitia.lihat-halaman-profile-panitia')}}" style="margin-left:20px;margin-right:20px">
                                     Profil Panitia
                                 </a>
                                 <div class="header" style="font-size:14px">
@@ -468,7 +468,7 @@
                                 </a>
                                 <div class="divider"></div>
                                 @if(Session::get('username') == "admin")
-                                <a class="item" href="#">
+                                <a class="item" href="{{route('tamu.user.admin.lihat-halaman-konfirmasi-pendaftaran')}}">
                                     <div style="font-size:14px">
                                         <b>HALAMAN ADMIN</b>
                                     </div>
