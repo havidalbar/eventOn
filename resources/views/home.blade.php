@@ -169,9 +169,9 @@
             <p>Silahkan cari hingga mendapatkan event yang cocok untuk anda</p>
         </div>
         <form class="ui fluid action input" style="margin-top:20px;font-size:18px;padding-left:60px;padding-right:60px"
-            method="get" action="/get-search">
-            <input type="text" name="cari" placeholder="Cari desain rumah impian yang ingin anda buat...">
-            <div class="ui button teal">Cari</div>
+    method="get" action="{{route('lihat-acara-cari')}}">
+            <input type="text" name="keyword" placeholder="Cari desain rumah impian yang ingin anda buat...">
+            <button type="submit" class="ui button teal">Cari</button>
         </form>
     </div>
 
@@ -321,7 +321,7 @@
         <!--Akhir Modal Detail -->
     </div>
     <div class="ui center aligned container" style="margin-top:40px">
-        <a href="/search-all">
+    <a href="{{route('lihat-semua-acara')}}">
             <div class="ui vertical animated large teal button" style="width:150px">
                 <div class="hidden content">Lihat Semua</div>
                 <div class="visible content">

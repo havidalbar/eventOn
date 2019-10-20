@@ -11,6 +11,9 @@
 |
 */
 Route::get('/', 'MemberController@lihatHalamanBeranda')->name('index');
+Route::get('lihat-semua-acara','MemberController@lihatSemuaAcara')->name('lihat-semua-acara');
+Route::get('lihat-acara-kategori','MemberController@cariAcaraKategori')->name('lihat-acara-kategori');
+Route::get('lihat-acara-cari','MemberController@cariAcara')->name('lihat-acara-cari');
 Route::group(['prefix' => 'tamu', 'as' => 'tamu.'], function () {
     Route::group(['middleware' => ['user.toLogin']], function () {
         Route::get('login', 'TamuController@lihatHalamanLogin')->name('lihat-login');

@@ -21,18 +21,6 @@ class MemberController extends Controller
         return redirect()->route('index')->with('alert', 'Anda telah keluar');
     }
 
-    public function updateAkun(UserRequest $request)
-    {
-        $akun = Member::where('username', Session::get('username'))->update([
-            'email' => $request->email,
-            'username' => $request->username,
-            'password' => $request->password
-        ]);
-        Session::put('username', $request->username);
-        Session::put('email', $request->email);
-        return redirect()->route('index')->with('alert', 'Anda telah mengupdate akun');
-    }
-
     public function lihatAkun()
     {
         $akun = Member::where('username', Session::get('username'))->first();
@@ -66,11 +54,12 @@ class MemberController extends Controller
         $acaras = $acaras->get();
         if ($acaras) {
 
-            $panitias = array();
+            $panitia = array();
             for ($i = 0; $i < count($acaras); $i++) {
-                $panitias[$i] = Panitia::where('id', $acaras[$i]->id_panitia)->first();
+                $panitia[$i] = Panitia::where('id', $acaras[$i]->id_panitia)->first();
             }
-            return redirect()->route('cari')->with(compact('acaras'));
+            $key = $request->input('keyword');
+            return view('cari',compact('acaras','key','panitia'));
         } else {
             abort(404);
         }
@@ -132,11 +121,31 @@ class MemberController extends Controller
             $panitia[$i] = Panitia::find($acaras[$i]->id_panitia);
         }
         $key = 'semua';
-        return redirect()->route('cari-semua-acara')->with(compact('acaras', 'panitia'));
+        return view('cari',compact('acaras','panitia','key'));
     }
 
     public function cariAcaraKategori(Request $request)
-    { }
+    {
+        $acaras = null;
+        if($request->input('kategori') != "semua"){
+            $acaras = Acara::where('kategori', $request->input('kategori'));
+        }else{
+            $acaras = Acara::where('id','>=','1');
+        }
+        if($request->input('max') != null) {
+            $acaras->where('harga', '<=', $request->input('max'));
+        }
+        if($request->input('min') != null) {
+            $acaras->where('harga', '>=', $request->input('min'));
+        }
+        $acaras = $acaras->get();
+        $key =  $request->input('kategori');
+        $panitia = array();
+        for ($i = 0; $i < count($acaras); $i++) {
+            $panitia[$i] = Panitia::where('id', $acaras[$i]->id_panitia)->first();
+        }
+        return view('cari', compact('acaras','panitia','key'));
+    }
 
     public function lihatHalamanDaftarPanitia()
     {

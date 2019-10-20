@@ -231,9 +231,9 @@
                 <i class="pencil icon"></i></a>
         </div>
         <a class="item" href="{{route('index')}}">Beranda</a>
-        <a class="item" href="#">Event</a>
-        <a class="item" href="#">Ticketing</a>
-        <a class="item" href="#">Organizer</a>
+        <a class="item" href="{{route('lihat-acara-kategori',['kategori'=>'edukasi'])}}">Edukasi</a>
+        <a class="item" href="{{route('lihat-acara-kategori',['kategori'=>'kesehatan'])}}">Kesehatan</a>
+        <a class="item" href="{{route('lihat-acara-kategori',['kategori'=>'liburan'])}}">Liburan</a>
         <div class="item">
             <form class="ui icon input" method="get" action="#" style="width:350px">
                 <input type="text" placeholder="Cari sesuatu..." name="cari">
@@ -322,9 +322,9 @@
             </a>
         </div>
         <a class="item" href="{{route('index')}}">Beranda</a>
-        <a class="item" href="#">Event</a>
-        <a class="item" href="#">Ticketing</a>
-        <a class="item" href="#">Organizer</a>
+        <a class="item" href="{{route('lihat-acara-kategori',['kategori'=>'edukasi'])}}">Edukasi</a>
+        <a class="item" href="{{route('lihat-acara-kategori',['kategori'=>'kesehatan'])}}">Kesehatan</a>
+        <a class="item" href="{{route('lihat-acara-kategori',['kategori'=>'liburan'])}}">Liburan</a>
         <div class="right item">
             <div class="ui inverted top right pointing dropdown button">
                 <i class="briefcase icon"></i>
@@ -412,9 +412,9 @@
                             <i class="pencil icon"></i></a>
                     </div>
                     <a class="item" href="{{route('index')}}">Beranda</a>
-                    <a class="item" href="#">Event</a>
-                    <a class="item" href="#">Ticketing</a>
-                    <a class="item" href="#">Organizer</a>
+                    <a class="item" href="{{route('lihat-acara-kategori',['kategori'=>'edukasi'])}}">Edukasi</a>
+                    <a class="item" href="{{route('lihat-acara-kategori',['kategori'=>'kesehatan'])}}">Kesehatan</a>
+                    <a class="item" href="{{route('lihat-acara-kategori',['kategori'=>'liburan'])}}">Liburan</a>
                     <div class="item">
                         <form class="ui icon input" method="get" action="" style="width:350px">
                             <input type="text" placeholder="Cari sesuatu..." name="cari">
