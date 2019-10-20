@@ -161,7 +161,7 @@
                     </div>
                 </div>
                 <div class="actions">
-                    <a href="#">
+                    <a >
                         <button class="ui negative button" onclick="$('.ui.tiny.modal.hapus').modal('show')">
                             Hapus Proyek
                         </button>

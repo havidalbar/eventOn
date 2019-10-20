@@ -227,10 +227,10 @@
     <div class="ui large top borderless menu fixed transition hidden">
     <div class="ui container">
         <div class="item" style="margin-right:10px">
-            <a href="#" style="color:black">Aderim
+        <a href="{{route('index')}}" style="color:black">EventOn
                 <i class="pencil icon"></i></a>
         </div>
-        <a class="item" href="#">Beranda</a>
+        <a class="item" href="{{route('index')}}">Beranda</a>
         <a class="item" href="#">Event</a>
         <a class="item" href="#">Ticketing</a>
         <a class="item" href="#">Organizer</a>
@@ -321,7 +321,7 @@
                 <img src="assets/image/HELPPET-LIGHT.png">
             </a>
         </div>
-        <a class="item" href="#">Beranda</a>
+        <a class="item" href="{{route('index')}}">Beranda</a>
         <a class="item" href="#">Event</a>
         <a class="item" href="#">Ticketing</a>
         <a class="item" href="#">Organizer</a>
@@ -408,10 +408,10 @@
                         <i class="sidebar icon"></i>
                     </a>
                     <div class="item" style="margin-right:10px">
-                        <a href="#" style="color:white">Aderim
+                        <a href="{{route('index')}}" style="color:white">EventOn
                             <i class="pencil icon"></i></a>
                     </div>
-                    <a class="item" href="#">Beranda</a>
+                    <a class="item" href="{{route('index')}}">Beranda</a>
                     <a class="item" href="#">Event</a>
                     <a class="item" href="#">Ticketing</a>
                     <a class="item" href="#">Organizer</a>

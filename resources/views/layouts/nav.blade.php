@@ -183,10 +183,10 @@
     <div class="ui large top borderless menu fixed transition hidden">
         <div class="ui container">
             <div class="item" style="margin-right:10px">
-                <a href="/" style="color:black">Aderim
+                <a href="{{route('index')}}" style="color:black">Eventon
                     <i class="pencil icon"></i></a>
             </div>
-            <a class="item" href="/">Beranda</a>
+            <a class="item" href="{{route('index')}}">Beranda</a>
             <a class="item" href="/kategori/rumah">Event</a>
             <a class="item" href="/kategori/hotel">Ticketing</a>
             <a class="item" href="/kategori/apartemen">Organizer</a>
@@ -208,15 +208,15 @@
                 <img src="assets/image/HELPPET-LIGHT.png">
             </a>
         </div>
-        <a class="item" href="/">Beranda</a>
+        <a class="item" href="{{route('index')}}">Beranda</a>
         <a class="item" href="/kategori/rumah">Event</a>
         <a class="item" href="/kategori/hotel">Ticketing</a>
         <a class="item" href="/kategori/apartemen">Organizer</a>
         <div class="right item">
-            <a class="ui inverted button" style="margin-right:15px" href="/login">
+            <a class="ui inverted button" style="margin-right:15px" href="{{ route('tamu.lihat-login') }}">
                 Masuk
             </a>
-            <a class="ui inverted button" href="/register">
+            <a class="ui inverted button" href="{{ route('tamu.lihat-registrasi') }}">
                 Daftar
             </a>
         </div>
@@ -231,10 +231,10 @@
                         <i class="sidebar icon"></i>
                     </a>
                     <div class="item" style="margin-right:10px">
-                        <a href="/" style="color:white">EventOn
+                        <a href="{{route('index')}}" style="color:white">EventOn
                             <i class="pencil icon"></i></a>
                     </div>
-                    <a class="item" href="/">Beranda</a>
+                    <a class="item" href="{{route('index')}}">Beranda</a>
                     <a class="item" href="/kategori/rumah">Event</a>
                     <a class="item" href="/kategori/hotel">Ticketing</a>
                     <a class="item" href="/kategori/apartemen">Organizer</a>

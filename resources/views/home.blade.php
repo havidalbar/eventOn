@@ -32,8 +32,9 @@
                                 <div class="column">
                                     <div class="row">
                                         <h2 class="ui header" style="color:white">Apa Itu eventOn?</h2>
-                                        <p style="color:white;font-size:16px">EventOn merupakan solusi yang tepat bagi anda yang ingin membuat suatu event
-                                             impian anda.
+                                        <p style="color:white;font-size:16px">EventOn merupakan solusi yang tepat bagi
+                                            anda yang ingin membuat suatu event
+                                            impian anda.
                                         </p>
                                     </div>
                                     <div class="row" style="margin-top:30px">
@@ -48,7 +49,7 @@
                     </div>
                 </div>
                 <div class="row" style="margin-top:10px">
-                  @if(!Session::has('username'))
+                    @if(!Session::has('username'))
                     <a href="{{ route('tamu.lihat-registrasi') }}">
                         <div class="ui huge animated fade button teal" tabindex="0"
                             style="border-radius:5px;margin-bottom:20px;color:white">
@@ -94,7 +95,8 @@
                 </div>
                 <div class="fourteen wide left floated column" style="padding-left:20px">
                     <h2>Event</h2>
-                    <p style="font-size:18px">Memasarkan event yang dibuat untuk dapat ditemukan oleh semua pengguna EventOn</p>
+                    <p style="font-size:18px">Memasarkan event yang dibuat untuk dapat ditemukan oleh semua pengguna
+                        EventOn</p>
                 </div>
             </div>
             <div class="ui middle aligned stackable grid">
@@ -175,40 +177,42 @@
 
     <div class="ui container" style="margin-top:30px">
         <div class="ui four stackable doubling link cards">
+            @for($i=0;$i<(count($items)> 10 ? 10 : count($items));$i++)
                 <?php
-                ?>
-                <div class="card" onclick="$('.ui.fullscreen.modal.detail').modal('show');">
+            $fotos = explode(" ", $items[$i]->foto_acara);
+            ?>
+                <div class="card" onclick="$('.ui.fullscreen.modal.detail.<?php echo $i ?>').modal('show');">
                     <img class="ui fluid image" src="{{asset('customer.jpg')}}" style="object-fit:cover;height:250px">
                     <div class="ui top right attached teal large label">
                         <b>
                             <span>Rp </span>
-                            <span>aaaaaaaaa</span>
+                            <span>{{number_format(($items[$i]->harga),0,",",".")}}</span>
                         </b>
                     </div>
                     <div class="content">
-                        <div class="header">aaaaaaaaaaaa</div>
+                        <div class="header">{{ucfirst($items[$i]->nama_acara)}}</div>
                         <div class="meta" style="margin-top:5px">
                             <span style="border:2px solid #d4d4d5;border-radius:4px;padding:2px 4px 2px 4px">
-                               aaaaaa
+                                {{ucfirst($items[$i]->kategori)}}
                             </span>
                         </div>
                         <div class="description">
-                            aaaaaa
+                            {{$items[$i]->deskripsi}}
                         </div>
                     </div>
                     <div class="extra content">
                         <div>
                             <i class="user circle teal icon"></i>
-                            aaaaaaaaaaaa
+                            {{ ucfirst($panitias[$i]->nama_panitia)}}
                         </div>
                         <div style="margin-top:5px;display:flex;flex-direction:row;align-items: center">
                             <div><i class="map marker alternate teal icon"></i></div>
-                            <div>aaaaaaaaa</div>
+                            <div>{{ucfirst($items[$i]->kota)}}</div>
                         </div>
                     </div>
                 </div>
                 <!-- Modal Detail -->
-                <div class="ui fullscreen modal detail">
+                <div class="ui fullscreen modal detail <?php echo $i ?>">
                     <div class="content">
                         <div class="ui stackable grid">
                             <div class="nine wide column">
@@ -217,19 +221,20 @@
                                         <div class="ui one stackable cards">
                                             <div class="card">
                                                 <div class="image">
-                                                <img class="ui big image" src="{{asset('image/2019/04/2QQrg23806.jpg')}}">
+                                                    <img class="ui big image" src="/{{$fotos[0]}}">
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="four wide middle aligned column">
-                                        <div class="ui one stackable cards">
+                                        @for($j=0; $j < count($fotos); $j++) <div class="ui one stackable cards">
                                             <div class="card">
                                                 <div class="image">
-                                                    <img src="/{{asset('image/2019/04/2QQrg23806.jpg')}}" style="height:145px;object-fit:cover">
+                                                    <img src="/{{$fotos[$j]}}" style="height:145px;object-fit:cover">
                                                 </div>
                                             </div>
                                     </div>
+                                    @endfor
                                 </div>
                             </div>
                         </div>
@@ -246,52 +251,57 @@
                             <div class="ui divider"></div>
                             <div class="ui stackable grid">
                                 <div class="three wide column">
-                                    <img class="ui circular image" src="aaaaaaaaaaaaaa"
+                                    <img class="ui circular image" src="{{asset($panitias[$i]->foto)}}"
                                         style="width:80px;height:80px;object-fit:cover">
                                 </div>
                                 <div class="thirteen wide column">
-                                    <div style="font-size:22px"><b>aaaaaaaaaaaaaa</b></div>
-                                    <div style="font-size:17px">aaaaaaaaaaaaaa</div>
+                                    <div style="font-size:22px"><b>{{ ucfirst($panitias[$i]->nama_panitia)}}</b></div>
                                 </div>
                             </div>
                             <div class="ui divider"></div>
                             <div class="ui stackable grid">
                                 <div class="twelve wide column">
                                     <div style="font-size:22px">
-                                        <b>aaaaaaaaaaaaaaaa</b>
+                                        <b>{{ucfirst($items[$i]->nama_acara)}}</b>
                                     </div>
                                     <div style="margin-top:5px;display:flex;flex-direction:row;align-items: center">
                                         <div><i class="map marker alternate teal icon"></i></div>
-                                        <div style="font-size:17px">aaaaaaaaaa</div>
+                                        <div style="font-size:17px">{{ ucfirst($items[$i]->kota)}}</div>
                                     </div>
                                 </div>
                                 <div class="four wide right aligned middle aligned column">
                                     <span
                                         style="border:2px solid #d4d4d5;border-radius:4px;padding:5px 15px 5px 15px;font-size:17px">
-                                        aaaaaaaaaa
+                                        {{ucfirst($items[$i]->kategori)}}
                                     </span>
                                 </div>
                             </div>
                             <div class="ui divider"></div>
-                            <div>
-                                <div style="font-size:17px"><b>Deskripsi</b></div>
-                                <div style="font-size:16px">
-                                    aaaaaaaaaaaaaaa
+                            <div style="margin-top:10px">
+                                <div style="font-size:16px"><b>Contact Person</b></div>
+                                <div style="font-size:15px">
+                                    {{$items[$i]->cp}}
                                 </div>
                             </div>
                             <div style="margin-top:10px">
-                                <div style="font-size:17px"><b>Spesifikasi</b></div>
-                                <div style="font-size:16px">
-                                    aaaaaaaaa
+                                <div style="font-size:16px"><b>Maksimal</b></div>
+                                <div style="font-size:15px">
+                                    {{$items[$i]->maksimal}}
+                                </div>
+                            </div>
+                            <div style="margin-top:10px">
+                                <div style="font-size:16px"><b>Deskripsi</b></div>
+                                <div style="font-size:15px">
+                                    {{$items[$i]->deskripsi}}
                                 </div>
                             </div>
                             <div class="ui divider"></div>
                             <div class="ui container fluid" style="text-align:right">
-                                <div style="font-size:22px"><b>Biaya Proyek</b></div>
+                                <div style="font-size:22px"><b>Harga Tiket</b></div>
                                 <div style="color:teal;font-size:20px">
                                     <b>
                                         <span>Rp </span>
-                                        <span>aaaaaaaaaaaaaaaa</span>
+                                        <span>{{number_format(($items[$i]->harga),0,",",".")}}</span>
                                     </b>
                                 </div>
                             </div>
@@ -302,12 +312,12 @@
                     <button class="ui negative button">
                         Pilih Lagi
                     </button>
-                    <button class="ui positive button"
-                        onclick="window.location.href='/'">
+                    <button class="ui positive button" onclick="window.location.href='/'">
                         Pesan Proyek
                     </button>
                 </div>
         </div>
+        @endfor
         <!--Akhir Modal Detail -->
     </div>
     <div class="ui center aligned container" style="margin-top:40px">

@@ -116,7 +116,12 @@ class MemberController extends Controller
 
     public function lihatHalamanBeranda()
     {
-        return view('home');
+        $items = Acara::all();
+        $panitias = array();
+        for ($i = 0; $i < count($items); $i++) {
+            $panitias[$i] = Panitia::where('id', $items[$i]->id_panitia)->first();
+        }
+        return view('home', compact('items','panitias'));
     }
 
     public function lihatSemuaAcara()
