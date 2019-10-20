@@ -54,8 +54,26 @@ class PanitiaController extends Controller
     function lihatKumpulanAcara()
     { }
 
-    function editAcara()
-    { }
+    function editAcara(AcaraRequest $request, $id_acara)
+    {
+
+        if ($request['files'] != null) {
+            $tipe = -1;
+            if ($request->status == "gratis") {
+                $tipe = 0;
+            } else {
+                $tipe = 1;
+            }
+            $dataAcara = Acara::where('id_panitia', Session::get('id_panitia'))->where('id', $id_acara)->update([
+                'foto_acara' => implode(" ", $request['files']),
+                'nama_acara' => $request->nama_acara, 'deskripsi' => $request->deskripsi, 'kota' => $request->kota, 'lokasi' => $request->lokasi,
+                'kategori' => $request->kategori, 'cp' => $request->cp, 'maksimal' => $request->maksimal, 'status' => $tipe, 'harga' => $request->harga
+            ]);
+            return redirect()->route('index')->with('alert-success', 'Acara berhasil di ubah');
+        } else {
+            return redirect()->back()->with('alert', 'Masukkan foto terbaru acara anda terlebih dahulu!')->withInput();
+        }
+    }
 
     function hapusAcara(Request $request)
     {
@@ -80,8 +98,12 @@ class PanitiaController extends Controller
         return view('halamanPanitia.tambahAcara');
     }
 
-    function lihatHalamanEditAcara()
-    { }
+    function lihatHalamanEditAcara($id_acara)
+    {
+        $dataAcara = Acara::where('id', $id_acara)->where('id_panitia', Session::get('id_panitia'))->first();
+        $dataPanitia = Panitia::where('id', $dataAcara->id_panitia)->first();
+        return view('halamanPanitia.ubahAcara',  compact('dataAcara', 'dataPanitia'));
+    }
 
     function lihatHalamanDeteksiBarcode()
     { }

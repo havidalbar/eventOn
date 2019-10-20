@@ -28,7 +28,7 @@
                             <button class="ui inverted medium button" onclick="$('.ui.fullscreen.modal.lihat.<?php echo $i ?>').modal('show');">Lihat</button>
                         </span>
                         <span>
-                            <button class="ui inverted medium button" onclick="window.location.href='#'">Ubah</button>
+                            <button class="ui inverted medium button" onclick="window.location.href='{{route('tamu.user.panitia.verif.lihat-halaman-ubah-acara',['id_acara' => $acaras[$i]->id])}}'">Ubah</button>
                         </span>
                     </div>
                 </div>
@@ -123,25 +123,25 @@
                                 </div>
                             </div>
                             <div class="ui divider"></div>
-                            <div>
+                            <div style="margin-top:10px">
                                 <div style="font-size:16px"><b>Kota</b></div>
                                 <div style="font-size:15px">
                                     {{$acaras[$i]->kota}}
                                 </div>
                             </div>
-                            <div>
+                            <div style="margin-top:10px">
                                 <div style="font-size:16px"><b>Contact Person</b></div>
                                 <div style="font-size:15px">
                                     {{$acaras[$i]->cp}}
                                 </div>
                             </div>
-                            <div>
+                            <div style="margin-top:10px">
                                 <div style="font-size:16px"><b>Maksimal</b></div>
                                 <div style="font-size:15px">
                                     {{$acaras[$i]->maksimal}}
                                 </div>
                             </div>
-                            <div>
+                            <div style="margin-top:10px">
                                 <div style="font-size:16px"><b>Deskripsi</b></div>
                                 <div style="font-size:15px">
                                     {{$acaras[$i]->deskripsi}}
@@ -153,7 +153,7 @@
                                 <div style="color:teal;font-size:20px">
                                     <b>
                                         <span>Rp </span>
-                                    <span>0</span>
+                                    <span>{{number_format(($acaras[$i]->harga),0,",",".")}}</span>
                                     </b>
                                 </div>
                             </div>
@@ -165,8 +165,8 @@
                         <button class="ui negative button" onclick="$('.ui.tiny.modal.hapus').modal('show')">
                             Hapus Proyek
                         </button>
-                        <button class="ui teal button" onclick="window.location.href='#'">
-                            Ubah Detail Proyek
+                        <button class="ui teal button" onclick="window.location.href='{{route('tamu.user.panitia.verif.lihat-halaman-ubah-acara',['id_acara' => $acaras[$i]->id])}}'">
+                            Ubah Detail Acara
                         </button>
                     </a>
                 </div>

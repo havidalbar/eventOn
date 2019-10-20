@@ -1,9 +1,9 @@
 @extends (\Session::has('username') ? 'layouts.navLogin' : 'layouts.nav')
-@section('title', 'Ubah Detail Proyek | Aderim')
+@section('title', 'Ubah Detail Proyek | EventOn')
 
 @section('js')
 <script type="text/javascript">
-Dropzone.options.myDropzone = {
+    Dropzone.options.myDropzone = {
     addRemoveLinks: true,
     paramName: 'file',
     maxFilesize: 20, // MB
@@ -12,7 +12,7 @@ Dropzone.options.myDropzone = {
     init: function() {
         this.on("success", function(file, response) {
             let hasil = 'image/' + response;
-            var forms = document.getElementById('ubah-project');
+            var forms = document.getElementById('ubah-acara');
             var files = document.createElement("input");
             files.setAttribute('name', 'files[]');
             files.setAttribute("type", "hidden");
@@ -28,20 +28,20 @@ Dropzone.options.myDropzone = {
 };
 </script>
 <script>
-$(document)
+    $(document)
     .ready(function() {
         $('.ui.form')
             .form({
                 fields: {
-                    nama: {
-                        identifier: 'namaProject',
+                    nama_acara: {
+                        identifier: 'nama_acara',
                         rules: [{
                             type: 'empty',
-                            prompt: 'Nama proyek tidak boleh dikosongkan'
+                            prompt: 'Nama acara tidak boleh dikosongkan'
                         }]
                     },
-                    category: {
-                        identifier: 'category',
+                    kategori: {
+                        identifier: 'kategori',
                         rules: [{
                             type: 'empty',
                             prompt: 'Silahkan pilih kategori proyek terlebih dahulu'
@@ -51,28 +51,49 @@ $(document)
                         identifier: 'deskripsi',
                         rules: [{
                             type: 'empty',
-                            prompt: 'Silahkan masukkan deskripsi singkat proyek terlebih dahulu'
+                            prompt: 'Silahkan masukkan deskripsi singkat acara terlebih dahulu'
                         }]
                     },
-                    spesifikasi: {
-                        identifier: 'spesifikasi',
+                    kota: {
+                        identifier: 'kota',
                         rules: [{
                             type: 'empty',
-                            prompt: 'Spesifikasi proyek tidak boleh dikosongkan'
+                            prompt: 'kota acara tidak boleh dikosongkan'
                         }]
                     },
-                    estimasi: {
-                        identifier: 'estimasi',
+                    lokasi: {
+                        identifier: 'lokasi',
                         rules: [{
                             type: 'empty',
-                            prompt: 'Silahkan masukkan estimasi biaya proyek terlebih dahulu'
+                            prompt: 'Silahkan masukkan lokasi acara terlebih dahulu'
                         }]
                     },
-                    daerah: {
-                        identifier: 'daerah',
+                    cp: {
+                        identifier: 'cp',
                         rules: [{
                             type: 'empty',
-                            prompt: 'Daerah proyek tidak boleh dikosongkan'
+                            prompt: 'Contact Person acara tidak boleh dikosongkan'
+                        }]
+                    },
+                    maksimal: {
+                        identifier: 'maksimal',
+                        rules: [{
+                            type: 'empty',
+                            prompt: 'maksimal acara tidak boleh dikosongkan'
+                        }]
+                    },
+                    status: {
+                        identifier: 'status',
+                        rules: [{
+                            type: 'empty',
+                            prompt: 'status acara tidak boleh dikosongkan'
+                        }]
+                    },
+                    harga: {
+                        identifier: 'harga',
+                        rules: [{
+                            type: 'empty',
+                            prompt: 'harga acara tidak boleh dikosongkan'
                         }]
                     },
                 }
@@ -106,7 +127,7 @@ $(document)
                                 </div>
                             </div>
                             <?php
-                            $fotos= explode(" ", $dataProject->namagambar);
+                            $fotos= explode(" ", $dataAcara->foto_acara);
                             ?>
                             <img class="ui rounded image" src="{{asset($fotos[0])}}"
                                 style="height:150px;object-fit:cover">
@@ -115,22 +136,22 @@ $(document)
                 </div>
             </div>
             <div class="eleven wide left aligned column">
-                <div style="font-size:22px"><b>{{ucfirst($dataProject->namaProject)}}</b></div>
+                <div style="font-size:22px"><b>{{ucfirst($dataAcara->nama_acara)}}</b></div>
                 <div style="margin-top:10px;font-size:15px">
                     <span style="border:2px solid #d4d4d5;border-radius:4px;padding:3px 8px 3px 8px">
-                        {{ucfirst($dataProject->category)}}
+                        {{ucfirst($dataAcara->kategori)}}
                     </span>
                 </div>
                 <div style="margin-top:10px;display:flex;flex-direction:row;align-items: center">
                     <div><i class="map marker alternate grey icon"></i></div>
-                    <div style="font-size:19px">{{ucfirst($dataProject->daerah)}}</div>
+                    <div style="font-size:19px">{{ucfirst($dataAcara->kota)}}</div>
                 </div>
             </div>
         </div>
         <div class="ui divider"></div>
         <div class="ui container fluid" style="margin-top:20px">
-            <div style="font-size:18px"><b>Foto Proyek Anda</b></div>
-            <form action="{{ url('/uploadFotoProject') }}" enctype="multipart/form-data" class="dropzone"
+            <div style="font-size:18px"><b>Foto Acara Anda</b></div>
+            <form action="{{ route('tamu.user.upload-foto') }}" enctype="multipart/form-data" class="dropzone"
                 id="my-dropzone" style="margin-top:5px">
                 {{csrf_field()}}
             </form>
@@ -142,45 +163,104 @@ $(document)
             </div>
             @endif
         </div>
-        <form class="ui form" style="margin-top:15px" id="ubah-project" method='post'
-            action="{{url('/update-projectproses/'.$dataProject->id)}}" enctype="multipart/form-data">
+        <form class="ui form" style="margin-top:15px" id="ubah-acara" method='post'
+            action="{{route('tamu.user.panitia.verif.ubah-acara',['id_acara' => $dataAcara->id])}}"
+            enctype="multipart/form-data">
             <div class="field">
-                <label style="font-size:18px">Nama Proyek</label>
-                <input type="text" name="namaProject" placeholder="Hotel Mewah">
+                <label style="font-size:18px">Nama Acara</label>
+                <input type="text" name="nama_acara" placeholder="Nama Acara">
             </div>
             <div class="field">
-                <label style="font-size:18px">Kategori Proyek</label>
+                <label style="font-size:18px">Kategori Acara</label>
                 <div class="ui selection dropdown">
-                    <input type="hidden" name="category">
+                    <input type="hidden" name="kategori">
                     <i class="dropdown icon"></i>
-                    <div class="default text">Pilih Kategori Proyek</div>
+                    <div class="default text">Pilih Kategori Acara</div>
                     <div class="menu">
-                        <div class="item" value="Rumah">Rumah</div>
-                        <div class="item" value="Hotel">Hotel</div>
-                        <div class="item" value="Apartemen">Apartemen</div>
+                        <div class="item" value="edukasi">Edukasi</div>
+                        <div class="item" value="kesehatan">Kesehatan</div>
+                        <div class="item" value="liburan">Liburan</div>
                     </div>
                 </div>
             </div>
             <div class="field">
-                <label style="font-size:18px">Deskripsi Singkat Proyek</label>
-                <textarea name="deskripsi" maxlength="144" rows="4"
-                    placeholder="Tuliskan deskripsi singkat mengenai proyek anda..."></textarea>
+                <label style="font-size:18px">Deskripsi Singkat Acara</label>
+                <textarea name="deskripsi" maxlength="191" rows="4"
+                    placeholder="Tuliskan deskripsi singkat mengenai acara anda..."></textarea>
             </div>
             <div class="field">
-                <label style="font-size:18px">Spesifikasi Proyek</label>
-                <textarea name="spesifikasi" maxlength="500" rows="6"
-                    placeholder="Tuliskan spesifikasi mengenai proyek anda..."></textarea>
-            </div>
-            <div class="field">
-                <label style="font-size:18px">Biaya Proyek</label>
-                <div class="ui labeled fluid input">
-                    <label class="ui label">Rp</label>
-                    <input type="number" name="estimasi" placeholder="Masukkan Biaya Proyek">
+                <label style="font-size:18px">Kota Acara</label>
+                <div class="ui selection dropdown">
+                    <input type="hidden" name="kota">
+                    <i class="dropdown icon"></i>
+                    <div class="default text">Pilih Kota Acara</div>
+                    <div class="menu">
+                        <div class="item" value="bangkalan">Bangkalan</div>
+                        <div class="item" value="banyuwangi">Banyuwangi</div>
+                        <div class="item" value="blitar">Blitar</div>
+                        <div class="item" value="bojonegoro">Bojonegoro</div>
+                        <div class="item" value="bondowoso">Bondowoso</div>
+                        <div class="item" value="gresik">Gresik</div>
+                        <div class="item" value="jember">Jember</div>
+                        <div class="item" value="jombang">Jombang</div>
+                        <div class="item" value="kediri">Kediri</div>
+                        <div class="item" value="lamongan">Lamongan</div>
+                        <div class="item" value="lumajang">Lumajang</div>
+                        <div class="item" value="madiun">Madiun</div>
+                        <div class="item" value="magetan">Magetan</div>
+                        <div class="item" value="malang">Malang</div>
+                        <div class="item" value="mojokerto">Mojokerto</div>
+                        <div class="item" value="nganjuk">Ngajuk</div>
+                        <div class="item" value="ngawi">Ngawi</div>
+                        <div class="item" value="pacitan">Pacitan</div>
+                        <div class="item" value="pamekasan">Pamekasan</div>
+                        <div class="item" value="pasuruan">Pasuruan</div>
+                        <div class="item" value="ponorogo">Ponorogo</div>
+                        <div class="item" value="probolinggo">Probolinggo</div>
+                        <div class="item" value="sampang">Sampang</div>
+                        <div class="item" value="sidoarjo">Sidoarjo</div>
+                        <div class="item" value="situbondo">Situbondo</div>
+                        <div class="item" value="sumenep">Sumenep</div>
+                        <div class="item" value="trenggalek">Trenggalek</div>
+                        <div class="item" value="tuban">Tuban</div>
+                        <div class="item" value="tulungagung">Tulungagung</div>
+                        <div class="item" value="batu">Batu</div>
+                        <div class="item" value="surabaya">Surabaya</div>
+                    </div>
                 </div>
             </div>
             <div class="field">
-                <label style="font-size:18px">Daerah Proyek</label>
-                <input type="text" name="daerah" placeholder="Masukkan Alamat Lengkap">
+                <label style="font-size:18px">Nama Lokasi</label>
+                <input type="text" name="lokasi" placeholder="Masukkan Nama Lokasi">
+            </div>
+            <div class="field">
+                <label style="font-size:18px">Contact Person</label>
+                <input type="text" name="cp" placeholder="Contact Person">
+            </div>
+            <div class="field">
+                <label style="font-size:18px">Maksimal Orang Acara</label>
+                <div class="ui labeled fluid input">
+                    <input type="number" name="maksimal" placeholder="Masukkan maksimal orang acara">
+                </div>
+            </div>
+            <div class="field">
+                <label style="font-size:18px">Tipe Acara</label>
+                <div class="ui selection dropdown">
+                    <input type="hidden" name="status">
+                    <i class="dropdown icon"></i>
+                    <div class="default text">Pilih Tipe Acara</div>
+                    <div class="menu">
+                        <div class="item" value="gratis">Gratis</div>
+                        <div class="item" value="bayar">Bayar</div>
+                    </div>
+                </div>
+            </div>
+            <div class="field">
+                <label style="font-size:18px">Biaya Acara</label>
+                <div class="ui labeled fluid input">
+                    <label class="ui label">Rp</label>
+                    <input type="number" name="harga" placeholder="Masukkan Biaya Acara">
+                </div>
             </div>
             {{csrf_field()}}
             <button class="ui big teal button fluid" onclick="" type="submit" name="submit" style="margin-top:40px">
@@ -237,51 +317,63 @@ $(document)
             <div class="ui divider"></div>
             <div class="ui stackable grid">
                 <div class="three wide column">
-                    <img class="ui circular image" src="{{asset('arsitek.jpg')}}"
+                    <img class="ui circular image" src="{{asset($dataPanitia->foto)}}"
                         style="width:80px;height:80px;object-fit:cover">
                 </div>
                 <div class="thirteen wide column">
-                    <div style="font-size:22px"><b>{{ucfirst($dataProfesi->nama_profesi)}}</b></div>
-                    <div style="font-size:17px">{{ucfirst($dataProfesi->job_title)}}</div>
+                    <div style="font-size:22px"><b>{{ucfirst($dataPanitia->nama_panitia)}}</b></div>
+                    <div style="font-size:17px">aa</div>
                 </div>
             </div>
             <div class="ui divider"></div>
             <div class="ui stackable grid">
                 <div class="twelve wide column">
                     <div style="font-size:22px">
-                        <b>{{ucfirst($dataProject->namaProject)}}</b>
+                        <b>{{ucfirst($dataAcara->nama_acara)}}</b>
                     </div>
                     <div style="margin-top:5px;display:flex;flex-direction:row;align-items: center">
                         <div><i class="map marker alternate teal icon"></i></div>
-                        <div style="font-size:17px">{{ucfirst($dataProject->daerah)}}</div>
+                        <div style="font-size:17px">{{ucfirst($dataAcara->kota)}}</div>
                     </div>
                 </div>
                 <div class="four wide right aligned middle aligned column">
                     <span style="border:2px solid #d4d4d5;border-radius:4px;padding:5px 15px 5px 15px;font-size:17px">
-                        {{ucfirst($dataProject->category)}}
+                        {{ucfirst($dataAcara->kategori)}}
                     </span>
                 </div>
             </div>
             <div class="ui divider"></div>
             <div>
-                <div style="font-size:16px"><b>Deskripsi</b></div>
+                <div style="font-size:16px"><b>Kota</b></div>
                 <div style="font-size:15px">
-                    {{$dataProject->deskripsi}}
+                    {{$dataAcara->kota}}
                 </div>
             </div>
             <div style="margin-top:10px">
-                <div style="font-size:16px"><b>Spesifikasi</b></div>
+                <div style="font-size:16px"><b>Contact Person</b></div>
                 <div style="font-size:15px">
-                    {{$dataProject->spesifikasi}}
+                    {{$dataAcara->cp}}
+                </div>
+            </div>
+            <div style="margin-top:10px">
+                <div style="font-size:16px"><b>Maksimal</b></div>
+                <div style="font-size:15px">
+                    {{$dataAcara->cp}}
+                </div>
+            </div>
+            <div style="margin-top:10px">
+                <div style="font-size:16px"><b>Deskripsi</b></div>
+                <div style="font-size:15px">
+                    {{$dataAcara->deskripsi}}
                 </div>
             </div>
             <div class="ui divider"></div>
             <div class="ui container fluid" style="text-align:right">
-                <div style="font-size:22px"><b>Biaya Proyek</b></div>
+                <div style="font-size:22px"><b>Biaya Acara</b></div>
                 <div style="color:teal;font-size:20px">
                     <b>
                         <span>Rp </span>
-                        <span>{{number_format(($dataProject->estimasi),0,",",".")}}</span>
+                        <span>{{number_format(($dataAcara->harga),0,",",".")}}</span>
                     </b>
                 </div>
             </div>

@@ -38,7 +38,8 @@ Route::group(['prefix' => 'tamu', 'as' => 'tamu.'], function () {
                 Route::get('lihat-halaman-tambah-acara', 'PanitiaController@lihatHalamanTambahAcara')->name('lihat-halaman-tambah-acara');
                 Route::post('buat-acara', 'PanitiaController@buatAcara')->name('buat-acara');
                 Route::post('hapus-acara', 'PanitiaController@hapusAcara')->name('hapus-acara');
-
+                Route::get('lihat-halaman-ubah-acara/{id_acara}', 'PanitiaController@lihatHalamanEditAcara')->name('lihat-halaman-ubah-acara');
+                Route::post('ubah-acara/{id_acara}', 'PanitiaController@editAcara')->name('ubah-acara');
 
             });
         });
