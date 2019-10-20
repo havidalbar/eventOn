@@ -240,8 +240,8 @@
                     <a class="item" href="{{route('lihat-acara-kategori',['kategori'=>'liburan'])}}">Liburan</a>
                     <div class="right item">
                         <div class="item">
-                            <form class="ui icon input" method="get" action="/get-search">
-                                <input type="text" placeholder="Cari sesuatu..." name="cari">
+                            <form class="ui icon input" method="get" action="{{route('lihat-acara-cari')}}">
+                                <input type="text" placeholder="Cari sesuatu..." name="keyword">
                                 <i class="search link icon"></i>
                             </form>
                         </div>
