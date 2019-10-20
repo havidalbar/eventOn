@@ -118,11 +118,29 @@
                                 <div class="four wide right aligned middle aligned column">
                                     <span
                                         style="border:2px solid #d4d4d5;border-radius:4px;padding:5px 15px 5px 15px;font-size:17px">
-                                        {{ucfirst($acaras[$i]->kota)}}
+                                        {{ucfirst($acaras[$i]->kategori)}}
                                     </span>
                                 </div>
                             </div>
                             <div class="ui divider"></div>
+                            <div>
+                                <div style="font-size:16px"><b>Kota</b></div>
+                                <div style="font-size:15px">
+                                    {{$acaras[$i]->kota}}
+                                </div>
+                            </div>
+                            <div>
+                                <div style="font-size:16px"><b>Contact Person</b></div>
+                                <div style="font-size:15px">
+                                    {{$acaras[$i]->cp}}
+                                </div>
+                            </div>
+                            <div>
+                                <div style="font-size:16px"><b>Maksimal</b></div>
+                                <div style="font-size:15px">
+                                    {{$acaras[$i]->maksimal}}
+                                </div>
+                            </div>
                             <div>
                                 <div style="font-size:16px"><b>Deskripsi</b></div>
                                 <div style="font-size:15px">
@@ -164,7 +182,7 @@
                 </div>
                 <div class="actions">
                     <div style="display:flex;flex-direction:row-reverse">
-                        <form action='#' method="post">
+                        <form action='{{route('tamu.user.panitia.verif.hapus-acara',['id' => $acaras[$i]->id])}}' method="post">
                             {{csrf_field()}}
                             <button class="ui positive button">
                                 Iya

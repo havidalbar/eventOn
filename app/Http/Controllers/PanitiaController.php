@@ -16,15 +16,15 @@ class PanitiaController extends Controller
     {
         $panitia = Panitia::where('id', Session::get('id_panitia'))->first();
 
-        $acaras = Acara::where('id_panitia',$panitia->id)->get();
-        return view('halamanPanitia.profilPanitia', compact('panitia','acaras'));
+        $acaras = Acara::where('id_panitia', $panitia->id)->get();
+        return view('halamanPanitia.profilPanitia', compact('panitia', 'acaras'));
     }
 
-    function updateProfile(PanitiaRequest $request){
+    function updateProfile(PanitiaRequest $request)
+    { }
 
-    }
-
-    function buatAcara(AcaraRequest $request){
+    function buatAcara(AcaraRequest $request)
+    {
         if ($request['files'] != null) {
             $data = new Acara();
             $data->foto_acara = implode(" ", $request['files']);
@@ -37,49 +37,52 @@ class PanitiaController extends Controller
             $data->maksimal = $request->maksimal;
             $data->id_panitia = Session::get('id_panitia');
             $tipe = -1;
-            if($request->status=="gratis"){
-                $tipe=0;
-            }else{
-                $tipe=1;
+            if ($request->status == "gratis") {
+                $tipe = 0;
+            } else {
+                $tipe = 1;
             }
             $data->status = $tipe;
             $data->harga = $request->harga;
             $data->save();
-            return redirect()->route('index')->with('alert-success', 'Berhasil upload project');
+            return redirect()->route('index')->with('alert-success', 'Berhasil buat acara');
         } else {
-            return redirect()->back()->with('alert', 'Masukkan foto proyek anda terlebih dahulu!')->withInput();
+            return redirect()->back()->with('alert', 'Masukkan foto acara anda terlebih dahulu!')->withInput();
         }
     }
 
-    function lihatKumpulanAcara(){
+    function lihatKumpulanAcara()
+    { }
 
+    function editAcara()
+    { }
+
+    function hapusAcara(Request $request)
+    {
+        $acara = Acara::where('id', $request->input('id'))->first();
+        // $dataPesan =  Pesan::where('id_project', $acara->id)->first();
+        // $dataProgres =  Progres::where('id_project', $acara->id)->first();
+        // if ($dataPesan != null || $dataProgres != null) {
+        //     return redirect()->back()->with('alert', 'Project tidak dapat dihapus, karena memiliki progres atau pesanan');
+        // }
+        $acara = Acara::where('id', $request->input('id'))->delete();
+        return redirect()->route('index')->with('alert-success', 'Acara telah dihapus');
     }
 
-    function editAcara(){
+    function lihatDataPembeli()
+    { }
 
-    }
+    function deteksiBarcode()
+    { }
 
-    function hapusAcara(){
-
-    }
-
-    function lihatDataPembeli(){
-
-    }
-
-    function deteksiBarcode(){
-
-    }
-
-    function lihatHalamanTambahAcara(){
+    function lihatHalamanTambahAcara()
+    {
         return view('halamanPanitia.tambahAcara');
     }
 
-    function lihatHalamanEditAcara(){
+    function lihatHalamanEditAcara()
+    { }
 
-    }
-
-    function lihatHalamanDeteksiBarcode(){
-
-    }
+    function lihatHalamanDeteksiBarcode()
+    { }
 }

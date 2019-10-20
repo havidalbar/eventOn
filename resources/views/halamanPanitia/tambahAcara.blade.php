@@ -125,7 +125,7 @@ $(document)
             @endif
         </div>
         <form class="ui form" style="margin-top:15px" id="buat-acara" method='post'
-            action="{{ route('tamu.user.panitia.buat-acara') }}" enctype="multipart/form-data">
+            action="{{ route('tamu.user.panitia.verif.buat-acara') }}" enctype="multipart/form-data">
             <div class="field">
                 <label style="font-size:18px">Nama Acara</label>
                 <input type="text" name="nama_acara" placeholder="Masukkan Nama Acara">
