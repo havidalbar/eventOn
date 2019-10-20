@@ -15,7 +15,6 @@ class PanitiaController extends Controller
     function lihatProfilePanitia()
     {
         $panitia = Panitia::where('id', Session::get('id_panitia'))->first();
-
         $acaras = Acara::where('id_panitia', $panitia->id)->get();
         return view('halamanPanitia.profilPanitia', compact('panitia', 'acaras'));
     }
@@ -78,13 +77,12 @@ class PanitiaController extends Controller
     function hapusAcara(Request $request)
     {
         $acara = Acara::where('id', $request->input('id'))->first();
-        // $dataPesan =  Pesan::where('id_project', $acara->id)->first();
-        // $dataProgres =  Progres::where('id_project', $acara->id)->first();
-        // if ($dataPesan != null || $dataProgres != null) {
-        //     return redirect()->back()->with('alert', 'Project tidak dapat dihapus, karena memiliki progres atau pesanan');
-        // }
-        $acara = Acara::where('id', $request->input('id'))->delete();
-        return redirect()->route('index')->with('alert-success', 'Acara telah dihapus');
+        if ($acara) {
+            $acara = Acara::where('id', $request->input('id'))->delete();
+            return redirect()->route('index')->with('alert-success', 'Acara telah dihapus');
+        } else {
+            abort(404);
+        }
     }
 
     function lihatDataPembeli()
@@ -102,7 +100,11 @@ class PanitiaController extends Controller
     {
         $dataAcara = Acara::where('id', $id_acara)->where('id_panitia', Session::get('id_panitia'))->first();
         $dataPanitia = Panitia::where('id', $dataAcara->id_panitia)->first();
-        return view('halamanPanitia.ubahAcara',  compact('dataAcara', 'dataPanitia'));
+        if ($dataAcara && $dataPanitia) {
+            return view('halamanPanitia.ubahAcara',  compact('dataAcara', 'dataPanitia'));
+        } else {
+            abort(500);
+        }
     }
 
     function lihatHalamanDeteksiBarcode()

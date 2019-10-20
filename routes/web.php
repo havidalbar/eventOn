@@ -33,6 +33,13 @@ Route::group(['prefix' => 'tamu', 'as' => 'tamu.'], function () {
         Route::get('lihat-semua-acara', 'MemberController@lihatSemuaAcara')->name('lihat-semua-acara');
         Route::get('lihat-halaman-daftar-panitia', 'MemberController@lihatHalamanDaftarPanitia')->name('lihat-halaman-daftar-panitia');
         Route::post('upload-foto', 'UploadController@Upload')->name('upload-foto');
+        Route::get('lihat-halaman-pesan-tiket/{id_acara}','PesananController@lihatHalamanPesanTiket')->name('lihat-halaman-pesan-tiket');
+        Route::post('pesan-tiket', 'PesananController@pesanTiket')->name('pesan-tiket');
+        Route::get('lihat-halaman-konfirmasi-transfer/{id_pesan}','PesananController@lihatHalamanKonfirmasiTransfer')->name('lihat-halaman-konfirmasi-transfer');
+        Route::get('lihat-halaman-upload-bukti-konfirmasi/{id_pesan}','PesananController@halamanUploadBuktiKonfirmasi')->name('lihat-halaman-upload-bukti-konfirmasi');
+        Route::post('update-konfirmasi-transfer','PesananController@updateKonfirmasiTransfer')->name('update-konfirmasi-transfer');
+        Route::post('upload-bukti-transfer/{id_pesan}','PesananController@uploadBuktiKonfirmasiTransfer')->name('upload-bukti-transfer');
+
 
         Route::group(['prefix' => 'panitia', 'as' => 'panitia.', 'middleware' => ['panitia']], function () {
             Route::get('lihat-profil-panitia', 'PanitiaController@lihatProfilePanitia')->name('lihat-halaman-profile-panitia');

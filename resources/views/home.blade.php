@@ -182,7 +182,7 @@
             $fotos = explode(" ", $items[$i]->foto_acara);
             ?>
                 <div class="card" onclick="$('.ui.fullscreen.modal.detail.<?php echo $i ?>').modal('show');">
-                    <img class="ui fluid image" src="{{asset('customer.jpg')}}" style="object-fit:cover;height:250px">
+                    <img class="ui fluid image" src="{{asset($fotos[0])}}" style="object-fit:cover;height:250px">
                     <div class="ui top right attached teal large label">
                         <b>
                             <span>Rp </span>
@@ -312,8 +312,8 @@
                     <button class="ui negative button">
                         Pilih Lagi
                     </button>
-                    <button class="ui positive button" onclick="window.location.href='/'">
-                        Pesan Proyek
+                <button class="ui positive button" onclick="window.location.href='{{route('tamu.user.lihat-halaman-pesan-tiket',['id_acara'=>$items[$i]->id])}}'">
+                        Pesan Tiket
                     </button>
                 </div>
         </div>

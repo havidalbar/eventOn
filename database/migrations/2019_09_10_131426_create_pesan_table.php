@@ -23,12 +23,14 @@ class CreatePesanTable extends Migration
             $table->string('nomor_rekening',20)->nullable();
             $table->string('bank_pengirim',20)->nullable();
             $table->string('bank_tujuan',20)->nullable();
-            $table->bigInteger('jumlah');
-            $table->integer('kode_unik');
-            $table->string('gambar_konfirmasi')->nullable();
+            $table->bigInteger('jumlah')->nullable();
+            $table->integer('kode_unik')->nullable();
+            $table->string('gambar_konfirmasi',191)->nullable();
             $table->integer('status')->default('0');
             $table->unsignedInteger('id_member');
             $table->foreign('id_member')->references('id')->on('member')->nullable();
+            $table->unsignedInteger('id_acara');
+            $table->foreign('id_acara')->references('id')->on('acara')->nullable()->onDelete('cascade')->onUpdate('cascade');
             $table->timestamps();
         });
     }

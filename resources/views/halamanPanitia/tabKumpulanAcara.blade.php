@@ -161,8 +161,8 @@
                     </div>
                 </div>
                 <div class="actions">
-                    <a >
-                        <button class="ui negative button" onclick="$('.ui.tiny.modal.hapus').modal('show')">
+                    <a href="#">
+                        <button class="ui negative button" onclick="$('.ui.tiny.modal.hapus.<?php echo $i ?>').modal('show')">
                             Hapus Proyek
                         </button>
                         <button class="ui teal button" onclick="window.location.href='{{route('tamu.user.panitia.verif.lihat-halaman-ubah-acara',['id_acara' => $acaras[$i]->id])}}'">
@@ -173,7 +173,7 @@
             </div>
             <!--Akhir Modal Detail -->
             <!-- Dimmer hapus -->
-            <div class="ui tiny modal hapus">
+            <div class="ui tiny modal hapus <?php echo $i ?>">
                 <div class="header">
                     Hapus Proyek
                 </div>

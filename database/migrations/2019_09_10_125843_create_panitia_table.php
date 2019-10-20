@@ -21,7 +21,7 @@ class CreatePanitiaTable extends Migration
             $table->foreign('id_member')->references('id')->on('member')->nullable();
             $table->string('alamat',191);
             $table->string('nohp',20);
-            $table->string('url_image',50);
+            $table->string('url_image',191);
             $table->integer('status')->nullable();
             $table->timestamps();
         });
