@@ -59,14 +59,14 @@
                     </div>
                     <div class="content">
                         <div class="ui two stackable cards">
-                        {{-- @for($j=0; $j < count($fotos); $j++) --}}
+                        @for($j=0; $j < count($fotos); $j++)
                             <div class="card">
                                 <img src="/{{$fotos[$j]}}" style="height:250px;object-fit:cover">
                                 <a class="ui teal bottom attached button" href="/bankbca.png" download="portofolio<?php echo 'a' ?>">
                                     Download
                                 </a>
                             </div>
-                        {{-- @endfor --}}
+                        @endfor
                         </div>
                     </div>
                     <div class="actions">
@@ -75,7 +75,7 @@
                         </button>
                     </div>
                 </div>
-                {{-- @endfor --}}
+                @endfor
     </tbody>
 
 

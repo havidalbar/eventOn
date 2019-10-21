@@ -38,7 +38,7 @@ class PanitiaController extends Controller
             $tipe = -1;
             if ($request->status == "gratis") {
                 $tipe = 0;
-            } else {
+            } else if ($request->status =="bayar") {
                 $tipe = 1;
             }
             $data->status = $tipe;

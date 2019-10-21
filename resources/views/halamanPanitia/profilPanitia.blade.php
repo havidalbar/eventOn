@@ -1,5 +1,5 @@
-@extends ('layouts.nav')
-@section('title', 'Informasi Profesi | Aderim')
+@extends (\Session::has('username') ? 'layouts.navLogin' : 'layouts.nav')
+@section('title', 'Ubah Detail Proyek | EventOn')
 
 @section('content')
 @if(\Session::has('alert'))
