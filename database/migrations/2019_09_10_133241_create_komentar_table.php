@@ -14,14 +14,15 @@ class CreateKomentarTable extends Migration
     public function up()
     {
         Schema::create('komentar', function (Blueprint $table) {
-            $table->string('id', 36)->primary();
-            $table->unsignedInteger('id_event');
-            $table->foreign('id_event')->references('id')->on('event');
+            $table->increments('id');
+            $table->unsignedInteger('id_acara');
+            $table->foreign('id_acara')->references('id')->on('acara');
             $table->text('isi');
-            $table->unsignedInteger('id_user')->nullable();
-            $table->foreign('id_user')->references('id')->on('user');
-            $table->unsignedInteger('id_eo')->nullable();
-            $table->foreign('id_eo')->references('id')->on('eo')->onUpdate('cascade')->onDelete('set null');
+            $table->unsignedInteger('komentar_ke')->nullable();
+            $table->unsignedInteger('id_member')->nullable();
+            $table->foreign('id_member')->references('id')->on('member');
+            $table->unsignedInteger('id_panitia')->nullable();
+            $table->foreign('id_panitia')->references('id')->on('panitia')->onUpdate('cascade')->onDelete('set null');
             $table->timestamps();
         });
     }

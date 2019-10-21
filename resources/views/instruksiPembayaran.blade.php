@@ -1,10 +1,10 @@
-@extends ('layouts.nav')
-@section('title', 'Instruksi Pembayaran | Aderim')
+@extends (\Session::has('username') ? 'layouts.navLogin' : 'layouts.nav')
+@section('title', 'Instruksi Pembayaran | EventOn')
 
 @section('js')
 <script src="/js/dropzone.js"></script>
 <script type="text/javascript">
-Dropzone.options.myDropzone = {
+    Dropzone.options.myDropzone = {
     addRemoveLinks: true,
     paramName: 'file',
     maxFilesize: 5, // MB
@@ -41,7 +41,7 @@ Dropzone.options.myDropzone = {
             <div style="display:flex;flex-direction:row;justify-content:center;font-weight:bold;margin-top:20px">
                 <div style="font-size:28px;color:#4d4d4d">Rp</div>
                 <div id="nominal_donasi" style="margin-left:10px;font-size:28px;color:#4d4d4d">
-                    a</div>
+                    {{number_format(($pesan->jumlah),0,",",".")}}</div>
             </div>
             <div class="ui pointing label fluid"
                 style="font-size:16px;line-height:1.6;background-color:#fff7c2;color:#4d4d4d">
@@ -59,13 +59,13 @@ Dropzone.options.myDropzone = {
             <div style="border:1px solid #e1e2e3;border-radius:6px;margin:20px 5px 20px 5px;padding:10px">
                 <div class="ui stackable grid container">
                     <div class="eight wide column left aligned">
-                        <div style="font-size:17px;color:#263d40"><b>Jumlah Pembayaran</b></div>
+                        <div style="font-size:17px;color:#263d40"><b>Kode Unik Pembayaran</b></div>
                     </div>
                     <div class="eight wide column right aligned">
                         <div style="display:flex;flex-direction:row;float:right">
                             <div style="font-size:17px"><b>Rp</b></div>
                             <div style="font-size:17px;margin-left:5px">
-                                <b>aa</b></div>
+                                <b>{{number_format(($pesan->kode_unik),0,",",".")}}</b></div>
                         </div>
                     </div>
                 </div>
@@ -74,10 +74,10 @@ Dropzone.options.myDropzone = {
 
                 <div class="ui stackable grid container">
                     <div class="eight wide column left aligned">
-                        <div style="font-size:17px;color:#263d40"><b>Kode Unik</b></div>
+                        <div style="font-size:17px;color:#263d40"><b>Nomor Rekening</b></div>
                     </div>
                     <div class="eight wide column right aligned">
-                        <div style="font-size:17px"><b>aa</b>
+                    <div style="font-size:17px"><b>{{$pesan->nomor_rekening}}</b>
                         </div>
                     </div>
                 </div>
@@ -98,30 +98,30 @@ Dropzone.options.myDropzone = {
             <div class="ui stackable grid"
                 style="border:1px solid #e1e2e3;border-radius:6px;margin:20px 5px 20px 5px;padding:10px">
                 <div class="seven wide middle aligned column">
-                    {{-- @if($dataTransaksi->bank_pengirim=="BCA") --}}
+                    @if($pesan->bank_pengirim=="BCA")
                     <img class="ui small image" src="{{asset('bankbca.png')}}" style="padding-left:10px">
-                    {{-- @elseif($dataTransaksi->bank_pengirim=="MANDIRI")
+                    @elseif($pesan->bank_pengirim=="MANDIRI")
                     <img class="ui small image" src="{{asset('bankmandiri.png')}}" style="padding-left:10px">
-                    @elseif($dataTransaksi->bank_pengirim=="BRI")
+                    @elseif($pesan->bank_pengirim=="BRI")
                     <img class="ui small image" src="{{asset('bankbri.png')}}" style="padding-left:10px">
-                    @elseif($dataTransaksi->bank_pengirim=="BNI")
+                    @elseif($pesan->bank_pengirim=="BNI")
                     <img class="ui small image" src="{{asset('bankbni.png')}}" style="padding-left:10px">
-                    @elseif($dataTransaksi->bank_pengirim=="CIMB")
+                    @elseif($pesan->bank_pengirim=="CIMB")
                     <img class="ui small image" src="{{asset('bankcimb.png')}}" style="padding-left:10px">
-                    @endif --}}
+                    @endif
                 </div>
                 <div class="five wide column middle aligned">
-                    {{-- @if($dataTransaksi->bank_pengirim=="BCA") --}}
+                    @if($pesan->bank_pengirim=="BCA")
                     <div id="nomor_rekening" style="font-size:20px"><b>4911008989</b></div>
-                    {{-- @elseif($dataTransaksi->bank_pengirim=="MANDIRI")
+                    @elseif($pesan->bank_pengirim=="MANDIRI")
                     <div id="nomor_rekening" style="font-size:20px"><b>5911123989</b></div>
-                    @elseif($dataTransaksi->bank_pengirim=="BRI")
+                    @elseif($pesan->bank_pengirim=="BRI")
                     <div id="nomor_rekening" style="font-size:20px"><b>1211059869</b></div>
-                    @elseif($dataTransaksi->bank_pengirim=="BNI")
+                    @elseif($pesan->bank_pengirim=="BNI")
                     <div id="nomor_rekening" style="font-size:20px"><b>7291989112</b></div>
-                    @elseif($dataTransaksi->bank_pengirim=="CIMB")
+                    @elseif($pesan->bank_pengirim=="CIMB")
                     <div id="nomor_rekening" style="font-size:20px"><b>3551012469</b></div>
-                    @endif --}}
+                    @endif
                 </div>
                 <div class="four wide column middle aligned">
                     <button type="button" name="copyToken" value="copy" class="copyToken ui large button"
@@ -154,8 +154,8 @@ Dropzone.options.myDropzone = {
         Unggah Bukti Pembayaran
     </div>
     <div class="content">
-        <form action="{{ url('/uploadBukti') }}" id="my-dropzone" enctype="multipart/form-data" class="dropzone">
-            a
+        <form action="{{ route('tamu.user.upload-foto') }}" id="my-dropzone" enctype="multipart/form-data" class="dropzone">
+            {{ csrf_field() }}
         </form>
     </div>
     <div class="actions">
@@ -176,8 +176,8 @@ Dropzone.options.myDropzone = {
             Bukti pembayaran anda sedang kami proses. Mohon tunggu beberapa saat. Terimakasih...
         </div>
     </div>
-    <form class="actions" id="formbukti" method="POST" action='/'>
-        a
+<form class="actions" id="formbukti" method="POST" action='{{route('tamu.user.upload-bukti-transfer',['id_pesan'=>$pesan->id])}}'>
+        {{ csrf_field() }}
         <button class="ui positive button">
             Kembali Ke Beranda
         </button>

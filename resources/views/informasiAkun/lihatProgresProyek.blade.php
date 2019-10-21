@@ -9,12 +9,14 @@
     <div class="ui stackable grid">
         <div class="ten wide column">
             <div class="ui stackable grid" style="height:100%">
-                
+                {{-- <?php
+                // $fotos = explode(" ", $orderProgres->url_gambar);
+                ?> --}}
                 <div class="twelve wide column">
                     <div class="ui one stackable cards">
                         <div class="card">
                             <div class="image">
-                                <img class="ui big image" src="/logo2.png">
+                                <img class="ui big image" src="">
                             </div>
                         </div>
                     </div>
@@ -24,7 +26,7 @@
                     <div class="ui one stackable cards">
                         <div class="card">
                             <div class="image">
-                                <img src="/logo2.png"
+                                <img src=""
                                     style="height:145px;object-fit:cover">
                             </div>
                         </div>
@@ -46,29 +48,29 @@
             <div class="ui divider"></div>
             <div class="ui stackable grid">
                 <div class="four wide column">
-                    <img class="ui circular image" src="/logo2.png"
+                    <img class="ui circular image" src=""
                         style="width:80px;height:80px;object-fit:cover">
                 </div>
                 <div class="twelve wide middle aligned column">
-                <div style="font-size:22px"><b>Event Organizer</b></div>
-                    <div style="font-size:17px;margin-top:5px">Kepala Pelaksana</div>
-                <div style="font-size:17px;margin-top:5px">jack.fast83@gmail.com</div>
+                <div style="font-size:22px"><b>aaaaaaa</b></div>
+                    <div style="font-size:17px;margin-top:5px">bbbbb</div>
+                <div style="font-size:17px;margin-top:5px">ccccc</div>
                 </div>
             </div>
             <div class="ui divider"></div>
             <div class="ui stackable grid">
                 <div class="twelve wide middle aligned column">
                     <div style="font-size:22px">
-                        <b>Konser Tulus</b>
+                        <b>dddd</b>
                     </div>
                     <div style="margin-top:10px;display:flex;flex-direction:row;align-items: center">
                         <div><i class="map marker alternate teal icon"></i></div>
-                        <div style="font-size:16px">Ex-Bioskop Kelud</div>
+                        <div style="font-size:16px">eeee</div>
                     </div>
                 </div>
                 <div class="four wide right aligned middle aligned column">
                     <span style="border:2px solid #d4d4d5;border-radius:4px;padding:5px 15px 5px 15px;font-size:17px">
-                        Konser
+                        ffff
                     </span>
                 </div>
             </div>
@@ -76,11 +78,11 @@
             <div style="font-size:20px"><b>Progres Proyek</b></div>
             <div style="font-size:17px;margin-top:10px">
                 <span>Bulan </span>
-                <span>Persiapan</span>
+                <span>gggg</span>
             </div>
             <div style="font-size:20px;margin-top:15px"><b>Deskripsi Progres</b></div>
             <div style="font-size:17px;margin-top:10px;line-height:1.5">
-                    Konser Tulus
+                   hhh
             </div>
             <div class="ui divider"></div>
             {{-- @if(($dataOrder->statusLagi===6 && $dataOrder->id_transaksi2==null) || ($dataOrder->statusLagi==12 &&
@@ -109,11 +111,13 @@
     </div>
     <div class="ui divider" style="margin-top:30px"></div>
     <h3>Lihat Progres Pengerjaan Proyek Bulan Ke</h3>
-    
+    {{-- <?php
+    $bulan = $dataOrder->statusLagi;
+    ?> --}}
     <div class="ui pagination menu">
-    {{-- @for($j=1; $j<= $bulan; $j++) --}}
-    {{-- <a class="item" onclick="window.location.href='/informasi-akun/{{$dataOrder->id}}/progres/{{$j}}'">{{$j}}</a> --}}
-    {{-- @endfor --}}
+    {{-- @for($j=1; $j<= $bulan; $j++)
+    <a class="item" onclick="window.location.href='/informasi-akun/{{$dataOrder->id}}/progres/{{$j}}'">{{$j}}</a>
+    @endfor --}}
     </div>
 </div>
 

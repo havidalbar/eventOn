@@ -10,19 +10,8 @@
         
     </div>
     <div class="ui active tab" data-tab="dalam-pengerjaan" style="padding:20px 20px 30px 20px">
-    {{-- @if(count($histories)<=0) --}}
-    <div class="ui container center aligned">
-        <i class="shopping cart icon teal huge"></i>
-        
-    </div>
-    {{-- @elseif(count($histories)>0) --}}
         <div class="ui stackable three doubling link special cards">
-            {{-- @for($i = 0; $i < count($histories); $i++) --}}
-            <?php
-            // $fotos = explode(" ", $histories[$i]->url_gambar);
-            ?>
-            {{-- @if(($histories[$i]->status=="Order sedang diproses" || $histories[$i]->status=="Pembayaran tidak terkonfirmasi" || $histories[$i]->status=="Menunggu pembayaran") && $histories[$i]->statusLagi>=0) --}}
-            <div class="card">
+             <div class="card">
                 <div class="blurring dimmable image">
                     <div class="ui dimmer">
                         <div class="content">
@@ -30,59 +19,114 @@
                             <div style="font-size:22px;margin-top:10px;margin-bottom:20px">
                                 Dalam Pengerjaan
                             </div>
-                            <button class="ui inverted medium button" onclick="window.location.href='/informasi-akun/1123/progres'">Lihat</button>
+                            <button class="ui inverted medium button" onclick="window.location.href='/'">Lihat</button>
                         </div>
                     </div>
-                    <img class="ui fluid image" src="/logo2.png" style="object-fit:cover;height:250px">
+                    <img class="ui fluid image" src="" style="object-fit:cover;height:250px">
                     <div class="ui top right attached teal large label" style="max-width:55%">
-                        Menunggu Pembayaran
+                        aaaa
                     </div>
                 </div>
                 <div class="content">
-                    <div class="header">Konser Tulus</div>
+                    <div class="header">bbb</div>
                     <div class="meta" style="margin-top:5px">
                         <span style="border:2px solid #d4d4d5;border-radius:4px;padding:2px 4px 2px 4px">
-                            Konser Musik
+                            ccc
                         </span>
                     </div>
                     <div class="description">
-                        Konser Tur Tulus
+                        ddd
                     </div>
                 </div>
                 <div class="extra content">
                     <div>
                         <i class="user circle teal icon"></i>
-                        Event Organizer
+                        rrrr
                     </div>
                     <div style="margin-top:5px;display:flex;flex-direction:row;align-items: center">
                         <div><i class="map marker alternate teal icon"></i></div>
-                        <div>Malang</div>
+                        <div>ff</div>
                     </div>
                 </div>
             </div>
-            {{-- @endif
-            @endfor --}}
         </div>
-        {{-- @endif --}}
     </div>
     <div class="ui tab" data-tab="selesai" style="padding:20px 20px 30px 20px">
-    {{-- @if(count($histories)<=0)
-    <div class="ui container center aligned">
-        <i class="shopping cart icon teal huge"></i>
-        <div style="font-size:24px;margin-top:15px"><b>Oops, anda belum melakukan pemesanan :(</b></div>
-        <div style="font-size:20px;margin-top:15px">Yuk lakukan pemesanan sekarang...</div>
-    </div> --}}
-    
-            {{-- @elseif($i==0 && $histories[$i]->status!="Selesai") --}}
-            <!-- <div class="ui container center aligned">
-                    <i class="shopping cart icon teal huge"></i>
-                    <div style="font-size:24px;margin-top:15px"><b>Oops, order anda belum ada yang selesai :(</b></div>
-                    <div style="font-size:20px;margin-top:15px">Sabar yaa...</div>
-                </div> -->
-            {{-- @endif
-            @endfor --}}
+        <div class="ui stackable three doubling link special cards">
+            <div class="card">
+                <div class="blurring dimmable image">
+                    <div class="ui dimmer">
+                        <div class="content">
+                            <i class="green check circle outline huge icon"></i>
+                            <div style="font-size:22px;margin-top:10px;margin-bottom:20px">
+                                Selesai
+                            </div>
+                            <button class="ui inverted medium button" onclick="window.location.href='/'">Lihat</button>
+                        </div>
+                    </div>
+                    <img src="" style="object-fit:cover;height:250px">
+                </div>
+                <div class="content">
+                    <div class="header">aaa</div>
+                    <div class="meta" style="margin-top:5px">
+                        <span style="border:2px solid #d4d4d5;border-radius:4px;padding:2px 4px 2px 4px">
+                           bbb
+                        </span>
+                    </div>
+                    <div class="description">
+                        ccc
+                    </div>
+                </div>
+                <div class="extra content">
+                    <div>
+                        <i class="user circle teal icon"></i>
+                        ddd
+                    </div>
+                    <div style="margin-top:5px;display:flex;flex-direction:row;align-items: center">
+                        <div><i class="map marker alternate teal icon"></i></div>
+                        <div>eee</div>
+                    </div>
+                </div>
+            </div>
         </div>
-        {{-- @endif --}}
+    </div>
+    <div class="ui tab" data-tab="dibatalkan" style="padding:20px 20px 30px 20px">
+        <div class="ui stackable three doubling link special cards">
+            <div class="card">
+                <div class="blurring dimmable image">
+                    <div class="ui dimmer">
+                        <div class="content">
+                            <i class="red times circle outline huge icon"></i>
+                            <div style="font-size:22px;margin-top:10px;margin-bottom:20px">
+                                Dibatalkan
+                            </div>
+                        </div>
+                    </div>
+                    <img src="" style="object-fit:cover;height:250px">
+                </div>
+                <div class="content">
+                    <div class="header">aaa</div>
+                    <div class="meta" style="margin-top:5px">
+                        <span style="border:2px solid #d4d4d5;border-radius:4px;padding:2px 4px 2px 4px">
+                                bbb
+                        </span>
+                    </div>
+                    <div class="description">
+                           ccc
+                    </div>
+                </div>
+                <div class="extra content">
+                    <div>
+                        <i class="user circle teal icon"></i>
+                        ddd
+                    </div>
+                    <div style="margin-top:5px;display:flex;flex-direction:row;align-items: center">
+                        <div><i class="map marker alternate teal icon"></i></div>
+                        <div>eee</div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
     
 </div>
