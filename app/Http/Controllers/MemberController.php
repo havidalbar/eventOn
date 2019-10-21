@@ -27,9 +27,9 @@ class MemberController extends Controller
         return view('informasiAkun.informasiAkunProfil', compact('akun'));
     }
 
-    public function lihatDetailAcara($id)
+    public function lihatDetailAcara($id_acara)
     {
-        $acara = Member::where('id', $id)->first();
+        $acara = Acara::find($id_acara);
         if ($acara) {
             $panitia = Panitia::find($acara->id_panitia);
             return redirect()->route('lihat-detail-acara')->with(compact('acara', 'panitia'));
@@ -38,13 +38,13 @@ class MemberController extends Controller
         }
     }
 
-    public function lihatKodeUnik()
+    public function lihatKodeUnik($id_acara)
     {
-        $pesan = Pesan::where('id_member', Session::get('id'))->first();
+        $pesan = Pesan::where('id_member', Session::get('id'))->where('id_acara',$id_acara)->first();
         if ($pesan) {
             return redirect()->route('akun.acara.kode-unik')->with(compact('pesan'));
         } else {
-            abort(403);
+            abort(404);
         }
     }
 
@@ -59,7 +59,7 @@ class MemberController extends Controller
                 $panitia[$i] = Panitia::where('id', $acaras[$i]->id_panitia)->first();
             }
             $key = $request->input('keyword');
-            return view('cari',compact('acaras','key','panitia'));
+            return view('cari', compact('acaras', 'key', 'panitia'));
         } else {
             abort(404);
         }
@@ -110,7 +110,7 @@ class MemberController extends Controller
         for ($i = 0; $i < count($items); $i++) {
             $panitias[$i] = Panitia::where('id', $items[$i]->id_panitia)->first();
         }
-        return view('home', compact('items','panitias'));
+        return view('home', compact('items', 'panitias'));
     }
 
     public function lihatSemuaAcara()
@@ -121,21 +121,21 @@ class MemberController extends Controller
             $panitia[$i] = Panitia::find($acaras[$i]->id_panitia);
         }
         $key = 'semua';
-        return view('cari',compact('acaras','panitia','key'));
+        return view('cari', compact('acaras', 'panitia', 'key'));
     }
 
     public function cariAcaraKategori(Request $request)
     {
         $acaras = null;
-        if($request->input('kategori') != "semua"){
+        if ($request->input('kategori') != "semua") {
             $acaras = Acara::where('kategori', $request->input('kategori'));
-        }else{
-            $acaras = Acara::where('id','>=','1');
+        } else {
+            $acaras = Acara::where('id', '>=', '1');
         }
-        if($request->input('max') != null) {
+        if ($request->input('max') != null) {
             $acaras->where('harga', '<=', $request->input('max'));
         }
-        if($request->input('min') != null) {
+        if ($request->input('min') != null) {
             $acaras->where('harga', '>=', $request->input('min'));
         }
         $acaras = $acaras->get();
@@ -144,12 +144,16 @@ class MemberController extends Controller
         for ($i = 0; $i < count($acaras); $i++) {
             $panitia[$i] = Panitia::where('id', $acaras[$i]->id_panitia)->first();
         }
-        return view('cari', compact('acaras','panitia','key'));
+        return view('cari', compact('acaras', 'panitia', 'key'));
     }
 
     public function lihatHalamanDaftarPanitia()
     {
         return view('daftarPanitia');
+    }
+    public function lihatHalamanPesanan()
+    {
+
     }
 
     public function KomentarAcara(Request $request, $id_acara)
@@ -161,9 +165,9 @@ class MemberController extends Controller
         return redirect()->back()->with('alert', 'berhasil komentar');
     }
 
-    public function HapusKomentarAcara($id)
+    public function HapusKomentarAcara($id_komentar,$id_acara)
     {
-        $komentar = Komentar::find($id);
+        $komentar = Komentar::find($id_komentar);
         if ($komentar) {
             $komentar->delete();
             return redirect()->back()->with('alert', 'berhasil menghapus acara');

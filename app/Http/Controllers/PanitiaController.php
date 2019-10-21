@@ -19,9 +19,6 @@ class PanitiaController extends Controller
         return view('halamanPanitia.profilPanitia', compact('panitia', 'acaras'));
     }
 
-    function updateProfile(PanitiaRequest $request)
-    { }
-
     function buatAcara(AcaraRequest $request)
     {
         if ($request['files'] != null) {
@@ -55,7 +52,6 @@ class PanitiaController extends Controller
 
     function editAcara(AcaraRequest $request, $id_acara)
     {
-
         if ($request['files'] != null) {
             $tipe = -1;
             if ($request->status == "gratis") {
@@ -74,21 +70,21 @@ class PanitiaController extends Controller
         }
     }
 
-    function hapusAcara(Request $request)
+    function hapusAcara($id_acara)
     {
-        $acara = Acara::where('id', $request->input('id'))->first();
+        $acara = Acara::where('id', $id_acara)->first();
         if ($acara) {
-            $acara = Acara::where('id', $request->input('id'))->delete();
+            $acara = Acara::where('id', $id_acara)->delete();
             return redirect()->route('index')->with('alert-success', 'Acara telah dihapus');
         } else {
             abort(404);
         }
     }
 
-    function lihatDataPembeli()
+    function lihatDataPembeli($id_acara)
     { }
 
-    function deteksiBarcode()
+    function deteksiBarcode(Request $request)
     { }
 
     function lihatHalamanTambahAcara()

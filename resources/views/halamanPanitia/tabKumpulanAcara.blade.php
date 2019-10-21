@@ -161,7 +161,7 @@
                     </div>
                 </div>
                 <div class="actions">
-                    <a href="#">
+                    <a >
                         <button class="ui negative button" onclick="$('.ui.tiny.modal.hapus.<?php echo $i ?>').modal('show')">
                             Hapus Proyek
                         </button>
@@ -182,7 +182,7 @@
                 </div>
                 <div class="actions">
                     <div style="display:flex;flex-direction:row-reverse">
-                        <form action='{{route('tamu.user.panitia.verif.hapus-acara',['id' => $acaras[$i]->id])}}' method="post">
+                        <form action='{{route('tamu.user.panitia.verif.hapus-acara',['id_acara' => $acaras[$i]->id])}}' method="post">
                             {{csrf_field()}}
                             <button class="ui positive button">
                                 Iya

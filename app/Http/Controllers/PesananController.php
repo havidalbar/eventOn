@@ -60,7 +60,7 @@ class PesananController extends Controller
         $acara = Acara::find($pesan->id_acara);
         $panitia = Panitia::find($acara->id_panitia);
         if ($acara && $panitia) {
-            return view('periksaPesanan', compact('pesan','acara','panitia'));
+            return view('periksaPesanan', compact('pesan', 'acara', 'panitia'));
         } else {
             abort(404);
         }
@@ -73,26 +73,28 @@ class PesananController extends Controller
         $data->bank_pengirim = $request->bank_pengirim;
         $data->bank_tujuan = $request->bank_tujuan;
         $data->save();
-        return redirect()->route('tamu.user.lihat-halaman-upload-bukti-konfirmasi',['id_pesan'=>$data->id]);
+        return redirect()->route('tamu.user.lihat-halaman-upload-bukti-konfirmasi', ['id_pesan' => $data->id]);
     }
 
     function uploadBuktiKonfirmasiTransfer(Request $request, $id_pesan)
     {
         $data = Pesan::find($id_pesan);
-        $data->gambar_konfirmasi =  $request->gambarbukti;
-        $data->save();
-        return redirect()->route('index')->with('alert-success', 'Permohonan konfirmasi telah dikirim');
-
+        if ($data) {
+            $data->gambar_konfirmasi =  $request->gambarbukti;
+            $data->save();
+            return redirect()->route('index')->with('alert-success', 'Permohonan konfirmasi telah dikirim');
+        } else {
+            abort(404);
+        }
     }
 
     function halamanUploadBuktiKonfirmasi($id_pesan)
     {
-
         $pesan = Pesan::find($id_pesan);
         $acara = Acara::find($pesan->id_acara);
         if ($acara && $pesan) {
-            return view('instruksiPembayaran', compact('acara','pesan'));
-        }else{
+            return view('instruksiPembayaran', compact('acara', 'pesan'));
+        } else {
             abort(404);
         }
     }

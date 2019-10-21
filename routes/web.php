@@ -26,7 +26,7 @@ Route::group(['prefix' => 'tamu', 'as' => 'tamu.'], function () {
     Route::group(['middleware' => ['user.loggedin'], 'as' => 'user.'], function () {
         Route::post('update-akun', 'MemberController@updateAkun')->name('update-akun');
         Route::get('lihat-akun', 'MemberController@lihatAkun')->name('lihat-akun');
-        Route::get('lihat-detail-acara/{id}', 'MemberController@lihatDetailAcara')->name('lihat-detail-acara');
+        Route::get('lihat-detail-acara/{id_acara}', 'MemberController@lihatDetailAcara')->name('lihat-detail-acara');
         Route::get('lihat-kode-unik', 'MemberController@lihatKodeUnik')->name('lihat-kode-unik');
         Route::get('cari-acara', 'MemberController@cariAcara')->name('cari-acara');
         Route::post('daftar-panitia', 'MemberController@daftarPanitia')->name('daftar-panitia');
@@ -47,7 +47,7 @@ Route::group(['prefix' => 'tamu', 'as' => 'tamu.'], function () {
             Route::group(['prefix' => 'panitia.verif', 'as' => 'verif.', 'middleware' => ['panitia.verif']], function () {
                 Route::get('lihat-halaman-tambah-acara', 'PanitiaController@lihatHalamanTambahAcara')->name('lihat-halaman-tambah-acara');
                 Route::post('buat-acara', 'PanitiaController@buatAcara')->name('buat-acara');
-                Route::post('hapus-acara', 'PanitiaController@hapusAcara')->name('hapus-acara');
+                Route::post('hapus-acara/{id_acara}', 'PanitiaController@hapusAcara')->name('hapus-acara');
                 Route::get('lihat-halaman-ubah-acara/{id_acara}', 'PanitiaController@lihatHalamanEditAcara')->name('lihat-halaman-ubah-acara');
                 Route::post('ubah-acara/{id_acara}', 'PanitiaController@editAcara')->name('ubah-acara');
 
