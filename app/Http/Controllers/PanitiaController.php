@@ -48,7 +48,11 @@ class PanitiaController extends Controller
     }
 
     function lihatKumpulanAcara()
-    { }
+    {
+        $panitia = Panitia::where('id', Session::get('id_panitia'))->first();
+        $acaras = Acara::where('id_panitia', $panitia->id)->get();
+        return view('halamanPanitia.kumpulanAcara', compact('panitia', 'acaras'));
+    }
 
     function editAcara(AcaraRequest $request, $id_acara)
     {

@@ -43,6 +43,8 @@ Route::group(['prefix' => 'tamu', 'as' => 'tamu.'], function () {
 
         Route::group(['prefix' => 'panitia', 'as' => 'panitia.', 'middleware' => ['panitia']], function () {
             Route::get('lihat-profil-panitia', 'PanitiaController@lihatProfilePanitia')->name('lihat-halaman-profile-panitia');
+            Route::get('lihat-kumpulan-acara', 'PanitiaController@lihatKumpulanAcara')->name('lihat-halaman-kumpulan-acara');
+
 
             Route::group(['prefix' => 'panitia.verif', 'as' => 'verif.', 'middleware' => ['panitia.verif']], function () {
                 Route::get('lihat-halaman-tambah-acara', 'PanitiaController@lihatHalamanTambahAcara')->name('lihat-halaman-tambah-acara');

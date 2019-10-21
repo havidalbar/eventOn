@@ -34,7 +34,7 @@
         <i class="search icon teal huge"></i>
         <div style="font-size:24px;margin-top:15px"><b>Oops, desain tidak ditemukan :(</b></div>
         <div style="font-size:18px;margin:15px 0px 15px 0px">
-            Hasil pencarian untuk <b>'aaaa'</b> tidak ditemukan.
+            Hasil pencarian untuk <b>'{{$key}}'</b> tidak ditemukan.
             Silahkan coba keyword lainnya
         </div>
     </div>

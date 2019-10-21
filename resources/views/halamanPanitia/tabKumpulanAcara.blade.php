@@ -142,6 +142,12 @@
                                 </div>
                             </div>
                             <div style="margin-top:10px">
+                                <div style="font-size:16px"><b>Tiket Terjual</b></div>
+                                <div style="font-size:15px">
+                                    {{$acaras[$i]->maksimal-$acaras[$i]->sisa_kuota}}
+                                </div>
+                            </div>
+                            <div style="margin-top:10px">
                                 <div style="font-size:16px"><b>Deskripsi</b></div>
                                 <div style="font-size:15px">
                                     {{$acaras[$i]->deskripsi}}

@@ -51,12 +51,12 @@
             <div class="ui active tab" data-tab="kumpulan-proyek">
                 @include('halamanPanitia.tabKumpulanAcara')
             </div>
-            <div class="ui tab" data-tab="pesanan-proyek">
+            {{-- <div class="ui tab" data-tab="pesanan-proyek">
                 @include('halamanPanitia.tabPesananProyek')
             </div>
             <div class="ui tab" data-tab="progres-pesanan">
                 @include('halamanPanitia.tabProgresPesanan')
-            </div>
+            </div> --}}
         </div>
     </div>
 </div>
