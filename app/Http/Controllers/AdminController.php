@@ -16,7 +16,7 @@ class AdminController extends Controller
         $pesans = Pesan::where('status', 0)->get();
         $users = array();
         for ($i = 0; $i < count($panitias); $i++) {
-            $users[$i] = Member::find($panitias[$i]->id_user);
+            $users[$i] = Member::find($panitias[$i]->id_member);
         }
         return view('halamanAdmin.halamanAdminPanitia', compact('panitias','pesans', 'users'));
     }
@@ -49,7 +49,7 @@ class AdminController extends Controller
         $pesans = Pesan::where('status', 0)->get();
         $users = array();
         for ($i = 0; $i < count($panitias); $i++) {
-            $users[$i] = Member::find($panitias[$i]->id_user);
+            $users[$i] = Member::find($panitias[$i]->id_member);
         }
         return view('halamanAdmin.halamanAdminTransfer', compact('panitias', 'pesans', 'users'));
     }

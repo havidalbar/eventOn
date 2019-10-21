@@ -9,29 +9,29 @@
     <div class="ui stackable grid">
         <div class="ten wide column">
             <div class="ui stackable grid" style="height:100%">
-                {{-- <?php
-                // $fotos = explode(" ", $orderProgres->url_gambar);
-                ?> --}}
+                <?php
+                $fotos = explode(" ", $acara->foto_acara);
+                ?>
                 <div class="twelve wide column">
                     <div class="ui one stackable cards">
                         <div class="card">
                             <div class="image">
-                                <img class="ui big image" src="">
+                                <img class="ui big image" src="{{asset($fotos[0])}}">
                             </div>
                         </div>
                     </div>
                 </div>
                 <div class="four wide column">
-                    {{-- @for($j=0; $j < count($fotos); $j++) --}}
+                    @for($j=0; $j < count($fotos); $j++)
                     <div class="ui one stackable cards">
                         <div class="card">
                             <div class="image">
-                                <img src=""
+                                <img src="{{asset($fotos[$j])}}"
                                     style="height:145px;object-fit:cover">
                             </div>
                         </div>
                     </div>
-                    {{-- @endfor --}}
+                    @endfor
                 </div>
             </div>
         </div>
@@ -43,34 +43,34 @@
                 </div>
                 <div class="fourteen wide middle aligned column" style="margin-left:5px">
                     <div style="font-size:22px;color:teal"><b>Detail Progres Proyek</b></div>
+                    <img src="data:image/png;base64, {{ base64_encode(QrCode::format('png')->size(400)->generate(encrypt($acara->kode_pesanan))) }} ">                    >
                 </div>
             </div>
             <div class="ui divider"></div>
             <div class="ui stackable grid">
                 <div class="four wide column">
-                    <img class="ui circular image" src=""
+                    <img class="ui circular image" src="{{asset($panitia->foto)}}"
                         style="width:80px;height:80px;object-fit:cover">
                 </div>
                 <div class="twelve wide middle aligned column">
-                <div style="font-size:22px"><b>aaaaaaa</b></div>
-                    <div style="font-size:17px;margin-top:5px">bbbbb</div>
-                <div style="font-size:17px;margin-top:5px">ccccc</div>
+                <div style="font-size:22px"><b>{{ucfirst($panitia->nama_panitia)}}</b></div>
+                <div style="font-size:17px;margin-top:5px">{{$panitia->nohp}}</div>
                 </div>
             </div>
             <div class="ui divider"></div>
             <div class="ui stackable grid">
                 <div class="twelve wide middle aligned column">
                     <div style="font-size:22px">
-                        <b>dddd</b>
+                        <b>{{ucfirst($acara->nama_acara)}}</b>
                     </div>
                     <div style="margin-top:10px;display:flex;flex-direction:row;align-items: center">
                         <div><i class="map marker alternate teal icon"></i></div>
-                        <div style="font-size:16px">eeee</div>
+                        <div style="font-size:16px">{{ucfirst($acara->lokasi)}}</div>
                     </div>
                 </div>
                 <div class="four wide right aligned middle aligned column">
                     <span style="border:2px solid #d4d4d5;border-radius:4px;padding:5px 15px 5px 15px;font-size:17px">
-                        ffff
+                            {{ucfirst($acara->kategori)}}
                     </span>
                 </div>
             </div>
@@ -85,16 +85,6 @@
                    hhh
             </div>
             <div class="ui divider"></div>
-            {{-- @if(($dataOrder->statusLagi===6 && $dataOrder->id_transaksi2==null) || ($dataOrder->statusLagi==12 &&
-                    $dataOrder->id_transaksi3==null)|| ($dataOrder->statusLagi===18 && $dataOrder->id_transaksi4==null)||
-                    ($dataOrder->status=="Pembayaran tidak terkonfirmasi" && $dataOrder->id_transaksi2==null)||
-                    ($dataOrder->status=="Pembayaran tidak terkonfirmasi" && $dataOrder->id_transaksi3==null)||
-                    ($dataOrder->status=="Pembayaran tidak terkonfirmasi" && $dataOrder->id_transaksi4==null))
-            <form action='/bayarLagi?statusLagi={{$dataOrder->statusLagi}}&id={{$dataOrder->id}}' method="post">
-                {{csrf_field()}}
-                <button type="submit" class="ui large button teal right floated">Bayar Progres Selanjutnya</button>
-            </form>
-            @endif --}}
         </div>
     </div>
 
@@ -110,14 +100,7 @@
         </div>
     </div>
     <div class="ui divider" style="margin-top:30px"></div>
-    <h3>Lihat Progres Pengerjaan Proyek Bulan Ke</h3>
-    {{-- <?php
-    $bulan = $dataOrder->statusLagi;
-    ?> --}}
     <div class="ui pagination menu">
-    {{-- @for($j=1; $j<= $bulan; $j++)
-    <a class="item" onclick="window.location.href='/informasi-akun/{{$dataOrder->id}}/progres/{{$j}}'">{{$j}}</a>
-    @endfor --}}
     </div>
 </div>
 

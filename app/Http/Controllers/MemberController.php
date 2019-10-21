@@ -43,7 +43,7 @@ class MemberController extends Controller
         $acara = Acara::find($id_acara);
         if ($acara) {
             $panitia = Panitia::find($acara->id_panitia);
-            return redirect()->route('lihat-detail-acara')->with(compact('acara', 'panitia'));
+            return view('informasiAkun.lihatDetailAcara',compact('acara', 'panitia'));
         } else {
             abort(404);
         }

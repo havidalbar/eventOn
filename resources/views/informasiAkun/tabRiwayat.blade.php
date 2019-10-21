@@ -47,7 +47,7 @@
                             <div style="font-size:22px;margin-top:10px;margin-bottom:20px">
                                 Akan Datang
                             </div>
-                            <button class="ui inverted medium button" onclick="window.location.href='/'">Lihat</button>
+                        <button class="ui inverted medium button" onclick="window.location.href='{{route('tamu.user.lihat-detail-acara',['id_acara'=>$pesans[$i]->id_acara])}}'">Lihat</button>
                         </div>
                     </div>
                     <img class="ui fluid image" src="{{asset($fotos[0])}}" style="object-fit:cover;height:250px">
@@ -108,7 +108,7 @@
                             <div style="font-size:22px;margin-top:10px;margin-bottom:20px">
                                 Selesai
                             </div>
-                            <button class="ui inverted medium button" onclick="window.location.href='/'">Lihat</button>
+                            <button class="ui inverted medium button" onclick="window.location.href='{{route('tamu.user.lihat-detail-acara',['id_acara'=>$pesans[$i]->id_acara])}}'">Lihat</button>
                         </div>
                     </div>
                     <img src="{{asset($fotos[0])}}" style="object-fit:cover;height:250px">
