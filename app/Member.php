@@ -38,4 +38,8 @@ class Member extends Authenticatable
     {
         return $this->hasOne('App\Panitia', 'id', 'id_member');
     }
+    public function pesanan()
+    {
+        return $this->hasMany('App\Pesan', 'id_member', 'id');
+    }
 }

@@ -290,6 +290,12 @@
                                 </div>
                             </div>
                             <div style="margin-top:10px">
+                                <div style="font-size:16px"><b>Kuota Tersisa</b></div>
+                                <div style="font-size:15px">
+                                    {{$items[$i]->sisa_kuota}}
+                                </div>
+                            </div>
+                            <div style="margin-top:10px">
                                 <div style="font-size:16px"><b>Deskripsi</b></div>
                                 <div style="font-size:15px">
                                     {{$items[$i]->deskripsi}}

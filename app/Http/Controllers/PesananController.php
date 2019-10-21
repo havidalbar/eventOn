@@ -13,23 +13,27 @@ class PesananController extends Controller
 {
     function pesanTiket(Request $request)
     {
-        $data = new Pesan();
-        $data->nama = $request->nama;
-        $data->nohp = $request->nohp;
-        $data->alamat = $request->alamat;
-        $data->email = $request->email;
-        $data->id_member = Session::get('id_member');
-        $data->id_acara = $request->input('id_acara');
-        $data->save();
         $acara = Acara::find($request->input('id_acara'));
-        $kode_unik = rand(100, 999);
-        $jumlah = $acara->harga + $kode_unik;
-        if ($this->cekStatus($request->input('id_acara'))) {
-            $pesan = Pesan::where('id', $data->id)->update(['kode_pesanan' => rand(100000, 999999), 'jumlah' => 0, 'kode_unik' => 0]);
-            return redirect()->route('index')->with('alert-success', 'pemesanan berhasil, silahkan cek histori untuk melihat kode tiket anda');
-        } else {
-            $pesan = Pesan::where('id', $data->id)->update(['jumlah' => $jumlah, 'kode_unik' => $kode_unik]);
-            return redirect()->route('tamu.user.lihat-halaman-konfirmasi-transfer', ['id_pesan' => $data->id]);
+        if ($acara->sisa_kuota > 0) {
+            $data = new Pesan();
+            $data->nama = $request->nama;
+            $data->nohp = $request->nohp;
+            $data->alamat = $request->alamat;
+            $data->email = $request->email;
+            $data->id_member = Session::get('id_member');
+            $data->id_acara = $request->input('id_acara');
+            $data->save();
+            $kode_unik = rand(100, 999);
+            $jumlah = $acara->harga + $kode_unik;
+            if ($this->cekStatus($request->input('id_acara'))) {
+                $pesan = Pesan::where('id', $data->id)->update(['kode_pesanan' => rand(100000, 999999), 'jumlah' => 0, 'kode_unik' => 0]);
+                return redirect()->route('index')->with('alert-success', 'pemesanan berhasil, silahkan cek histori untuk melihat kode tiket anda');
+            } else {
+                $pesan = Pesan::where('id', $data->id)->update(['jumlah' => $jumlah, 'kode_unik' => $kode_unik]);
+                return redirect()->route('tamu.user.lihat-halaman-konfirmasi-transfer', ['id_pesan' => $data->id]);
+            }
+        }else{
+            return redirect()->route('index')->with('alert','maaf kuota acara sudah penuh');
         }
     }
 

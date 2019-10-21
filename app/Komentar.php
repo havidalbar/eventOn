@@ -10,6 +10,6 @@ class Komentar extends Model
     protected $primaryKey = 'id';
     public function acara()
     {
-        return $this->belongsTo('App\Acara', 'id_acara', 'id');
+        return $this->belongsTo('App\Acara', 'id', 'id_acara');
     }
 }
