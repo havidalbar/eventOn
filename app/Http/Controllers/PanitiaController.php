@@ -31,6 +31,35 @@ class PanitiaController extends Controller
             $data->kategori = $request->kategori;
             $data->cp = $request->cp;
             $data->maksimal = $request->maksimal;
+            $data->tanggal = $request->tanggal;
+            $bulan = null;
+            if($request->bulan=="januari"){
+                $bulan = 1;
+            }else if($request->bulan=="februari"){
+                $bulan = 2;
+            }else if($request->bulan=="maret"){
+                $bulan = 3;
+            }else if($request->bulan=="april"){
+                $bulan = 4;
+            }else if($request->bulan=="mei"){
+                $bulan = 5;
+            }else if($request->bulan=="juni"){
+                $bulan = 6;
+            }else if($request->bulan=="juli"){
+                $bulan = 7;
+            }else if($request->bulan=="agustus"){
+                $bulan = 8;
+            }else if($request->bulan=="september"){
+                $bulan = 9;
+            }else if($request->bulan=="oktober"){
+                $bulan = 10;
+            }else if($request->bulan=="november"){
+                $bulan = 11;
+            }else if($request->bulan=="desember"){
+                $bulan = 12;
+            }
+            $data->bulan = $bulan;
+            $data->tahun = $request->tahun;
             $data->id_panitia = Session::get('id_panitia');
             $tipe = -1;
             if ($request->status == "gratis") {

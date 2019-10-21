@@ -23,6 +23,9 @@ class CreateAcaraTable extends Migration
             $table->string('kategori',50);
             $table->string('cp',20);
             $table->integer('maksimal');
+            $table->integer('tanggal',4);
+            $table->integer('bulan',4);
+            $table->integer('tahun',4);
             $table->unsignedInteger('id_panitia');
             $table->foreign('id_panitia')->references('id')->on('panitia')->nullable();
             $table->integer('status');

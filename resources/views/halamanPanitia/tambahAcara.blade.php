@@ -3,7 +3,7 @@
 
 @section('js')
 <script type="text/javascript">
-Dropzone.options.myDropzone = {
+    Dropzone.options.myDropzone = {
     addRemoveLinks: true,
     paramName: 'file',
     maxFilesize: 20, // MB
@@ -28,7 +28,7 @@ Dropzone.options.myDropzone = {
 };
 </script>
 <script>
-$(document)
+    $(document)
     .ready(function() {
         $('.ui.form')
             .form({
@@ -147,6 +147,73 @@ $(document)
                 <label style="font-size:18px">Deskripsi Singkat Acara</label>
                 <textarea name="deskripsi" maxlength="191" rows="4"
                     placeholder="Tuliskan deskripsi singkat mengenai acara anda..."></textarea>
+            </div>
+            <div class="field">
+                <label style="font-size:18px">Tanggal Acara</label>
+                <div class="ui selection dropdown">
+                    <input type="hidden" name="tanggal">
+                    <i class="dropdown icon"></i>
+                    <div class="default text">Pilih Tanggal Acara</div>
+                    <div class="menu">
+                        <div class="item" value="1">1</div>
+                        <div class="item" value="2">2</div>
+                        <div class="item" value="3">3</div>
+                        <div class="item" value="4">4</div>
+                        <div class="item" value="5">5</div>
+                        <div class="item" value="6">6</div>
+                        <div class="item" value="7">7</div>
+                        <div class="item" value="8">8</div>
+                        <div class="item" value="9">9</div>
+                        <div class="item" value="10">10</div>
+                        <div class="item" value="11">11</div>
+                        <div class="item" value="12">12</div>
+                        <div class="item" value="13">13</div>
+                        <div class="item" value="14">14</div>
+                        <div class="item" value="15">15</div>
+                        <div class="item" value="16">16</div>
+                        <div class="item" value="17">17</div>
+                        <div class="item" value="18">18</div>
+                        <div class="item" value="19">19</div>
+                        <div class="item" value="20">20</div>
+                        <div class="item" value="21">21</div>
+                        <div class="item" value="22">22</div>
+                        <div class="item" value="23">23</div>
+                        <div class="item" value="24">24</div>
+                        <div class="item" value="25">25</div>
+                        <div class="item" value="26">26</div>
+                        <div class="item" value="27">27</div>
+                        <div class="item" value="28">28</div>
+                        <div class="item" value="29">29</div>
+                        <div class="item" value="30">30</div>
+                        <div class="item" value="31">31</div>
+                    </div>
+                </div>
+            </div>
+            <div class="field">
+                <label style="font-size:18px">Bulan Acara</label>
+                <div class="ui selection dropdown">
+                    <input type="hidden" name="bulan">
+                    <i class="dropdown icon"></i>
+                    <div class="default text">Pilih Bulan Acara</div>
+                    <div class="menu">
+                        <div class="item" value="1">Januari</div>
+                        <div class="item" value="2">Februari</div>
+                        <div class="item" value="3">Maret</div>
+                        <div class="item" value="4">April</div>
+                        <div class="item" value="5">Mei</div>
+                        <div class="item" value="6">Juni</div>
+                        <div class="item" value="7">Juli</div>
+                        <div class="item" value="8">Agustus</div>
+                        <div class="item" value="9">September</div>
+                        <div class="item" value="10">Oktober</div>
+                        <div class="item" value="11">November</div>
+                        <div class="item" value="12">Desember</div>
+                    </div>
+                </div>
+            </div>
+            <div class="field">
+                <label style="font-size:18px">Tahun Acara</label>
+                <input type="text" name="tahun" placeholder="Masukkan Tahun Acara">
             </div>
             <div class="field">
                 <label style="font-size:18px">Kota Acara</label>
