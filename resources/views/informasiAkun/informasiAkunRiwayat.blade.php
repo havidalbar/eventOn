@@ -23,11 +23,8 @@
                     <a class="item" data-tab="profil">
                         Profil
                     </a>
-                    <a class="item" data-tab="progres-orderan">
-                        Progres Orderan
-                    </a>
                     <a class="active item" data-tab="riwayat-orderan">
-                        Riwayat Orderan
+                        Riwayat Pesanan
                     </a>
                 </div>
                 <div class="ui divider" style="margin-top:20px"></div>
@@ -37,9 +34,9 @@
             <div class="ui tab" data-tab="profil">
                 @include('informasiAkun.tabProfil')
             </div>
-            <div class="ui tab" data-tab="progres-orderan">
+            {{-- <div class="ui tab" data-tab="progres-orderan">
                 @include('informasiAkun.tabProgres')
-            </div>
+            </div> --}}
             <div class="ui active tab" data-tab="riwayat-orderan">
                 @include('informasiAkun.tabRiwayat')
             </div>

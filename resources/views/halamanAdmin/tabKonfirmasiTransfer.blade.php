@@ -19,16 +19,16 @@
                     <th>Konfirmasi</th>
                 </tr>
             </thead>
-            @for($i = 0; $i < count($transaksis); $i++)
+            @for($i = 0; $i < count($pesans); $i++)
             <tbody>
                 <tr>
-                    <td>{{$transaksis[$i]->id}}</td>
-                    <td>{{$transaksis[$i]->created_at}}</td>
-                    <td>{{$transaksis[$i]->nama}}</td>
-                    <td>{{$transaksis[$i]->norek}}</td>
+                    <td>{{$pesans[$i]->id}}</td>
+                    <td>{{$pesans[$i]->created_at}}</td>
+                    <td>{{$pesans[$i]->nama}}</td>
+                    <td>{{$pesans[$i]->nomor_rekening}}</td>
                     <td>
                         <span>Rp </span>
-                        <span>{{number_format(($transaksis[$i]->jumlah*0.25+$transaksis[$i]->kode_unik),0,",",".")}}</span>
+                        <span>{{number_format(($pesans[$i]->jumlah),0,",",".")}}</span>
                         <div style="margin-top:5px">
                             <button class="ui button basic teal" onclick="$('.ui.large.modal.bukti.<?php echo $i ?>').modal('show')">Lihat</button>
                         </div>
@@ -36,11 +36,11 @@
                     <td>
                         <div class="ui internally celled grid">
                             <div class="row">
-                                <form class="eight wide column" action="/terima-transfer?id={{$transaksis[$i]->id}}" method="post">
+                                <form class="eight wide column" action="{{route('tamu.user.admin.terima-pembayaran', ['id' => $pesans[$i]->id])}}" method="post">
                                     {{csrf_field()}}
                                     <button class="ui button basic green">Terima</button>
                                 </form>
-                                <form class="eight wide column" action="/tolak-transfer?id={{$transaksis[$i]->id}}" method="post">
+                                <form class="eight wide column" action="{{route('tamu.user.admin.tolak-pembayaran', ['id' => $pesans[$i]->id])}}" method="post">
                                     {{csrf_field()}}
                                     <button class="ui button basic red">Tolak</button>
                                 </form>
@@ -55,15 +55,15 @@
                     Bukti Pembayaran
                 </div>
                 <div class="content">
-                    <img class="ui large centered image" src={{asset($transaksis[$i]->gambar_konfirmasi)}}>                    
+                    <img class="ui large centered image" src={{asset($pesans[$i]->gambar_konfirmasi)}}>
                 </div>
                 <div class="actions">
                     <button class="ui negative button">
                         Tutup
                     </button>
-                    <a class="ui teal right button" href="{{asset($transaksis[$i]->gambar_konfirmasi)}}" download="buktipembayaran<?php echo $transaksis[$i]->nama ?>">                                     
+                    <a class="ui teal right button" href="{{asset($pesans[$i]->gambar_konfirmasi)}}" download="buktipembayaran<?php echo $pesans[$i]->nama ?>">
                         Download
-                    </a>                    
+                    </a>
                 </div>
             </div>
             @endfor

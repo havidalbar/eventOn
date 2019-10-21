@@ -287,7 +287,7 @@
                     </a>
                     <div class="divider"></div>
                     @if(Session::get('username') == "admin")
-                    <a class="item" href="{{route('tamu.user.admin.lihat-halaman-konfirmasi-pendaftaran')}}">
+                    <a class="item" href="{{route('tamu.user.admin.lihat-halaman-konfirmasi-pembayaran')}}">
                         <div style="font-size:14px">
                             <b>HALAMAN ADMIN</b>
                         </div>
@@ -299,7 +299,7 @@
                     <a class="item" href="{{route('tamu.user.lihat-akun')}}" style="margin-left:20px;margin-right:20px">
                         Profil
                     </a>
-                    <a class="item" href="#" style="margin-left:20px;margin-right:20px">
+                <a class="item" href="{{route('tamu.user.lihat-halaman-pesanan')}}" style="margin-left:20px;margin-right:20px">
                         Riwayat Pesanan
                     </a>
                     <a href="{{route('tamu.logout')}}">
@@ -373,7 +373,7 @@
                     </a>
                     <div class="divider"></div>
                     @if(Session::get('username') == "admin")
-                    <a class="item" href="{{route('tamu.user.admin.lihat-halaman-konfirmasi-pendaftaran')}}">
+                    <a class="item" href="{{route('tamu.user.admin.lihat-halaman-konfirmasi-pembayaran')}}">
                         <div style="font-size:14px">
                             <b>HALAMAN ADMIN</b>
                         </div>
@@ -385,7 +385,7 @@
                     <a class="item" href="{{route('tamu.user.lihat-akun')}}" style="margin-left:20px;margin-right:20px">
                         Profil
                     </a>
-                    <a class="item" href="#" style="margin-left:20px;margin-right:20px">
+                    <a class="item" href="{{route('tamu.user.lihat-halaman-pesanan')}}" style="margin-left:20px;margin-right:20px">
                         Riwayat Pesanan
                     </a>
                     <a href="{{route('tamu.logout')}}">
@@ -468,7 +468,7 @@
                                 </a>
                                 <div class="divider"></div>
                                 @if(Session::get('username') == "admin")
-                                <a class="item" href="{{route('tamu.user.admin.lihat-halaman-konfirmasi-pendaftaran')}}">
+                                <a class="item" href="{{route('tamu.user.admin.lihat-halaman-konfirmasi-pembayaran')}}">
                                     <div style="font-size:14px">
                                         <b>HALAMAN ADMIN</b>
                                     </div>
@@ -480,7 +480,7 @@
                                 <a class="item" href="{{route('tamu.user.lihat-akun')}}" style="margin-left:20px;margin-right:20px">
                                     Profil
                                 </a>
-                                <a class="item" href="#" style="margin-left:20px;margin-right:20px">
+                                <a class="item" href="{{route('tamu.user.lihat-halaman-pesanan')}}" style="margin-left:20px;margin-right:20px">
                                     Riwayat Pesanan
                                 </a>
                                 <a href="{{route('tamu.logout')}}">

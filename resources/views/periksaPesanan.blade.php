@@ -64,7 +64,7 @@
         $fotos = explode(" ", $acara->foto_acara);
         ?>
         <div class="ui divider"></div>
-        <div style="font-size:18px"><b>Gambar Desain</b></div>
+        <div style="font-size:18px"><b>Acara</b></div>
         <div class="ui container fluid" style="margin-top:5px">
             <div class="ui four stackable cards">
                 @for($j=0; $j < count($fotos); $j++) <div class="card">

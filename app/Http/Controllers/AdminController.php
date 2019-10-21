@@ -13,11 +13,12 @@ class AdminController extends Controller
     public function lihatHalamanKonfirmasiPendaftaran()
     {
         $panitias = Panitia::where('status', 0)->get();
+        $pesans = Pesan::where('status', 0)->get();
         $users = array();
         for ($i = 0; $i < count($panitias); $i++) {
-            $users[$i] = Member::find($panitias[$i]->id_member);
+            $users[$i] = Member::find($panitias[$i]->id_user);
         }
-        return view('halamanAdmin.halamanAdminPanitia', compact('panitias', 'users'));
+        return view('halamanAdmin.halamanAdminPanitia', compact('panitias','pesans', 'users'));
     }
 
     public function terimaPanitia(Request $request)
@@ -44,13 +45,13 @@ class AdminController extends Controller
     }
     public function lihatHalamanKonfirmasiPembayaran()
     {
-        $panitias = Panitia::where('status', null)->get();
-        $pesanans = Pesan::where('status', 0)->get();
+        $panitias = Panitia::where('status', 0)->get();
+        $pesans = Pesan::where('status', 0)->get();
         $users = array();
         for ($i = 0; $i < count($panitias); $i++) {
             $users[$i] = Member::find($panitias[$i]->id_user);
         }
-        return view('halamanAdmin.halamanAdminTransfer', compact('panitias', 'pesanans', 'users'));
+        return view('halamanAdmin.halamanAdminTransfer', compact('panitias', 'pesans', 'users'));
     }
 
     public function terimaPembayaran(Request $request)

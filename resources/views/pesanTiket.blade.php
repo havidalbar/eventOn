@@ -94,7 +94,7 @@
                 <label style="font-size:18px">Total Harga Tiket</label>
                 <div class="ui labeled fluid input" style="font-size:18px">
                     <label class="ui label">Rp</label>
-                    <input type="text" name="harga" value="{{$acara->harga}}" readonly
+                    <input type="text" name="harga" value="{{number_format(($acara->harga),0,",",".")}}" readonly
                         style="background-color:#e8e8e8;border:none">
                 </div>
             </div>

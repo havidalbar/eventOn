@@ -39,6 +39,7 @@ Route::group(['prefix' => 'tamu', 'as' => 'tamu.'], function () {
         Route::get('lihat-halaman-upload-bukti-konfirmasi/{id_pesan}','PesananController@halamanUploadBuktiKonfirmasi')->name('lihat-halaman-upload-bukti-konfirmasi');
         Route::post('update-konfirmasi-transfer','PesananController@updateKonfirmasiTransfer')->name('update-konfirmasi-transfer');
         Route::post('upload-bukti-transfer/{id_pesan}','PesananController@uploadBuktiKonfirmasiTransfer')->name('upload-bukti-transfer');
+        Route::get('lihat-halaman-pesanan','MemberController@lihatHalamanPesanan')->name('lihat-halaman-pesanan');
 
 
         Route::group(['prefix' => 'panitia', 'as' => 'panitia.', 'middleware' => ['panitia']], function () {
@@ -60,7 +61,7 @@ Route::group(['prefix' => 'tamu', 'as' => 'tamu.'], function () {
             Route::get('lihat-konfirmasi-pendaftaran', 'AdminController@lihatHalamanKonfirmasiPendaftaran')->name('lihat-halaman-konfirmasi-pendaftaran');
             Route::post('terima-panitia', 'AdminController@terimaPanitia')->name('terima-panitia');
             Route::post('tolak-panitia', 'AdminController@tolakPanitia')->name('tolak-panitia');
-            Route::get('lihat-konfirmasi-pembayaran', 'AdminController@lihatHalamanKonfirmasiPendaftaran')->name('lihat-halaman-konfirmasi-pembayaran');
+            Route::get('lihat-konfirmasi-pembayaran', 'AdminController@lihatHalamanKonfirmasiPembayaran')->name('lihat-halaman-konfirmasi-pembayaran');
             Route::post('terima-pembayaran', 'AdminController@terimaPembayaran')->name('terima-pembayaran');
             Route::post('tolak-pembayaran', 'AdminController@tolakPembayaran')->name('tolak-pembayaran');
         });

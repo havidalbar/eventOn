@@ -24,9 +24,9 @@
             <b>Pendaftaran Panitia</b>
         </a>
     </div>
-    {{-- <div class="ui tab" data-tab="konfirmasi-pembayaran" style="padding:20px 20px 30px 20px">
+    <div class="ui tab" data-tab="konfirmasi-pembayaran" style="padding:20px 20px 30px 20px">
         @include('halamanAdmin.tabKonfirmasiTransfer')
-    </div> --}}
+    </div>
     <div class="active ui tab" data-tab="pendaftaran-panitia" style="padding:20px 20px 30px 20px">
         @include('halamanAdmin.tabPendaftaranPanitia')
     </div>

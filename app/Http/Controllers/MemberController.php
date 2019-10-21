@@ -24,7 +24,18 @@ class MemberController extends Controller
     public function lihatAkun()
     {
         $akun = Member::where('username', Session::get('username'))->first();
-        return view('informasiAkun.informasiAkunProfil', compact('akun'));
+
+        //progres order
+        $pesans = Pesan::where('id_member', $akun->id)->get();
+        $acaras = array();
+        for ($i = 0; $i < count($pesans); $i++) {
+            $acaras[$i] = Acara::where('id', $pesans[$i]->id_acara)->first();
+        }
+        $panitias = array();
+        for ($i = 0; $i < count($pesans); $i++) {
+            $panitias[$i] = Panitia::where('id', $acaras[$i]->id_panitia)->first();
+        }
+        return view('informasiAkun.informasiAkunProfil', compact('akun','pesans','acaras','panitias'));
     }
 
     public function lihatDetailAcara($id_acara)
@@ -40,7 +51,7 @@ class MemberController extends Controller
 
     public function lihatKodeUnik($id_acara)
     {
-        $pesan = Pesan::where('id_member', Session::get('id'))->where('id_acara',$id_acara)->first();
+        $pesan = Pesan::where('id_member', Session::get('id'))->where('id_acara', $id_acara)->first();
         if ($pesan) {
             return redirect()->route('akun.acara.kode-unik')->with(compact('pesan'));
         } else {
@@ -153,7 +164,19 @@ class MemberController extends Controller
     }
     public function lihatHalamanPesanan()
     {
+        $akun = Member::where('username', Session::get('username'))->first();
 
+        //progres order
+        $pesans = Pesan::where('id_member', $akun->id)->get();
+        $acaras = array();
+        for ($i = 0; $i < count($pesans); $i++) {
+            $acaras[$i] = Acara::where('id', $pesans[$i]->id_acara)->first();
+        }
+        $panitias = array();
+        for ($i = 0; $i < count($pesans); $i++) {
+            $panitias[$i] = Panitia::where('id', $acaras[$i]->id_panitia)->first();
+        }
+        return view('informasiAkun.informasiAkunRiwayat', compact('akun', 'pesans', 'acaras', 'panitias'));
     }
 
     public function KomentarAcara(Request $request, $id_acara)
@@ -165,7 +188,7 @@ class MemberController extends Controller
         return redirect()->back()->with('alert', 'berhasil komentar');
     }
 
-    public function HapusKomentarAcara($id_komentar,$id_acara)
+    public function HapusKomentarAcara($id_komentar, $id_acara)
     {
         $komentar = Komentar::find($id_komentar);
         if ($komentar) {

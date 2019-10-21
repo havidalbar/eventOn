@@ -185,8 +185,7 @@
                     <img class="ui fluid image" src="{{asset($fotos[0])}}" style="object-fit:cover;height:250px">
                     <div class="ui top right attached teal large label">
                         <b>
-                            <span>Rp </span>
-                            <span>{{number_format(($items[$i]->harga),0,",",".")}}</span>
+                            <span>{{strftime("%d %b %Y",strtotime($items[$i]->tahun.'-'.$items[$i]->bulan.'-'.$items[$i]->tanggal))}}</span>
                         </b>
                     </div>
                     <div class="content">
