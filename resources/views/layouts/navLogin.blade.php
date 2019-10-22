@@ -253,7 +253,7 @@
                         Profil Panitia
                     </a>
                     <div class="header" style="font-size:14px">
-                        Proyek Panitia
+                        Acara Panitia
                     </div>
                     <a class="item" href="{{route('tamu.user.panitia.verif.lihat-halaman-tambah-acara')}}" style="margin-left:20px;margin-right:20px">
                         Tambah Acara
@@ -261,11 +261,8 @@
                 <a class="item" href="{{route('tamu.user.panitia.lihat-halaman-kumpulan-acara')}}" style="margin-left:20px;margin-right:20px">
                         Kumpulan Acara
                     </a>
-                    <a class="item" href="#" style="margin-left:20px;margin-right:20px">
-                        Pesanan Proyek
-                    </a>
-                    <a class="item" href="#" style="margin-left:20px;margin-right:20px">
-                        Progres Pesanan Proyek
+                    <a class="item" href="{{route('tamu.user.panitia.verif.lihat-halaman-scan-barcode')}}" style="margin-left:20px;margin-right:20px">
+                        Deteksi Barcode Acara
                     </a>
                     @else
                 <a class="item" href="{{route('tamu.user.lihat-halaman-daftar-panitia')}}" style="margin-left:20px;margin-right:20px">
@@ -339,7 +336,7 @@
                         Profil Panitia
                     </a>
                     <div class="header" style="font-size:14px">
-                        Proyek Panitia
+                        Acara Panitia
                     </div>
                     <a class="item" href="{{route('tamu.user.panitia.verif.lihat-halaman-tambah-acara')}}" style="margin-left:20px;margin-right:20px">
                         Tambah Acara
@@ -347,11 +344,8 @@
                     <a class="item" href="{{route('tamu.user.panitia.lihat-halaman-kumpulan-acara')}}" style="margin-left:20px;margin-right:20px">
                         Kumpulan Acara
                     </a>
-                    <a class="item" href="#" style="margin-left:20px;margin-right:20px">
-                        Pesanan Proyek
-                    </a>
-                    <a class="item" href="#" style="margin-left:20px;margin-right:20px">
-                        Progres Pesanan Proyek
+                    <a class="item" href="{{route('tamu.user.panitia.verif.lihat-halaman-scan-barcode')}}" style="margin-left:20px;margin-right:20px">
+                        Deteksi Barcode Acara
                     </a>
                     @else
                     <a class="item" href="{{route('tamu.user.lihat-halaman-daftar-panitia')}}" style="margin-left:20px;margin-right:20px">
@@ -434,7 +428,7 @@
                                     Profil Panitia
                                 </a>
                                 <div class="header" style="font-size:14px">
-                                    Proyek Panitia
+                                    Acara Panitia
                                 </div>
                                 <a class="item" href="{{route('tamu.user.panitia.verif.lihat-halaman-tambah-acara')}}" style="margin-left:20px;margin-right:20px">
                                     Tambah Acara
@@ -442,11 +436,8 @@
                                 <a class="item" href="{{route('tamu.user.panitia.lihat-halaman-kumpulan-acara')}}" style="margin-left:20px;margin-right:20px">
                                     Kumpulan Acara
                                 </a>
-                                <a class="item" href="#" style="margin-left:20px;margin-right:20px">
-                                    Pesanan Proyek
-                                </a>
-                                <a class="item" href="#" style="margin-left:20px;margin-right:20px">
-                                    Progres Pesanan Proyek
+                                <a class="item" href="{{route('tamu.user.panitia.verif.lihat-halaman-scan-barcode')}}" style="margin-left:20px;margin-right:20px">
+                                    Deteksi Barcode Acara
                                 </a>
                                 @else
                                 <a class="item" href="{{route('tamu.user.lihat-halaman-daftar-panitia')}}" style="margin-left:20px;margin-right:20px">

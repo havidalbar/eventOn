@@ -33,29 +33,29 @@ class PanitiaController extends Controller
             $data->maksimal = $request->maksimal;
             $data->tanggal = $request->tanggal;
             $bulan = null;
-            if($request->bulan=="januari"){
+            if ($request->bulan == "januari") {
                 $bulan = 1;
-            }else if($request->bulan=="februari"){
+            } else if ($request->bulan == "februari") {
                 $bulan = 2;
-            }else if($request->bulan=="maret"){
+            } else if ($request->bulan == "maret") {
                 $bulan = 3;
-            }else if($request->bulan=="april"){
+            } else if ($request->bulan == "april") {
                 $bulan = 4;
-            }else if($request->bulan=="mei"){
+            } else if ($request->bulan == "mei") {
                 $bulan = 5;
-            }else if($request->bulan=="juni"){
+            } else if ($request->bulan == "juni") {
                 $bulan = 6;
-            }else if($request->bulan=="juli"){
+            } else if ($request->bulan == "juli") {
                 $bulan = 7;
-            }else if($request->bulan=="agustus"){
+            } else if ($request->bulan == "agustus") {
                 $bulan = 8;
-            }else if($request->bulan=="september"){
+            } else if ($request->bulan == "september") {
                 $bulan = 9;
-            }else if($request->bulan=="oktober"){
+            } else if ($request->bulan == "oktober") {
                 $bulan = 10;
-            }else if($request->bulan=="november"){
+            } else if ($request->bulan == "november") {
                 $bulan = 11;
-            }else if($request->bulan=="desember"){
+            } else if ($request->bulan == "desember") {
                 $bulan = 12;
             }
             $data->bulan = $bulan;
@@ -118,7 +118,41 @@ class PanitiaController extends Controller
     { }
 
     function deteksiBarcode(Request $request)
-    { }
+    {
+        try {
+            if (isset($request->kode_pesanan)) {
+                $kode_pesanan = decrypt($request->kode_pesanan);
+            } else if (isset($request->kode_pesanan)) {
+                $kode_pesanan = $request->kode_pesanan;
+            } else {
+                return view('tamu.user.panitia.verif.lihat-halaman-scan-barcode', ['alert-success' => 'kode_pesanan atau password tidak boleh dikosongi']);
+            }
+
+            if (is_numeric($kode_pesanan)) {
+                $pesan = Pesan::where('kode_pesanan', $kode_pesanan)->first();
+
+                if ($pesan) {
+                    $pesan->status = 1;
+                    $pesan->save();
+                    $peserta = new Peserta;
+                    $peserta->id_acara = $pesan->id_acara;
+                    $peserta->id_member = $pesan->id_member;
+                    $peserta->id_pesan = $pesan->id;
+                    $peserta->save();
+
+                    return redirect()->route('tamu.user.panitia.verif.lihat-halaman-scan-barcode')->with('alert-success', 'Absensi peserta dengan kode ' . $kode_pesanan . ' berhasil dimasukkan');
+                } else {
+                    return redirect()->route('tamu.user.panitia.verif.lihat-halaman-scan-barcode')->with('alert', 'peserta tidak ditemukan');
+                }
+            } else {
+                throw new DecryptException;
+            }
+        } catch (DecryptException $e) {
+            return redirect()->route('tamu.user.panitia.verif.lihat-halaman-scan-barcode')->with('alert-success', 'Kesalahan input atau kode QR');
+        } catch (Exception $e) {
+            return redirect()->route('tamu.user.panitia.verif.lihat-halaman-scan-barcode')->with('alert', 'Kesalahan pengolahan data');
+        }
+    }
 
     function lihatHalamanTambahAcara()
     {
@@ -137,5 +171,7 @@ class PanitiaController extends Controller
     }
 
     function lihatHalamanDeteksiBarcode()
-    { }
+    {
+        return view('halamanPanitia.scanQrCode');
+    }
 }

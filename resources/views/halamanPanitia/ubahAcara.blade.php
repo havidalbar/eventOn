@@ -1,5 +1,5 @@
 @extends (\Session::has('username') ? 'layouts.navLogin' : 'layouts.nav')
-@section('title', 'Ubah Detail Proyek | EventOn')
+@section('title', 'Ubah Detail Acara | EventOn')
 
 @section('js')
 <script type="text/javascript">
@@ -105,13 +105,13 @@
 @section('content')
 <div class="ui container" style="color:#4d4d4d;margin-top:50px">
     <div style="max-width:700px;margin: 0 auto;border:1px solid #e1e2e3;border-radius:6px;padding:40px 45px 40px 45px">
-        <div style="font-size:28px;line-height:1"><b>Ubah Detail Proyek</b></div>
+        <div style="font-size:28px;line-height:1"><b>Ubah Detail Acara</b></div>
         <div style="font-size:20px;margin-top:15px;line-height:1.5">
-            Ubah informasi proyek anda menjadi lebih menarik agar para pengguna Aderim tertarik menggunakan jasa anda.
+            Ubah informasi acara anda menjadi lebih menarik agar para pengguna EventOn tertarik dengan acara anda.
         </div>
         <div class="ui divider"></div>
         <div style="font-size:20px;margin-top:15px;line-height:1.5">
-            Anda akan melakukan perubahan pada proyek berikut :
+            Anda akan melakukan perubahan pada acara berikut :
         </div>
         <div class="ui stackable grid" style="margin-top:5px">
             <div class="five wide column">
@@ -264,7 +264,7 @@
             </div>
             {{csrf_field()}}
             <button class="ui big teal button fluid" onclick="" type="submit" name="submit" style="margin-top:40px">
-                Ubah Proyek
+                Ubah Acara
             </button>
             <div class="ui error message">
                 <ul class="list">
@@ -311,7 +311,7 @@
                     <i class="info circle large teal icon"></i>
                 </div>
                 <div class="fifteen wide column">
-                    <div style="font-size:22px;color:teal"><b>Detail Proyek</b></div>
+                    <div style="font-size:22px;color:teal"><b>Detail Acara</b></div>
                 </div>
             </div>
             <div class="ui divider"></div>

@@ -34,12 +34,6 @@
                     <a class="active item" data-tab="kumpulan-proyek">
                         Kumpulan Acara
                     </a>
-                    <a class="item" data-tab="pesanan-proyek">
-                        Pesanan Acara
-                    </a>
-                    <a class="item" data-tab="progres-pesanan">
-                        Progres Pesanan Acara
-                    </a>
                 </div>
                 <div class="ui divider" style="margin-top:20px"></div>
             </div>
@@ -51,12 +45,6 @@
             <div class="ui active tab" data-tab="kumpulan-proyek">
                 @include('halamanPanitia.tabKumpulanAcara')
             </div>
-            {{-- <div class="ui tab" data-tab="pesanan-proyek">
-                @include('halamanPanitia.tabPesananProyek')
-            </div>
-            <div class="ui tab" data-tab="progres-pesanan">
-                @include('halamanPanitia.tabProgresPesanan')
-            </div> --}}
         </div>
     </div>
 </div>

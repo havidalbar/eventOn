@@ -174,6 +174,9 @@
                         <button class="ui teal button" onclick="window.location.href='{{route('tamu.user.panitia.verif.lihat-halaman-ubah-acara',['id_acara' => $acaras[$i]->id])}}'">
                             Ubah Detail Acara
                         </button>
+                        <button class="ui orange button" onclick="window.location.href='{{route('tamu.user.panitia.verif.lihat-halaman-ubah-acara',['id_acara' => $acaras[$i]->id])}}'">
+                                Lihat Data Pembeli Acara
+                        </button>
                     </a>
                 </div>
             </div>

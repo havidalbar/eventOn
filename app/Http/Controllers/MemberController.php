@@ -50,16 +50,6 @@ class MemberController extends Controller
         }
     }
 
-    public function lihatKodeUnik($id_acara)
-    {
-        $pesan = Pesan::where('id_member', Session::get('id'))->where('id_acara', $id_acara)->first();
-        if ($pesan) {
-            return redirect()->route('akun.acara.kode-unik')->with(compact('pesan'));
-        } else {
-            abort(404);
-        }
-    }
-
     public function cariAcara(Request $request)
     {
         $acaras = Acara::where('nama_acara', 'like', '%' . $request->input('keyword') . '%');
