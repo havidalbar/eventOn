@@ -1,5 +1,5 @@
 @extends (\Session::has('username') ? 'layouts.navLogin' : 'layouts.nav')
-@section('title', 'Periksa Pesanan Proyek | EventOn')
+@section('title', 'Periksa Pesanan Acara | EventOn')
 
 @section('js')
 <script>

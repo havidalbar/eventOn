@@ -41,9 +41,10 @@ class MemberController extends Controller
     public function lihatDetailAcara($id_acara)
     {
         $acara = Acara::find($id_acara);
+        $pesan = Pesan::where('id_acara',$acara->id)->first();
         if ($acara) {
             $panitia = Panitia::find($acara->id_panitia);
-            return view('informasiAkun.lihatDetailAcara',compact('acara', 'panitia'));
+            return view('informasiAkun.lihatDetailAcara',compact('acara', 'panitia','pesan'));
         } else {
             abort(404);
         }

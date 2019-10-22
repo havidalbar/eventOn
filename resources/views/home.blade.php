@@ -244,7 +244,7 @@
                                     <i class="info circle large teal icon"></i>
                                 </div>
                                 <div class="fifteen wide column">
-                                    <div style="font-size:22px;color:teal"><b>Detail Proyek</b></div>
+                                    <div style="font-size:22px;color:teal"><b>Detail Acara</b></div>
                                 </div>
                             </div>
                             <div class="ui divider"></div>

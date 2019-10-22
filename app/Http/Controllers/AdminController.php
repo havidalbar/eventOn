@@ -59,6 +59,7 @@ class AdminController extends Controller
         $dataPesan = Pesan::find($request->input('id'));
         if ($dataPesan) {
             $dataPesan->status = 1;
+            $dataPesan->kode_pesanan = rand(100000, 999999);
             $dataPesan->save();
             return redirect()->back()->with('alert-success', 'Berhasil menyetujui transfer');
         } else {

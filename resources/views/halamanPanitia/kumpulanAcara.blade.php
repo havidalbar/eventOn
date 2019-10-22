@@ -1,5 +1,5 @@
 @extends (\Session::has('username') ? 'layouts.navLogin' : 'layouts.nav')
-@section('title', 'Informasi Profesi | Aderim')
+@section('title', 'Kumpulan Acara | Aderim')
 
 @section('content')
 @if(\Session::has('alert'))
@@ -32,13 +32,13 @@
                         Profil Profesi
                     </a>
                     <a class="active item" data-tab="kumpulan-proyek">
-                        Kumpulan Proyek
+                        Kumpulan Acara
                     </a>
                     <a class="item" data-tab="pesanan-proyek">
-                        Pesanan Proyek
+                        Pesanan Acara
                     </a>
                     <a class="item" data-tab="progres-pesanan">
-                        Progres Pesanan Proyek
+                        Progres Pesanan Acara
                     </a>
                 </div>
                 <div class="ui divider" style="margin-top:20px"></div>
