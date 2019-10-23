@@ -150,7 +150,8 @@ class PanitiaController extends Controller
 
                         return redirect()->route('tamu.user.panitia.verif.lihat-halaman-scan-barcode')->with('alert-success', 'Absensi peserta dengan kode ' . $kode_pesanan . ' berhasil dimasukkan');
                     }
-                    return view('halamanPanitia.scanQrCode',['alert'=>'Maaf peserta dengan kode ' . $kode_pesanan . ' sudah terdaftar']);
+                    $kata = 'Maaf peserta dengan kode ' . $kode_pesanan . ' sudah terdaftar';
+                    return view('halamanPanitia.scanQrCode',['alert'=>$kata]);
                 } else {
                     return redirect()->route('tamu.user.panitia.verif.lihat-halaman-scan-barcode')->with('alert', 'peserta tidak ditemukan');
                 }
