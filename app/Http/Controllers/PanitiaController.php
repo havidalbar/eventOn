@@ -124,7 +124,7 @@ class PanitiaController extends Controller
     function deteksiBarcode(Request $request)
     {
         try {
-            if ($request->kode_pesanan) {
+            if (strlen($request->kode_pesanan)==6) {
                 $kode_pesanan = $request->kode_pesanan;
             } else if ($request->kode_pesanan) {
                 $kode_pesanan = decrypt($request->kode_pesanan);
@@ -132,7 +132,7 @@ class PanitiaController extends Controller
                 return redirect()->back()->with('alert','kode_pesanan atau password tidak boleh dikosongi');
             }
 
-            if (is_numeric($kode_pesanan)) {
+            if ($kode_pesanan) {
                 $pesan = Pesan::where('kode_pesanan', $kode_pesanan)->first();
 
 
@@ -148,9 +148,10 @@ class PanitiaController extends Controller
                         $peserta->save();
                         $berhasil = 'Absensi peserta dengan kode ' . $kode_pesanan . ' berhasil dimasukkan';
                         return redirect()->back()->with('alert-success',$berhasil);
-                    }
+                    }else{
                     $kata = 'Maaf peserta dengan kode ' . $kode_pesanan . ' sudah terdaftar';
                     return redirect()->back()->with('alert',$kata);
+                    }
                 } else {
                     return redirect()->route('tamu.user.panitia.verif.lihat-halaman-scan-barcode')->with('alert', 'peserta tidak ditemukan');
                 }

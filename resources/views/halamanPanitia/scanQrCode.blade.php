@@ -43,10 +43,11 @@
             <div class="col-12">
                 <video id="preview" style="max-width:100%"></video>
             </div>
+            {{csrf_field()}}
             <script type="text/javascript">
                 let scanner = new Instascan.Scanner({ video: document.getElementById('preview'), mirror: false });
                     scanner.addListener('scan', function (content) {
-                        window.location.href='http://eventon15.herokuapp.com/tamu/panitia/panitia-verif/deteksi-barcode-acara' + '?kode_pesanan=' + content;
+                        window.location.href='http://127.0.0.1:8000/tamu/panitia/panitia-verif/deteksi-barcode-acara' + '?kode_pesanan=' + content;
                     });
                     Instascan.Camera.getCameras().then(function (cameras) {
                         if (cameras.length > 0) {
