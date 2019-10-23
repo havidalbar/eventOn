@@ -124,13 +124,12 @@ class PanitiaController extends Controller
     function deteksiBarcode(Request $request)
     {
         try {
-            if (isset($request->kode_pesanan)) {
+            if ($request->kode_pesanan) {
                 $kode_pesanan = $request->kode_pesanan;
-            } else if (isset($request->kode_pesanan)) {
-                dd($request->kode_pesanan);
+            } else if ($request->kode_pesanan) {
                 $kode_pesanan = decrypt($request->kode_pesanan);
             } else {
-                return view('halamanPanitia.scanQrCode', ['alert-success' => 'kode_pesanan atau password tidak boleh dikosongi']);
+                return redirect()->back()->with('alert','kode_pesanan atau password tidak boleh dikosongi');
             }
 
             if (is_numeric($kode_pesanan)) {
