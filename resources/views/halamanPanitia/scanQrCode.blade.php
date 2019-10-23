@@ -26,7 +26,7 @@
             Scan barcode acara peserta
         </div>
         <div class="ui divider"></div>
-    <form class="ui form" style="margin-top:15px" id="tambah-progres" method="get" action="{{route('user.tamu.panitia.verif.deteksi-barcode-acara')}}"
+    <form class="ui form" style="margin-top:15px" id="tambah-progres" method="get" action="{{route('tamu.user.panitia.verif.deteksi-barcode-acara')}}"
             enctype="multipart/form-data">
             <div class="m-subheader">
                 <div class="d-flex align-items-center">
