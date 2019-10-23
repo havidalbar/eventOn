@@ -126,7 +126,7 @@ class PanitiaController extends Controller
         try {
             if (isset($request->kode_pesanan)) {
                 $kode_pesanan = $request->kode_pesanan;
-            }else if (isset($request->kode_pesanan)) {
+            } else if (isset($request->kode_pesanan)) {
                 dd($request->kode_pesanan);
                 $kode_pesanan = decrypt($request->kode_pesanan);
             } else {
@@ -137,15 +137,20 @@ class PanitiaController extends Controller
                 $pesan = Pesan::where('kode_pesanan', $kode_pesanan)->first();
 
                 if ($pesan) {
-                    $pesan->status = 2;
-                    $pesan->save();
-                    $peserta = new Peserta;
-                    $peserta->id_acara = $pesan->id_acara;
-                    $peserta->id_member = $pesan->id_member;
-                    $peserta->id_pesan = $pesan->id;
-                    $peserta->save();
+                    $cek = Peserta::where('id_pesan', $pesan->id)->first();
+                    if (!$cek) {
+                        $pesan->status = 2;
+                        $pesan->save();
+                        $peserta = new Peserta;
+                        $peserta->id_acara = $pesan->id_acara;
+                        $peserta->id_member = $pesan->id_member;
+                        $peserta->id_pesan = $pesan->id;
+                        $peserta->save();
 
-                    return redirect()->route('tamu.user.panitia.verif.lihat-halaman-scan-barcode')->with('alert-success', 'Absensi peserta dengan kode ' . $kode_pesanan . ' berhasil dimasukkan');
+                        return redirect()->route('tamu.user.panitia.verif.lihat-halaman-scan-barcode')->with('alert-success', 'Absensi peserta dengan kode ' . $kode_pesanan . ' berhasil dimasukkan');
+                    } else {
+                        return redirect()->route('tamu.user.panitia.verif.lihat-halaman-scan-barcode')->with('alert', 'Maaf Absensi peserta dengan kode ' . $kode_pesanan . ' sudah terdaftar');
+                    }
                 } else {
                     return redirect()->route('tamu.user.panitia.verif.lihat-halaman-scan-barcode')->with('alert', 'peserta tidak ditemukan');
                 }
