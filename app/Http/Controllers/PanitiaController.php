@@ -148,7 +148,7 @@ class PanitiaController extends Controller
                         $peserta->id_pesan = $pesan->id;
                         $peserta->save();
                         $berhasil = 'Absensi peserta dengan kode ' . $kode_pesanan . ' berhasil dimasukkan';
-                        return view('home',['alert-success'=>$berhasil]);
+                        return redirect()->back()->with('alert-success',$berhasil);
                     }
                     $kata = 'Maaf peserta dengan kode ' . $kode_pesanan . ' sudah terdaftar';
                     return redirect()->back()->with('alert',$kata);
