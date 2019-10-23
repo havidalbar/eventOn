@@ -125,9 +125,10 @@ class PanitiaController extends Controller
     {
         try {
             if (isset($request->kode_pesanan)) {
-                $kode_pesanan = decrypt($request->kode_pesanan);
-            } else if (isset($request->kode_pesanan)) {
                 $kode_pesanan = $request->kode_pesanan;
+            }else if (isset($request->kode_pesanan)) {
+                dd($request->kode_pesanan);
+                $kode_pesanan = decrypt($request->kode_pesanan);
             } else {
                 return view('halamanPanitia.scanQrCode', ['alert-success' => 'kode_pesanan atau password tidak boleh dikosongi']);
             }
