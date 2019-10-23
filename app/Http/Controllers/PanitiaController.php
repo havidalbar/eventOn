@@ -8,6 +8,10 @@ use App\Http\Requests\PanitiaRequest;
 use App\Http\Requests\AcaraRequest;
 use App\Panitia;
 use App\Acara;
+use App\Peserta;
+use App\Pesan;
+
+
 
 class PanitiaController extends Controller
 {
@@ -125,14 +129,14 @@ class PanitiaController extends Controller
             } else if (isset($request->kode_pesanan)) {
                 $kode_pesanan = $request->kode_pesanan;
             } else {
-                return view('tamu.user.panitia.verif.lihat-halaman-scan-barcode', ['alert-success' => 'kode_pesanan atau password tidak boleh dikosongi']);
+                return view('halamanPanitia.scanQrCode', ['alert-success' => 'kode_pesanan atau password tidak boleh dikosongi']);
             }
 
             if (is_numeric($kode_pesanan)) {
                 $pesan = Pesan::where('kode_pesanan', $kode_pesanan)->first();
 
                 if ($pesan) {
-                    $pesan->status = 1;
+                    $pesan->status = 2;
                     $pesan->save();
                     $peserta = new Peserta;
                     $peserta->id_acara = $pesan->id_acara;

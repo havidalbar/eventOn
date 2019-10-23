@@ -41,7 +41,6 @@ Route::group(['prefix' => 'tamu', 'as' => 'tamu.'], function () {
         Route::post('upload-bukti-transfer/{id_pesan}','PesananController@uploadBuktiKonfirmasiTransfer')->name('upload-bukti-transfer');
         Route::get('lihat-halaman-pesanan','MemberController@lihatHalamanPesanan')->name('lihat-halaman-pesanan');
 
-
         Route::group(['prefix' => 'panitia', 'as' => 'panitia.', 'middleware' => ['panitia']], function () {
             Route::get('lihat-profil-panitia', 'PanitiaController@lihatProfilePanitia')->name('lihat-halaman-profile-panitia');
             Route::get('lihat-kumpulan-acara', 'PanitiaController@lihatKumpulanAcara')->name('lihat-halaman-kumpulan-acara');
@@ -54,6 +53,7 @@ Route::group(['prefix' => 'tamu', 'as' => 'tamu.'], function () {
                 Route::get('lihat-halaman-ubah-acara/{id_acara}', 'PanitiaController@lihatHalamanEditAcara')->name('lihat-halaman-ubah-acara');
                 Route::post('ubah-acara/{id_acara}', 'PanitiaController@editAcara')->name('ubah-acara');
                 Route::get('lihat-halaman-scan-barcode', 'PanitiaController@lihatHalamanDeteksiBarcode')->name('lihat-halaman-scan-barcode');
+                Route::get('deteksi-barcode-acara','PanitiaController@deteksiBarcode')->name('deteksi-barcode-acara');
 
             });
         });

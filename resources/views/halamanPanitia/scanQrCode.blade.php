@@ -26,7 +26,7 @@
             Scan barcode acara peserta
         </div>
         <div class="ui divider"></div>
-    <form class="ui form" style="margin-top:15px" id="tambah-progres" method="get"
+    <form class="ui form" style="margin-top:15px" id="tambah-progres" method="get" action="{{route('user.tamu.panitia.verif.deteksi-barcode-acara')}}"
             enctype="multipart/form-data">
             <div class="m-subheader">
                 <div class="d-flex align-items-center">
@@ -46,7 +46,7 @@
             <script type="text/javascript">
                 let scanner = new Instascan.Scanner({ video: document.getElementById('preview'), mirror: false });
                     scanner.addListener('scan', function (content) {
-                        window.location.href='http://127.0.0.1:8000/tamu/panitia/panitia-verif/lihat-halaman-scan-barcode' + '?kode_pesanan=' + content;
+                        window.location.href='http://eventon15.herokuapp.com/tamu/panitia/panitia-verif/deteksi-barcode-acara' + '?kode_pesanan=' + content;
                     });
                     Instascan.Camera.getCameras().then(function (cameras) {
                         if (cameras.length > 0) {
