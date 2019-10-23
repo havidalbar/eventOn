@@ -67,6 +67,13 @@ Route::group(['prefix' => 'tamu', 'as' => 'tamu.'], function () {
             Route::post('tolak-pembayaran', 'AdminController@tolakPembayaran')->name('tolak-pembayaran');
         });
 
-        Route::group(['prefix' => 'panitia', 'as' => 'panitia.', 'middleware' => ['IsPanitia']], function () { });
     });
 });
+
+Route::get('{name}', function ($name) {
+    if (file_exists(public_path($name))) {
+        return redirect(url('public/' . $name));
+    } else {
+        abort(404);
+    }
+})->where('name', '(.*)');
