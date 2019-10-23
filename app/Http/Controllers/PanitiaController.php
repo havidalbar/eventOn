@@ -147,11 +147,11 @@ class PanitiaController extends Controller
                         $peserta->id_member = $pesan->id_member;
                         $peserta->id_pesan = $pesan->id;
                         $peserta->save();
-
-                        return redirect()->route('tamu.user.panitia.verif.lihat-halaman-scan-barcode')->with('alert-success', 'Absensi peserta dengan kode ' . $kode_pesanan . ' berhasil dimasukkan');
+                        $berhasil = 'Absensi peserta dengan kode ' . $kode_pesanan . ' berhasil dimasukkan';
+                        return view('home',['alert-success'=>$berhasil]);
                     }
                     $kata = 'Maaf peserta dengan kode ' . $kode_pesanan . ' sudah terdaftar';
-                    return view('halamanPanitia.scanQrCode',['alert'=>$kata]);
+                    return redirect()->back()->with('alert',$kata);
                 } else {
                     return redirect()->route('tamu.user.panitia.verif.lihat-halaman-scan-barcode')->with('alert', 'peserta tidak ditemukan');
                 }
