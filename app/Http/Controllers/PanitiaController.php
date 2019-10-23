@@ -139,7 +139,7 @@ class PanitiaController extends Controller
 
                 if ($pesan) {
                     $cek = Peserta::where('id_pesan', $pesan->id)->first();
-                    if ($cek) {
+                    if (!$cek) {
                         $pesan->status = 2;
                         $pesan->save();
                         $peserta = new Peserta;
