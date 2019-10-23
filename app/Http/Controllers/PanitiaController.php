@@ -136,9 +136,10 @@ class PanitiaController extends Controller
             if (is_numeric($kode_pesanan)) {
                 $pesan = Pesan::where('kode_pesanan', $kode_pesanan)->first();
 
+
                 if ($pesan) {
                     $cek = Peserta::where('id_pesan', $pesan->id)->first();
-                    if (!$cek) {
+                    if ($cek) {
                         $pesan->status = 2;
                         $pesan->save();
                         $peserta = new Peserta;
@@ -148,8 +149,6 @@ class PanitiaController extends Controller
                         $peserta->save();
 
                         return redirect()->route('tamu.user.panitia.verif.lihat-halaman-scan-barcode')->with('alert-success', 'Absensi peserta dengan kode ' . $kode_pesanan . ' berhasil dimasukkan');
-                    } else {
-                        return redirect()->route('tamu.user.panitia.verif.lihat-halaman-scan-barcode')->with('alert', 'Maaf Absensi peserta dengan kode ' . $kode_pesanan . ' sudah terdaftar');
                     }
                 } else {
                     return redirect()->route('tamu.user.panitia.verif.lihat-halaman-scan-barcode')->with('alert', 'peserta tidak ditemukan');
