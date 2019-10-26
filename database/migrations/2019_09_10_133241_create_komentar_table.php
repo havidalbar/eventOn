@@ -16,7 +16,7 @@ class CreateKomentarTable extends Migration
         Schema::create('komentar', function (Blueprint $table) {
             $table->increments('id');
             $table->unsignedInteger('id_acara');
-            $table->foreign('id_acara')->references('id')->on('acara');
+            $table->foreign('id_acara')->references('id')->on('acara')->onDelete('cascade')->onUpdate('cascade');;
             $table->text('isi');
             $table->unsignedInteger('komentar_ke')->nullable();
             $table->unsignedInteger('id_member')->nullable();
