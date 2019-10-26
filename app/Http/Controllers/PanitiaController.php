@@ -119,7 +119,14 @@ class PanitiaController extends Controller
     }
 
     function lihatDataPembeli($id_acara)
-    { }
+    {
+        $pesans = Pesan::where('id_acara',$id_acara)->get();
+        if($pesans){
+            return view('halamanPanitia.lihatDataPembeli', compact('pesans'));
+        }else{
+            abort(404);
+        }
+    }
 
     function deteksiBarcode(Request $request)
     {

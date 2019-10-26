@@ -1,5 +1,5 @@
 @extends (\Session::has('username') ? 'layouts.navLogin' : 'layouts.nav')
-@section('title', 'Scan Barcode Acara | Aderim')
+@section('title', 'Scan Barcode Acara | EventOn')
 
 @section('js')
 <script src="https://rawgit.com/schmich/instascan-builds/master/instascan.min.js"></script>

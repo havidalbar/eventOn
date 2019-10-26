@@ -1,5 +1,5 @@
 @extends (\Session::has('username') ? 'layouts.navLogin' : 'layouts.nav')
-@section('title', 'Detail Acara | Aderim')
+@section('title', 'Detail Acara | EventOn')
 
 @section('content')
 

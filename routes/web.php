@@ -54,6 +54,7 @@ Route::group(['prefix' => 'tamu', 'as' => 'tamu.'], function () {
                 Route::post('ubah-acara/{id_acara}', 'PanitiaController@editAcara')->name('ubah-acara');
                 Route::get('lihat-halaman-scan-barcode', 'PanitiaController@lihatHalamanDeteksiBarcode')->name('lihat-halaman-scan-barcode');
                 Route::get('deteksi-barcode-acara','PanitiaController@deteksiBarcode')->name('deteksi-barcode-acara');
+                Route::get('lihat-halaman-pembeli/{id_acara}', 'PanitiaController@lihatDataPembeli')->name('lihat-halaman-pembeli');
 
             });
         });
