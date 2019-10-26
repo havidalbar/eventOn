@@ -169,7 +169,7 @@
             <p>Silahkan cari hingga mendapatkan event yang cocok untuk anda</p>
         </div>
         <form class="ui fluid action input" style="margin-top:20px;font-size:18px;padding-left:60px;padding-right:60px"
-    method="get" action="{{route('lihat-acara-cari')}}">
+            method="get" action="{{route('lihat-acara-cari')}}">
             <input type="text" name="keyword" placeholder="Cari desain rumah impian yang ingin anda buat...">
             <button type="submit" class="ui button teal">Cari</button>
         </form>
@@ -311,13 +311,47 @@
                                 </div>
                             </div>
                         </div>
+                        <div class="sixteen wide column">
+                            <div class="ui divider"></div>
+                            <div class="ui stackable grid">
+                                <div class="one wide column">
+                                    <img class="ui circular image" src="{{asset($panitias[$i]->foto)}}"
+                                        style="width:70px;height:70px;object-fit:cover">
+                                </div>
+                                <div class="thirteen wide column">
+                                    <div style="font-size:18px"><b>Lorem Ipsum Dolor Amet</b></div>
+                                </div>
+                            </div>
+                            <div class="ui stackable grid">
+                                <div class="one wide column">
+                                    <img class="ui circular image" src="{{asset($panitias[$i]->foto)}}"
+                                        style="width:70px;height:70px;object-fit:cover">
+                                </div>
+                                <div class="thirteen wide column">
+                                    <div style="font-size:18px"><b>Lorem Ipsum Dolor Amet</b></div>
+                                </div>
+                            </div>
+                            <form class="ui form" style="margin-top:15px" id="daftar-panitia" method='post' action="/"
+                                enctype="multipart/form-data">
+                                <div class="field">
+                                    <label style="font-size:18px">Isi Komentar</label>
+                                    <input type="text" name="alamat" placeholder="Isi Komentar Anda">
+                                </div>
+                                {{csrf_field()}}
+                                <button class="ui big teal button fluid" onclick="" type="submit" name="submit"
+                                    style="margin-top:40px">Kirim Komentar
+                                </button>
+                            </form>
+
+                        </div>
                     </div>
                 </div>
                 <div class="actions">
                     <button class="ui negative button">
                         Pilih Lagi
                     </button>
-                <button class="ui positive button" onclick="window.location.href='{{route('tamu.user.lihat-halaman-pesan-tiket',['id_acara'=>$items[$i]->id])}}'">
+                    <button class="ui positive button"
+                        onclick="window.location.href='{{route('tamu.user.lihat-halaman-pesan-tiket',['id_acara'=>$items[$i]->id])}}'">
                         Pesan Tiket
                     </button>
                 </div>
@@ -326,7 +360,7 @@
         <!--Akhir Modal Detail -->
     </div>
     <div class="ui center aligned container" style="margin-top:40px">
-    <a href="{{route('lihat-semua-acara')}}">
+        <a href="{{route('lihat-semua-acara')}}">
             <div class="ui vertical animated large teal button" style="width:150px">
                 <div class="hidden content">Lihat Semua</div>
                 <div class="visible content">
