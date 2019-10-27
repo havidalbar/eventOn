@@ -105,7 +105,7 @@
         @endif
         <div class="ui container center aligned">
             <a href="/">
-                <img class="ui centered image" src="{{asset('logo/logo_biru.png')}}"
+                <img class="ui centered image" src="{{asset('eo11.png')}}"
                     style="margin-bottom:20px;max-height:90px">
             </a>
             <form class="ui form" action="{{ route('tamu.register') }}" method="post" enctype="multipart/form-data">

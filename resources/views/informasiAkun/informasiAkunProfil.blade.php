@@ -24,7 +24,7 @@
                         Profil
                     </a>
                     <a class="item" data-tab="riwayat-orderan">
-                        Riwayat Orderan
+                        Riwayat Pesanan
                     </a>
                 </div>
                 <div class="ui divider" style="margin-top:20px"></div>

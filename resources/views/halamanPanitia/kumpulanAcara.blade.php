@@ -20,7 +20,7 @@
         <div class="four wide column">
             <div
                 style="border:4px solid #4b8991;border-radius:5px;background-color:#f8f8f8;padding:40px 30px 40px 30px">
-                <img class="ui circular centered image" src="{{asset(Session::get('foto_profesi'))}}"
+                <img class="ui circular centered image" src="{{asset(Session::get('foto_panitia'))}}"
                     style="width:150px;height:150px;object-fit:cover;border:5px solid #4b8991;padding:3px">
                 <div
                     style="text-align:center;line-height:1.5;font-size:22px;margin-top:20px;margin-bottom:20px;color:#4d4d4d">

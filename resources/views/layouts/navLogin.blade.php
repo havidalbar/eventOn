@@ -225,90 +225,96 @@
 <body class="pushable">
     <!-- Following Menu -->
     <div class="ui large top borderless menu fixed transition hidden">
-    <div class="ui container">
-        <div class="item" style="margin-right:10px">
-        <a href="{{route('index')}}" style="color:black">EventOn
-                <i class="pencil icon"></i></a>
-        </div>
-        <a class="item" href="{{route('index')}}">Beranda</a>
-        <a class="item" href="{{route('lihat-acara-kategori',['kategori'=>'edukasi'])}}">Edukasi</a>
-        <a class="item" href="{{route('lihat-acara-kategori',['kategori'=>'kesehatan'])}}">Kesehatan</a>
-        <a class="item" href="{{route('lihat-acara-kategori',['kategori'=>'liburan'])}}">Liburan</a>
-        <div class="item">
-            <form class="ui icon input" method="get" action="{{route('lihat-acara-cari')}}" style="width:350px">
-                <input type="text" placeholder="Cari sesuatu..." name="keyword">
-                <i class="search link icon"></i>
-            </form>
-        </div>
-        <div class="right item">
-            <div class="ui teal top right pointing dropdown button">
-                <i class="briefcase icon"></i>
-                <span>Panitia</span>
-                <div class="menu">
-                    @if(Session::has('nama_panitia'))
-                    <div class="header" style="font-size:14px">
-                        Informasi Panitia
-                    </div>
-                <a class="item" href="{{route('tamu.user.panitia.lihat-halaman-profile-panitia')}}" style="margin-left:20px;margin-right:20px">
-                        Profil Panitia
-                    </a>
-                    <div class="header" style="font-size:14px">
-                        Acara Panitia
-                    </div>
-                    <a class="item" href="{{route('tamu.user.panitia.verif.lihat-halaman-tambah-acara')}}" style="margin-left:20px;margin-right:20px">
-                        Tambah Acara
-                    </a>
-                <a class="item" href="{{route('tamu.user.panitia.lihat-halaman-kumpulan-acara')}}" style="margin-left:20px;margin-right:20px">
-                        Kumpulan Acara
-                    </a>
-                    <a class="item" href="{{route('tamu.user.panitia.verif.lihat-halaman-scan-barcode')}}" style="margin-left:20px;margin-right:20px">
-                        Deteksi Barcode Acara
-                    </a>
-                    @else
-                <a class="item" href="{{route('tamu.user.lihat-halaman-daftar-panitia')}}" style="margin-left:20px;margin-right:20px">
-                        Daftar Panitia
-                    </a>
-                    @endif
-                </div>
+        <div class="ui container">
+            <div class="item" style="margin-right:10px">
+                <img src="{{asset('Model 1.png')}}" style="color:white">
             </div>
-            <div class="ui teal top right pointing dropdown button" style="margin-left:15px">
-                <i class="user circle icon"></i>
-                <span>Akun</span>
-                <div class="menu">
-                    <a href="#">
-                        <div style="width:250px;padding:20px">
-                            <div style="font-size:18px;text-align:center;margin-top:15px;color:black">
-                                {{Session::get('username')}}
+            <a class="item" href="{{route('index')}}">Beranda</a>
+            <a class="item" href="{{route('lihat-acara-kategori',['kategori'=>'edukasi'])}}">Edukasi</a>
+            <a class="item" href="{{route('lihat-acara-kategori',['kategori'=>'kesehatan'])}}">Kesehatan</a>
+            <a class="item" href="{{route('lihat-acara-kategori',['kategori'=>'liburan'])}}">Liburan</a>
+            <div class="item">
+                <form class="ui icon input" method="get" action="{{route('lihat-acara-cari')}}" style="width:350px">
+                    <input type="text" placeholder="Cari sesuatu..." name="keyword">
+                    <i class="search link icon"></i>
+                </form>
+            </div>
+            <div class="right item">
+                <div class="ui teal top right pointing dropdown button">
+                    <i class="briefcase icon"></i>
+                    <span>Panitia</span>
+                    <div class="menu">
+                        @if(Session::has('nama_panitia'))
+                        <div class="header" style="font-size:14px">
+                            Informasi Panitia
+                        </div>
+                        <a class="item" href="{{route('tamu.user.panitia.lihat-halaman-profile-panitia')}}"
+                            style="margin-left:20px;margin-right:20px">
+                            Profil Panitia
+                        </a>
+                        <div class="header" style="font-size:14px">
+                            Acara Panitia
+                        </div>
+                        <a class="item" href="{{route('tamu.user.panitia.verif.lihat-halaman-tambah-acara')}}"
+                            style="margin-left:20px;margin-right:20px">
+                            Tambah Acara
+                        </a>
+                        <a class="item" href="{{route('tamu.user.panitia.lihat-halaman-kumpulan-acara')}}"
+                            style="margin-left:20px;margin-right:20px">
+                            Kumpulan Acara
+                        </a>
+                        <a class="item" href="{{route('tamu.user.panitia.verif.lihat-halaman-scan-barcode')}}"
+                            style="margin-left:20px;margin-right:20px">
+                            Deteksi Barcode Acara
+                        </a>
+                        @else
+                        <a class="item" href="{{route('tamu.user.lihat-halaman-daftar-panitia')}}"
+                            style="margin-left:20px;margin-right:20px">
+                            Daftar Panitia
+                        </a>
+                        @endif
+                    </div>
+                </div>
+                <div class="ui teal top right pointing dropdown button" style="margin-left:15px">
+                    <i class="user circle icon"></i>
+                    <span>Akun</span>
+                    <div class="menu">
+                        <a href="#">
+                            <div style="width:250px;padding:20px">
+                                <div style="font-size:18px;text-align:center;margin-top:15px;color:black">
+                                    {{Session::get('username')}}
+                                </div>
                             </div>
+                        </a>
+                        <div class="divider"></div>
+                        @if(Session::get('username') == "admin")
+                        <a class="item" href="{{route('tamu.user.admin.lihat-halaman-konfirmasi-pembayaran')}}">
+                            <div style="font-size:14px">
+                                <b>HALAMAN ADMIN</b>
+                            </div>
+                        </a>
+                        @endif
+                        <div class="header" style="font-size:14px">
+                            Informasi Akun
                         </div>
-                    </a>
-                    <div class="divider"></div>
-                    @if(Session::get('username') == "admin")
-                    <a class="item" href="{{route('tamu.user.admin.lihat-halaman-konfirmasi-pembayaran')}}">
-                        <div style="font-size:14px">
-                            <b>HALAMAN ADMIN</b>
-                        </div>
-                    </a>
-                    @endif
-                    <div class="header" style="font-size:14px">
-                        Informasi Akun
+                        <a class="item" href="{{route('tamu.user.lihat-akun')}}"
+                            style="margin-left:20px;margin-right:20px">
+                            Profil
+                        </a>
+                        <a class="item" href="{{route('tamu.user.lihat-halaman-pesanan')}}"
+                            style="margin-left:20px;margin-right:20px">
+                            Riwayat Pesanan
+                        </a>
+                        <a href="{{route('tamu.logout')}}">
+                            <button class="ui fluid teal button" style="margin-top:10px">
+                                <i class="sign-out icon"></i>
+                                Keluar
+                            </button>
+                        </a>
                     </div>
-                    <a class="item" href="{{route('tamu.user.lihat-akun')}}" style="margin-left:20px;margin-right:20px">
-                        Profil
-                    </a>
-                <a class="item" href="{{route('tamu.user.lihat-halaman-pesanan')}}" style="margin-left:20px;margin-right:20px">
-                        Riwayat Pesanan
-                    </a>
-                    <a href="{{route('tamu.logout')}}">
-                        <button class="ui fluid teal button" style="margin-top:10px">
-                            <i class="sign-out icon"></i>
-                            Keluar
-                        </button>
-                    </a>
                 </div>
             </div>
         </div>
-    </div>
     </div>
 
     <!-- Sidebar Menu -->
@@ -332,23 +338,28 @@
                     <div class="header" style="font-size:14px">
                         Informasi Panitia
                     </div>
-                    <a class="item" href="{{route('tamu.user.panitia.lihat-halaman-profile-panitia')}}" style="margin-left:20px;margin-right:20px">
+                    <a class="item" href="{{route('tamu.user.panitia.lihat-halaman-profile-panitia')}}"
+                        style="margin-left:20px;margin-right:20px">
                         Profil Panitia
                     </a>
                     <div class="header" style="font-size:14px">
                         Acara Panitia
                     </div>
-                    <a class="item" href="{{route('tamu.user.panitia.verif.lihat-halaman-tambah-acara')}}" style="margin-left:20px;margin-right:20px">
+                    <a class="item" href="{{route('tamu.user.panitia.verif.lihat-halaman-tambah-acara')}}"
+                        style="margin-left:20px;margin-right:20px">
                         Tambah Acara
                     </a>
-                    <a class="item" href="{{route('tamu.user.panitia.lihat-halaman-kumpulan-acara')}}" style="margin-left:20px;margin-right:20px">
+                    <a class="item" href="{{route('tamu.user.panitia.lihat-halaman-kumpulan-acara')}}"
+                        style="margin-left:20px;margin-right:20px">
                         Kumpulan Acara
                     </a>
-                    <a class="item" href="{{route('tamu.user.panitia.verif.lihat-halaman-scan-barcode')}}" style="margin-left:20px;margin-right:20px">
+                    <a class="item" href="{{route('tamu.user.panitia.verif.lihat-halaman-scan-barcode')}}"
+                        style="margin-left:20px;margin-right:20px">
                         Deteksi Barcode Acara
                     </a>
                     @else
-                    <a class="item" href="{{route('tamu.user.lihat-halaman-daftar-panitia')}}" style="margin-left:20px;margin-right:20px">
+                    <a class="item" href="{{route('tamu.user.lihat-halaman-daftar-panitia')}}"
+                        style="margin-left:20px;margin-right:20px">
                         Daftar Panitia
                     </a>
                     @endif
@@ -379,7 +390,8 @@
                     <a class="item" href="{{route('tamu.user.lihat-akun')}}" style="margin-left:20px;margin-right:20px">
                         Profil
                     </a>
-                    <a class="item" href="{{route('tamu.user.lihat-halaman-pesanan')}}" style="margin-left:20px;margin-right:20px">
+                    <a class="item" href="{{route('tamu.user.lihat-halaman-pesanan')}}"
+                        style="margin-left:20px;margin-right:20px">
                         Riwayat Pesanan
                     </a>
                     <a href="{{route('tamu.logout')}}">
@@ -402,8 +414,8 @@
                         <i class="sidebar icon"></i>
                     </a>
                     <div class="item" style="margin-right:10px">
-                        <a href="{{route('index')}}" style="color:white">EventOn
-                            <i class="pencil icon"></i></a>
+                        <img src="{{asset('Model 1.png')}}" style="color:white">
+
                     </div>
                     <a class="item" href="{{route('index')}}">Beranda</a>
                     <a class="item" href="{{route('lihat-acara-kategori',['kategori'=>'edukasi'])}}">Edukasi</a>
@@ -424,23 +436,28 @@
                                 <div class="header" style="font-size:14px">
                                     Informasi Panitia
                                 </div>
-                                <a class="item" href="{{route('tamu.user.panitia.lihat-halaman-profile-panitia')}}" style="margin-left:20px;margin-right:20px">
+                                <a class="item" href="{{route('tamu.user.panitia.lihat-halaman-profile-panitia')}}"
+                                    style="margin-left:20px;margin-right:20px">
                                     Profil Panitia
                                 </a>
                                 <div class="header" style="font-size:14px">
                                     Acara Panitia
                                 </div>
-                                <a class="item" href="{{route('tamu.user.panitia.verif.lihat-halaman-tambah-acara')}}" style="margin-left:20px;margin-right:20px">
+                                <a class="item" href="{{route('tamu.user.panitia.verif.lihat-halaman-tambah-acara')}}"
+                                    style="margin-left:20px;margin-right:20px">
                                     Tambah Acara
                                 </a>
-                                <a class="item" href="{{route('tamu.user.panitia.lihat-halaman-kumpulan-acara')}}" style="margin-left:20px;margin-right:20px">
+                                <a class="item" href="{{route('tamu.user.panitia.lihat-halaman-kumpulan-acara')}}"
+                                    style="margin-left:20px;margin-right:20px">
                                     Kumpulan Acara
                                 </a>
-                                <a class="item" href="{{route('tamu.user.panitia.verif.lihat-halaman-scan-barcode')}}" style="margin-left:20px;margin-right:20px">
+                                <a class="item" href="{{route('tamu.user.panitia.verif.lihat-halaman-scan-barcode')}}"
+                                    style="margin-left:20px;margin-right:20px">
                                     Deteksi Barcode Acara
                                 </a>
                                 @else
-                                <a class="item" href="{{route('tamu.user.lihat-halaman-daftar-panitia')}}" style="margin-left:20px;margin-right:20px">
+                                <a class="item" href="{{route('tamu.user.lihat-halaman-daftar-panitia')}}"
+                                    style="margin-left:20px;margin-right:20px">
                                     Daftar Panitia
                                 </a>
                                 @endif
@@ -468,10 +485,12 @@
                                 <div class="header" style="font-size:14px">
                                     Informasi Akun
                                 </div>
-                                <a class="item" href="{{route('tamu.user.lihat-akun')}}" style="margin-left:20px;margin-right:20px">
+                                <a class="item" href="{{route('tamu.user.lihat-akun')}}"
+                                    style="margin-left:20px;margin-right:20px">
                                     Profil
                                 </a>
-                                <a class="item" href="{{route('tamu.user.lihat-halaman-pesanan')}}" style="margin-left:20px;margin-right:20px">
+                                <a class="item" href="{{route('tamu.user.lihat-halaman-pesanan')}}"
+                                    style="margin-left:20px;margin-right:20px">
                                     Riwayat Pesanan
                                 </a>
                                 <a href="{{route('tamu.logout')}}">

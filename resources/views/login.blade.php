@@ -89,7 +89,7 @@
         style="position:absolute;top: 50%;left: 50%;transform: translateX(-50%) translateY(-50%);margin:20px">
         <div class="ui container center aligned">
             <a href="/">
-                <img class="ui centered image " src="{{asset('logo/logo_biru.png')}}" style="max-height:150px">
+                <img class="ui centered image " src="{{asset('eo11.png')}}" style="max-height:150px">
             </a>
             <div style="margin-top:20px">
                 <h2>Silahkan Masuk Ke Akun Anda</h2>

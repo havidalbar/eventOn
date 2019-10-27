@@ -8,7 +8,7 @@
         <div class="ui container center aligned">
             <i class="huge search teal icon"></i>
             <div style="font-size:24px;line-height:1.5;margin-top:15px"><b>Oops, anda belum memiliki acara :(</b></div>
-            <div style="font-size:20px;line-height:1.5;margin-top:15px">Yuk tambahkan acara anda ke Aderim agar calon pemesan tertarik dengan jasa yang anda tawarkan.</div>
+            <div style="font-size:20px;line-height:1.5;margin-top:15px">Yuk tambahkan acara anda ke EventOn agar calon pemesan tertarik dengan acara yang anda tawarkan.</div>
             <button class="ui large teal button"  style="margin-top:15px" onclick="window.location.href='{{route('tamu.user.panitia.verif.lihat-halaman-tambah-acara')}}'">Tambah acara</button>
         </div>
     @else

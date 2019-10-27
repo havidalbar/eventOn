@@ -183,8 +183,8 @@
     <div class="ui large top borderless menu fixed transition hidden">
         <div class="ui container">
             <div class="item" style="margin-right:10px">
-                <a href="{{route('index')}}" style="color:black">Eventon
-                    <i class="pencil icon"></i></a>
+                <img src="{{asset('Model 1.png')}}" style="color:white">
+
             </div>
             <a class="item" href="{{route('index')}}">Beranda</a>
             <a class="item" href="{{route('lihat-acara-kategori',['kategori'=>'edukasi'])}}">Edukasi</a>
@@ -231,8 +231,7 @@
                         <i class="sidebar icon"></i>
                     </a>
                     <div class="item" style="margin-right:10px">
-                        <a href="{{route('index')}}" style="color:white">EventOn
-                            <i class="pencil icon"></i></a>
+                        <img src="{{asset('Model 1.png')}}" style="color:white">
                     </div>
                     <a class="item" href="{{route('index')}}">Beranda</a>
                     <a class="item" href="{{route('lihat-acara-kategori',['kategori'=>'edukasi'])}}">Edukasi</a>

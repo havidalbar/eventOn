@@ -82,6 +82,27 @@
                             prompt: 'maksimal acara tidak boleh dikosongkan'
                         }]
                     },
+                    tanggal: {
+                        identifier: 'tanggal',
+                        rules: [{
+                            type: 'empty',
+                            prompt: 'tanggal acara tidak boleh dikosongkan'
+                        }]
+                    },
+                    bulan: {
+                        identifier: 'bulan',
+                        rules: [{
+                            type: 'empty',
+                            prompt: 'bulan acara tidak boleh dikosongkan'
+                        }]
+                    },
+                    tahun: {
+                        identifier: 'tahun',
+                        rules: [{
+                            type: 'empty',
+                            prompt: 'tahun acara tidak boleh dikosongkan'
+                        }]
+                    },
                     status: {
                         identifier: 'status',
                         rules: [{
@@ -107,7 +128,7 @@
     <div style="max-width:700px;margin: 0 auto;border:1px solid #e1e2e3;border-radius:6px;padding:40px 45px 40px 45px">
         <div style="font-size:28px"><b>Tambah Acara</b></div>
         <div style="font-size:20px;margin-top:15px;line-height:1.5">
-            Bagikan informasi proyek anda kepada para pengguna Aderim agar mereka tertarik menggunakan jasa anda.
+            Bagikan informasi acara anda kepada para pengguna EventOn agar mereka tertarik dengan acara anda.
         </div>
         <div class="ui divider"></div>
         <div class="ui container fluid" style="margin-top:20px">
