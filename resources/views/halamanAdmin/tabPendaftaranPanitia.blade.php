@@ -21,8 +21,7 @@
                 </tr>
             </thead>
             <tbody>
-                @for($i = 0; $i < count($panitias); $i++) <?php $fotos= explode(" ", $panitias[$i]->url_image);?>
-                <tr>
+                @for($i = 0; $i < count($panitias); $i++) <?php $fotos= explode(" ", $panitias[$i]->url_image);?> <tr>
                     <td>{{$panitias[$i]->id}}</td>
                     <td>
                         <div>{{$panitias[$i]->nama_panitia}}</div>
@@ -39,11 +38,15 @@
                     <td>
                         <div class="ui internally celled grid">
                             <div class="row">
-                                <form class="eight wide column" action="{{route('tamu.user.admin.terima-panitia', ['id' => $panitias[$i]->id])}}" method="post">
+                                <form class="eight wide column"
+                                    action="{{route('tamu.user.admin.kelola-panitia', ['id' => $panitias[$i]->id, 'status'=> 1])}}"
+                                    method="post">
                                     {{csrf_field()}}
                                     <button class="ui button basic green">Terima</button>
                                 </form>
-                                <form class="eight wide column" action="{{route('tamu.user.admin.tolak-panitia',['id' => $panitias[$i]->id])}}" method="post">
+                                <form class="eight wide column"
+                                    action="{{route('tamu.user.admin.kelola-panitia',['id' => $panitias[$i]->id, 'status' => -1])}}"
+                                    method="post">
                                     {{csrf_field()}}
                                     <button class="ui button basic red">Tolak</button>
                                 </form>
@@ -51,22 +54,22 @@
                             </div>
                         </div>
                     </td>
-                </tr>
-                <!-- Dimmer Portofolio Pendaftar -->
-                <div class="ui large modal portofolio <?php echo $i ?>">
-                    <div class="header">
-                        Portofolio Pendaftar
-                    </div>
-                    <div class="content">
-                        <div class="ui two stackable cards">
-                        @for($j=0; $j < count($fotos); $j++)
-                            <div class="card">
-                                <img src="/{{$fotos[$j]}}" style="height:250px;object-fit:cover">
-                                <a class="ui teal bottom attached button" href="/{{$fotos[$j]}}" download="portofolio<?php echo $j+1 ?>">
-                                    Download
-                                </a>
+                    </tr>
+                    <!-- Dimmer Portofolio Pendaftar -->
+                    <div class="ui large modal portofolio <?php echo $i ?>">
+                        <div class="header">
+                            Portofolio Pendaftar
+                        </div>
+                        <div class="content">
+                            <div class="ui two stackable cards">
+                                @for($j=0; $j < count($fotos); $j++) <div class="card">
+                                    <img src="/{{$fotos[$j]}}" style="height:250px;object-fit:cover">
+                                    <a class="ui teal bottom attached button" href="/{{$fotos[$j]}}"
+                                        download="portofolio<?php echo $j+1 ?>">
+                                        Download
+                                    </a>
                             </div>
-                        @endfor
+                            @endfor
                         </div>
                     </div>
                     <div class="actions">
@@ -74,8 +77,8 @@
                             Oke
                         </button>
                     </div>
-                </div>
-                @endfor
+    </div>
+    @endfor
     </tbody>
 
 

@@ -61,11 +61,9 @@ Route::group(['prefix' => 'tamu', 'as' => 'tamu.'], function () {
 
         Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => ['admin']], function () {
             Route::get('lihat-konfirmasi-pendaftaran', 'AdminController@lihatHalamanKonfirmasiPendaftaran')->name('lihat-halaman-konfirmasi-pendaftaran');
-            Route::post('terima-panitia', 'AdminController@terimaPanitia')->name('terima-panitia');
-            Route::post('tolak-panitia', 'AdminController@tolakPanitia')->name('tolak-panitia');
+            Route::post('kelola-panitia', 'AdminController@kelolaPanitia')->name('kelola-panitia');
             Route::get('lihat-konfirmasi-pembayaran', 'AdminController@lihatHalamanKonfirmasiPembayaran')->name('lihat-halaman-konfirmasi-pembayaran');
-            Route::post('terima-pembayaran', 'AdminController@terimaPembayaran')->name('terima-pembayaran');
-            Route::post('tolak-pembayaran', 'AdminController@tolakPembayaran')->name('tolak-pembayaran');
+            Route::post('kelola-pembayaran', 'AdminController@kelolaPembayaran')->name('kelola-pembayaran');
         });
 
     });

@@ -20,7 +20,11 @@ class PanitiaController extends Controller
     {
         $panitia = Panitia::where('id', Session::get('id_panitia'))->first();
         $acaras = Acara::where('id_panitia', $panitia->id)->get();
-        return view('halamanPanitia.profilPanitia', compact('panitia', 'acaras'));
+        if ($panitia) {
+            return view('halamanPanitia.profilPanitia', compact('panitia', 'acaras'));
+        } else {
+            abort(404);
+        }
     }
 
     function buatAcara(AcaraRequest $request)
@@ -84,7 +88,11 @@ class PanitiaController extends Controller
     {
         $panitia = Panitia::where('id', Session::get('id_panitia'))->first();
         $acaras = Acara::where('id_panitia', $panitia->id)->get();
+        if($panitia){
         return view('halamanPanitia.kumpulanAcara', compact('panitia', 'acaras'));
+        }else{
+            abort(404);
+        }
     }
 
     function editAcara(AcaraRequest $request, $id_acara)
@@ -120,10 +128,10 @@ class PanitiaController extends Controller
 
     function lihatDataPembeli($id_acara)
     {
-        $pesans = Pesan::where('id_acara',$id_acara)->get();
-        if($pesans){
+        $pesans = Pesan::where('id_acara', $id_acara)->get();
+        if ($pesans) {
             return view('halamanPanitia.lihatDataPembeli', compact('pesans'));
-        }else{
+        } else {
             abort(404);
         }
     }
@@ -131,12 +139,12 @@ class PanitiaController extends Controller
     function deteksiBarcode(Request $request)
     {
         try {
-            if (strlen($request->kode_pesanan)==6) {
+            if (strlen($request->kode_pesanan) == 6) {
                 $kode_pesanan = $request->kode_pesanan;
             } else if ($request->kode_pesanan) {
                 $kode_pesanan = decrypt($request->kode_pesanan);
             } else {
-                return redirect()->back()->with('alert','kode_pesanan atau password tidak boleh dikosongi');
+                return redirect()->back()->with('alert', 'kode_pesanan atau password tidak boleh dikosongi');
             }
 
             if ($kode_pesanan) {
@@ -154,10 +162,10 @@ class PanitiaController extends Controller
                         $peserta->id_pesan = $pesan->id;
                         $peserta->save();
                         $berhasil = 'Absensi peserta dengan kode ' . $kode_pesanan . ' berhasil dimasukkan';
-                        return redirect()->back()->with('alert-success',$berhasil);
-                    }else{
-                    $kata = 'Maaf peserta dengan kode ' . $kode_pesanan . ' sudah terdaftar';
-                    return redirect()->back()->with('alert',$kata);
+                        return redirect()->back()->with('alert-success', $berhasil);
+                    } else {
+                        $kata = 'Maaf peserta dengan kode ' . $kode_pesanan . ' sudah terdaftar';
+                        return redirect()->back()->with('alert', $kata);
                     }
                 } else {
                     return redirect()->route('tamu.user.panitia.verif.lihat-halaman-scan-barcode')->with('alert', 'peserta tidak ditemukan');

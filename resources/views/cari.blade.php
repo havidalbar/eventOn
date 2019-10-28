@@ -18,7 +18,7 @@
 @endif
 <div class="ui container" style="margin-top:30px">
     <div style="margin-top:10px;font-size:24px">
-        Silahkan cari hingga mendapatkan desain arsitek terbaik pilihan anda
+        Silahkan cari hingga mendapatkan acara terbaik pilihan anda
     </div>
     <div style="margin-top:10px;margin-bottom:25px;font-size:17px">
         Terdapat {{count($acaras)}} event untuk <b>'{{$key}}'</b> di EventOn

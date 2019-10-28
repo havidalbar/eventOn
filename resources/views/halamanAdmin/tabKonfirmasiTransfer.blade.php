@@ -19,8 +19,7 @@
                     <th>Konfirmasi</th>
                 </tr>
             </thead>
-            @for($i = 0; $i < count($pesans); $i++)
-            <tbody>
+            @for($i = 0; $i < count($pesans); $i++) <tbody>
                 <tr>
                     <td>{{$pesans[$i]->id}}</td>
                     <td>{{$pesans[$i]->created_at}}</td>
@@ -30,17 +29,22 @@
                         <span>Rp </span>
                         <span>{{number_format(($pesans[$i]->jumlah),0,",",".")}}</span>
                         <div style="margin-top:5px">
-                            <button class="ui button basic teal" onclick="$('.ui.large.modal.bukti.<?php echo $i ?>').modal('show')">Lihat</button>
+                            <button class="ui button basic teal"
+                                onclick="$('.ui.large.modal.bukti.<?php echo $i ?>').modal('show')">Lihat</button>
                         </div>
                     </td>
                     <td>
                         <div class="ui internally celled grid">
                             <div class="row">
-                                <form class="eight wide column" action="{{route('tamu.user.admin.terima-pembayaran', ['id' => $pesans[$i]->id])}}" method="post">
+                                <form class="eight wide column"
+                                    action="{{route('tamu.user.admin.kelola-pembayaran', ['id' => $pesans[$i]->id, 'status'=> 1])}}"
+                                    method="post">
                                     {{csrf_field()}}
                                     <button class="ui button basic green">Terima</button>
                                 </form>
-                                <form class="eight wide column" action="{{route('tamu.user.admin.tolak-pembayaran', ['id' => $pesans[$i]->id])}}" method="post">
+                                <form class="eight wide column"
+                                    action="{{route('tamu.user.admin.kelola-pembayaran', ['id' => $pesans[$i]->id, 'status' => -1])}}"
+                                    method="post">
                                     {{csrf_field()}}
                                     <button class="ui button basic red">Tolak</button>
                                 </form>
@@ -48,25 +52,26 @@
                         </div>
                     </td>
                 </tr>
-            </tbody>
-            <!-- Dimmer Pengajuan Transaksi -->
-            <div class="ui large modal bukti <?php echo $i ?>">
-                <div class="header">
-                    Bukti Pembayaran
+                </tbody>
+                <!-- Dimmer Pengajuan Transaksi -->
+                <div class="ui large modal bukti <?php echo $i ?>">
+                    <div class="header">
+                        Bukti Pembayaran
+                    </div>
+                    <div class="content">
+                        <img class="ui large centered image" src={{asset($pesans[$i]->gambar_konfirmasi)}}>
+                    </div>
+                    <div class="actions">
+                        <button class="ui negative button">
+                            Tutup
+                        </button>
+                        <a class="ui teal right button" href="{{asset($pesans[$i]->gambar_konfirmasi)}}"
+                            download="buktipembayaran<?php echo $pesans[$i]->nama ?>">
+                            Download
+                        </a>
+                    </div>
                 </div>
-                <div class="content">
-                    <img class="ui large centered image" src={{asset($pesans[$i]->gambar_konfirmasi)}}>
-                </div>
-                <div class="actions">
-                    <button class="ui negative button">
-                        Tutup
-                    </button>
-                    <a class="ui teal right button" href="{{asset($pesans[$i]->gambar_konfirmasi)}}" download="buktipembayaran<?php echo $pesans[$i]->nama ?>">
-                        Download
-                    </a>
-                </div>
-            </div>
-            @endfor
+                @endfor
         </table>
     </div>
 </div>

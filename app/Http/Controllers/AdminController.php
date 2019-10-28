@@ -18,31 +18,26 @@ class AdminController extends Controller
         for ($i = 0; $i < count($panitias); $i++) {
             $users[$i] = Member::find($panitias[$i]->id_member);
         }
-        return view('halamanAdmin.halamanAdminPanitia', compact('panitias','pesans', 'users'));
+        return view('halamanAdmin.halamanAdminPanitia', compact('panitias', 'pesans', 'users'));
     }
 
-    public function terimaPanitia(Request $request)
+    public function kelolaPanitia(Request $request)
     {
         $dataPanitia = Panitia::find($request->input('id'));
         if ($dataPanitia) {
-            $dataPanitia->status = 1;
-            $dataPanitia->save();
-            return redirect()->back()->with('alert-success', 'Berhasil menerima panitia');
+            if ($request->input('status') == 1) {
+                $dataPanitia->status = 1;
+                $dataPanitia->save();
+                return redirect()->back()->with('alert-success', 'Berhasil menerima panitia');
+            } else if ($request->input('status') == -1) {
+                $dataPanitia->delete();
+                return redirect()->back()->with('alert', 'Berhasil menolak panitia');
+            }
         } else {
             abort(404);
         }
     }
 
-    public function tolakPanitia(Request $request)
-    {
-        $dataPanitia = Panitia::find($request->input('id'));
-        if ($dataPanitia) {
-            $dataPanitia->delete();
-            return redirect()->back()->with('alert', 'Berhasil menolak panitia');
-        } else {
-            abort(404);
-        }
-    }
     public function lihatHalamanKonfirmasiPembayaran()
     {
         $panitias = Panitia::where('status', 0)->get();
@@ -54,26 +49,22 @@ class AdminController extends Controller
         return view('halamanAdmin.halamanAdminTransfer', compact('panitias', 'pesans', 'users'));
     }
 
-    public function terimaPembayaran(Request $request)
+    public function kelolaPembayaran(Request $request)
     {
         $dataPesan = Pesan::find($request->input('id'));
         if ($dataPesan) {
-            $dataPesan->status = 1;
-            $dataPesan->kode_pesanan = rand(100000, 999999);
-            $dataPesan->save();
-            return redirect()->back()->with('alert-success', 'Berhasil menyetujui transfer');
-        } else {
-            abort(404);
-        }
-    }
-
-    public function tolakPembayaran(Request $request)
-    {
-        $dataPesan = Pesan::find($request->input('id'));
-        if ($dataPesan) {
-            $dataPesan->status = -1;
-            $dataPesan->save();
-            return redirect()->back()->with('alert-success', 'Berhasil menolak transfer');
+            if ($request->input('status') == 1) {
+                if ($dataPesan) {
+                    $dataPesan->status = 1;
+                    $dataPesan->kode_pesanan = rand(100000, 999999);
+                    $dataPesan->save();
+                    return redirect()->back()->with('alert-success', 'Berhasil menyetujui transfer');
+                }
+            } else if ($request->input('status') == -1) {
+                $dataPesan->status = -1;
+                $dataPesan->save();
+                return redirect()->back()->with('alert-success', 'Berhasil menolak transfer');
+            }
         } else {
             abort(404);
         }
