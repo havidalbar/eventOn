@@ -25,7 +25,6 @@ class MemberController extends Controller
     {
         $akun = Member::where('username', Session::get('username'))->first();
 
-        //progres order
         $pesans = Pesan::where('id_member', $akun->id)->get();
         $acaras = array();
         for ($i = 0; $i < count($pesans); $i++) {

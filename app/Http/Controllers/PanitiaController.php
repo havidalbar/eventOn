@@ -117,7 +117,7 @@ class PanitiaController extends Controller
 
     function hapusAcara($id_acara)
     {
-        $acara = Acara::where('id', $id_acara)->first();
+        $acara = Acara::find($id_acara);
         if ($acara) {
             $acara = Acara::where('id', $id_acara)->delete();
             return redirect()->route('index')->with('alert-success', 'Acara telah dihapus');
@@ -188,7 +188,7 @@ class PanitiaController extends Controller
     function lihatHalamanEditAcara($id_acara)
     {
         $dataAcara = Acara::where('id', $id_acara)->where('id_panitia', Session::get('id_panitia'))->first();
-        $dataPanitia = Panitia::where('id', $dataAcara->id_panitia)->first();
+        $dataPanitia = Panitia::find($dataAcara->id_panitia);
         if ($dataAcara && $dataPanitia) {
             return view('halamanPanitia.ubahAcara',  compact('dataAcara', 'dataPanitia'));
         } else {
